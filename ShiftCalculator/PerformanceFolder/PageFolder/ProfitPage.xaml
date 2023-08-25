@@ -20,8 +20,9 @@
             <Border
                 Margin="0 0 0 10"
                 CornerRadius="10"
-                BorderBrush="#19be8a"
-                BorderThickness="2">
+                Background="#252525"
+                BorderThickness="0"
+                BorderBrush="Transparent">
                 <StackPanel 
                     Orientation="Vertical" 
                     Margin="10">
@@ -140,8 +141,9 @@
                 </StackPanel>
             </Border>
             <Border 
-                BorderBrush="#19be8a"
-                BorderThickness="2"
+                Background="#252525"
+                BorderThickness="0"
+                BorderBrush="Transparent"
                 Margin="0 10 0 0"
                 CornerRadius="10">
                 <StackPanel 

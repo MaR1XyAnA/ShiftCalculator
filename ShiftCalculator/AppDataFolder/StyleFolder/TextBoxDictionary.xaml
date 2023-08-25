@@ -4,7 +4,7 @@
     <Style TargetType="TextBox">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Foreground" Value="#aaaaaa"/>
-        <Setter Property="Background" Value="#181818"/>
+        <Setter Property="Background" Value="#515151"/>
         <Setter Property="CaretBrush" Value="#19be8a"/>
         <Setter Property="BorderBrush" Value="#2f2f2f"/>
         <Setter Property="BorderThickness" Value="2"/>
