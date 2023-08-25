@@ -28,7 +28,8 @@ namespace ShiftCalculator.PerformanceFolder.WindowFolder
             try
             {
                 FrameNavigationClass.mainSpace_FNC = BodyFrame;
-                FrameNavigationClass.mainSpace_FNC.Navigate(new MainPage());
+                FrameNavigationClass.menuSpace_FNC = MenuFrame;
+                FrameNavigationClass.menuSpace_FNC.Navigate(new MenuPage());
             }
             catch (Exception ex)
             {

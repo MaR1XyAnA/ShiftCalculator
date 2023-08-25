@@ -12,6 +12,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
+                <RowDefinition Height="70"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid x:Name="TopShelGrid" MouseDown="TopShelGrid_MouseDown" Background="Transparent">
@@ -30,8 +31,11 @@
                 </StackPanel>
             </Grid>
             <Frame
-                x:Name="BodyFrame"
+                x:Name="MenuFrame"
                 Grid.Row="1"/>
+            <Frame
+                x:Name="BodyFrame"
+                Grid.Row="2"/>
         </Grid> 
     </Border>
 </Window>

@@ -3,6 +3,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="MainPageStyle" TargetType="Page">
         <Setter Property="Width" Value="1598"/>
-        <Setter Property="Height" Value="868"/>
+        <Setter Property="Height" Value="798"/>
+    </Style>
+    <Style x:Key="MenuPageStyle" TargetType="Page">
+        <Setter Property="Width" Value="1598"/>
+        <Setter Property="Height" Value="70"/>
     </Style>
 </ResourceDictionary>

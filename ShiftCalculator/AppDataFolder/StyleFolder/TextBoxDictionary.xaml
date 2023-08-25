@@ -37,7 +37,6 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Cursor" Value="IBeam"/>
                             <Setter Property="Foreground" Value="#f5f5f5"/>
                             <Setter Property="BorderBrush" Value="#f5f5f5"/>
                         </Trigger>
