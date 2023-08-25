@@ -41,7 +41,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             {
                 Event_DeactivateToggleButton();
                 ProductToggleButton.IsChecked = true;
-                //FrameNavigationClass.mainSpace_FNC.Navigate(new MainPage());
+                FrameNavigationClass.mainSpace_FNC.Navigate(new ProductPage());
             }
             catch (Exception ex)
             {
@@ -69,7 +69,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             {
                 Event_DeactivateToggleButton();
                 ProfitToggleButton.IsChecked = true;
-                FrameNavigationClass.mainSpace_FNC.Navigate(new MainPage());
+                FrameNavigationClass.mainSpace_FNC.Navigate(new ProfitPage());
             }
             catch (Exception ex)
             {

@@ -8,12 +8,12 @@ using System.Windows.Controls;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
-    public partial class MainPage : Page
+    public partial class ProfitPage : Page
     {
-        string mainNamePage = "MainPage:\n\n";
+        string mainNamePage = "ProfitPage:\n\n";
         string filePath = "HistoryDocument.txt";
 
-        public MainPage()
+        public ProfitPage()
         {
             try
             {
