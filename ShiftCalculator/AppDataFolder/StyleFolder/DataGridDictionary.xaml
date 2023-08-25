@@ -13,7 +13,7 @@
     </Style>
 
     <Style TargetType="DataGridColumnHeader">
-        <Setter Property="Background" Value="#181818"/>
+        <Setter Property="Background" Value="#292929"/>
         <Setter Property="Foreground" Value="#19be8a"/>
         <Setter Property="FontFamily" Value="Consolas"/>
         <Setter Property="FontSize" Value="20"/>

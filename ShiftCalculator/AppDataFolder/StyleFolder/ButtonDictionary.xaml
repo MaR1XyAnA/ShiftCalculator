@@ -13,8 +13,8 @@
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
-        <Setter Property="Foreground" Value="#171717"/>
-        <Setter Property="FontFamily" Value="\ContentFolder\FontFolder\#Jura"/>
+        <Setter Property="Foreground" Value="#0a0a0a"/>
+        <Setter Property="FontFamily" Value="Consolas"/>
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="Height" Value="60"/>
         <Setter Property="Cursor" Value="Hand"/>

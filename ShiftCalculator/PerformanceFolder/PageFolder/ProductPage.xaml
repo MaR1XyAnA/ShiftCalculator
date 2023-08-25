@@ -14,5 +14,20 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             Foreground="#f5f5f5"/>
+        <Border
+            CornerRadius="50"
+            Width="200"
+            Height="100"
+            Margin="0 0 0 10"
+            BorderThickness="0"
+            BorderBrush="Transparent">
+            <Border.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#33C8FE68"/>
+                    <GradientStop Color="#7FC8FE68" Offset="0.8"/>
+                    <GradientStop Color="#FFDDEE64" Offset="1"/>
+                </RadialGradientBrush>
+            </Border.Background>
+        </Border>
     </Grid>
 </Page>
