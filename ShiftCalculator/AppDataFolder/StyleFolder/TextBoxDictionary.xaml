@@ -38,7 +38,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Foreground" Value="#f5f5f5"/>
-                            <Setter Property="BorderBrush" Value="#f5f5f5"/>
+                            <Setter Property="BorderBrush" Value="#aaaaaa"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
@@ -63,7 +63,14 @@
                         <Trigger Property="IsFocused" Value="True">
                             <Setter Property="Background" Value="#212121"/>
                             <Setter Property="Foreground" Value="#c8fe68"/>
-                            <Setter Property="BorderBrush" Value="#c8fe68"/>
+                            <Setter Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5" >
+                                        <GradientStop Color="#c8fe68"/>
+                                        <GradientStop Color="#ddee64" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
