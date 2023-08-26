@@ -15,17 +15,13 @@
         <StackPanel
             Grid.Column="0"
             Orientation="Vertical"
-            HorizontalAlignment="Center"
             Margin="0 20 0 0">
             <Border
-                Margin="0 0 0 10"
-                CornerRadius="10"
-                Background="#19191a"
-                BorderThickness="0"
-                BorderBrush="Transparent">
+                Style="{DynamicResource OverlayBorderStyle}"
+                Margin="10 0 10 10">
                 <StackPanel 
                     Orientation="Vertical" 
-                    Margin="10">
+                    Margin="20 10 20 10">
                     <StackPanel Margin="0 0 0 10">
                         <Grid>
                             <TextBlock
@@ -38,19 +34,19 @@
                                 <Button
                                     ToolTip="Выстовляет сегодняшную дату"
                                     Content="ToDay"
-                                    Click="SetToDaysDate_Click"
+                                    Click="SetToDayDate_Click"
                                     Width="Auto"
                                     Style="{DynamicResource HintButtonStyle}"/>
                                 <Button
-                                    Click="HintDateButton_Click"
+                                    x:Name="HintDateButton"
+                                    Click="HintButton_Click"
                                     Margin="0"
                                     Style="{DynamicResource HintButtonStyle}"/>
                             </StackPanel>
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintDateTextBlock, Path=Text}">
                             <DatePickerTextBox
-                                Width="400"
-                                TextChanged="DateDatePickerTextBox_TextChanged"
+                                TextChanged="TextHint_TextChanged"
                                 x:Name="DateDatePickerTextBox"/>
                             <TextBlock
                                 Style="{DynamicResource HintTextBlockStyle}"
@@ -64,14 +60,14 @@
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
                                 Text="Общая сумма"/>
                             <Button
-                                Click="HintTotalAmountButton_Click"
+                                x:Name="HintTotalAmountButton"
+                                Click="HintButton_Click"
                                 Style="{DynamicResource HintButtonStyle}"/>
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
                             <TextBox
-                                Width="400"
                                 x:Name="TotalAmountTextBox"
-                                TextChanged="TotalAmountTextBox_TextChanged"/>
+                                TextChanged="TextHint_TextChanged"/>
                             <TextBlock
                                 Style="{DynamicResource HintTextBlockStyle}"
                                 x:Name="HintTotalAmountTextBlock"
@@ -81,17 +77,17 @@
                     <StackPanel Margin="0 10 0 10">
                         <Grid>
                             <TextBlock
-                            Style="{DynamicResource TopTitleTextBlockStyle}"
-                            Text="Безналичный расчёт"/>
+                                Style="{DynamicResource TopTitleTextBlockStyle}"
+                                Text="Безналичный расчёт"/>
                             <Button
-                                Click="HintCashlessPaymentButton_Click"
+                                x:Name="HintCashlessPaymentButton"
+                                Click="HintButton_Click"
                                 Style="{DynamicResource HintButtonStyle}"/>
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintCashlessPaymentTextBlock, Path=Text}">
                             <TextBox
-                                Width="400"
                                 x:Name="CashlessPaymentTextBox"
-                                TextChanged="CashlessPaymentTextBox_TextChanged"/>
+                                TextChanged="TextHint_TextChanged"/>
                             <TextBlock
                                 Style="{DynamicResource HintTextBlockStyle}"
                                 x:Name="HintCashlessPaymentTextBlock"
@@ -104,14 +100,14 @@
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
                                 Text="Предыдущей кассовый остаток"/>
                             <Button
-                                Click="HintPreviousCashBalanceButton_Click"
+                                x:Name="HintPreviousCashBalanceButton"
+                                Click="HintButton_Click"
                                 Style="{DynamicResource HintButtonStyle}"/>
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintPreviousCashBalanceTextBlock, Path=Text}">
                             <TextBox
-                                Width="400"
                                 x:Name="PreviousCashBalanceTextBox"
-                                TextChanged="PreviousCashBalanceTextBox_TextChanged"/>
+                                TextChanged="TextHint_TextChanged"/>
                             <TextBlock
                                 Style="{DynamicResource HintTextBlockStyle}"
                                 x:Name="HintPreviousCashBalanceTextBlock"
@@ -124,14 +120,14 @@
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
                                 Text="В банке"/>
                             <Button
-                                Click="HintBanckButton_Click"
+                                x:Name="HintBanckButton"
+                                Click="HintButton_Click"
                                 Style="{DynamicResource HintButtonStyle}"/>
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintBanckTextBlock, Path=Text}">
                             <TextBox
-                                Width="400"
                                 x:Name="BanckTextBox"
-                                TextChanged="BanckTextBox_TextChanged"/>
+                                TextChanged="TextHint_TextChanged"/>
                             <TextBlock
                                 Style="{DynamicResource HintTextBlockStyle}"
                                 x:Name="HintBanckTextBlock"
@@ -141,28 +137,24 @@
                 </StackPanel>
             </Border>
             <Border 
-                Background="#19191a"
-                BorderThickness="0"
-                BorderBrush="Transparent"
-                Margin="0 10 0 0"
-                CornerRadius="10">
+                Style="{DynamicResource OverlayBorderStyle}"
+                Margin="10 10 10 0">
                 <StackPanel 
                     Orientation="Vertical" 
-                    Margin="10">
+                    Margin="20 10 20 10">
                     <StackPanel Margin="0 0 0 10">
                         <Grid>
                             <TextBlock
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
                                 Text="Кассовый остаток"/>
                             <Button
-                                Click="HintCashBalanceButton_Click"
+                                Click="HintButton_Click"
                                 Style="{DynamicResource HintButtonStyle}"/>
                         </Grid>
                         <Grid>
                             <TextBox
                                 IsEnabled="False"
-                                x:Name="CashBalanceTextBox"
-                                Width="400"/>
+                                x:Name="CashBalanceTextBox"/>
                         </Grid>
                     </StackPanel>
                     <StackPanel Margin="0 10 0 0">
@@ -171,14 +163,13 @@
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
                                 Text="Общая за день"/>
                             <Button
-                                x:Name="HintTotalForTheDayButton"
+                                Click="HintButton_Click"
                                 Style="{DynamicResource HintButtonStyle}"/>
                         </Grid>
                         <Grid>
                             <TextBox
                                 IsEnabled="False"
-                                x:Name="TotalForTheDayTextBox"
-                                Width="400"/>
+                                x:Name="TotalForTheDayTextBox"/>
                         </Grid>
                     </StackPanel>
                 </StackPanel>
@@ -188,11 +179,10 @@
                 Content="Посчитать"
                 x:Name="CalculateButton"
                 Click="CalculateButton_Click"
-                Margin="0 40 0 0"/>
+                Margin="30 30 30 0"/>
         </StackPanel>
         <Border
-            CornerRadius="10"
-            Background="#19191a"
+            Style="{DynamicResource OverlayBorderStyle}"
             Grid.Column="1"
             Margin="10 20">
             <DataGrid x:Name="HistoryDataGrid">

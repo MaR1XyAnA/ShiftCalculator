@@ -1,6 +1,9 @@
-﻿using ShiftCalculator.AppDataFolder.ClassFolder;
+﻿///<!--
+/// Главное окно, где происходят все нужные и основные действия
+///-->
+
+using ShiftCalculator.AppDataFolder.ClassFolder;
 using ShiftCalculator.PerformanceFolder.PageFolder;
-using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -8,64 +11,33 @@ namespace ShiftCalculator.PerformanceFolder.WindowFolder
 {
     public partial class MainWindow : Window
     {
-        string mainNameWindow = "MainWindow:\n\n";
-
         public MainWindow()
         {
-            try
-            {
-                InitializeComponent();
-                Event_WorkWithFrame();
-            }
-            catch (Exception ex)
-            {
-                MessageBoxClass.ExceptionMessageBox_MBC(textMessage: $"Событие MainWindow в {mainNameWindow}" + $"{ex.Message}");
-            }
+            InitializeComponent();
+            Event_WorkWithFrame();
         }
         #region Event_
-        private void Event_WorkWithFrame()
+        private void Event_WorkWithFrame() /// Подключает Frame и управляет ими
         {
-            try
-            {
-                FrameNavigationClass.mainSpace_FNC = BodyFrame;
-                FrameNavigationClass.menuSpace_FNC = MenuFrame;
-                FrameNavigationClass.menuSpace_FNC.Navigate(new MenuPage());
-            }
-            catch (Exception ex)
-            {
-                MessageBoxClass.ExceptionMessageBox_MBC(textMessage: $"Событие Event_WorkWithFrame в {mainNameWindow}" + $"{ex.Message}");
-            }
+            FrameNavigationClass.mainSpace_FNC = BodyFrame;
+            FrameNavigationClass.menuSpace_FNC = MenuFrame;
+            FrameNavigationClass.menuSpace_FNC.Navigate(new MenuPage());
         }
         #endregion
         #region Управление окном
-        private void TopShelGrid_MouseDown(object sender, MouseButtonEventArgs e)
+        private void TopShelGrid_MouseDown(object sender, MouseButtonEventArgs e) /// Перемищать окно
         {
-            try
-            {
-                if (e.ChangedButton == MouseButton.Left) { this.DragMove(); }
-            }
-            catch (Exception ex)
-            {
-                MessageBoxClass.ExceptionMessageBox_MBC(textMessage: $"Событие TopShelGrid_MouseDown в {mainNameWindow}" + $"{ex.Message}");
-            }
+            if (e.ChangedButton == MouseButton.Left) { this.DragMove(); }
         }
 
-        private void RollupWindowButton_Click(object sender, RoutedEventArgs e)
+        private void RollupWindowButton_Click(object sender, RoutedEventArgs e) /// Свернуть окно
         {
-            try { WindowState = WindowState.Minimized; }
-            catch (Exception ex)
-            {
-                MessageBoxClass.ExceptionMessageBox_MBC(textMessage: $"Событие RollupWindowButton_Click в {mainNameWindow}" + $"{ex.Message}");
-            }
+            WindowState = WindowState.Minimized;
         }
 
-        private void CloseWindowButton_Click(object sender, RoutedEventArgs e)
+        private void CloseWindowButton_Click(object sender, RoutedEventArgs e) /// Закрыть окно
         {
-            try { Application.Current.Shutdown(); }
-            catch (Exception ex)
-            {
-                MessageBoxClass.ExceptionMessageBox_MBC(textMessage: $"Событие CloseWindowButton_Click в {mainNameWindow}" + $"{ex.Message}");
-            }
+            Application.Current.Shutdown();
         }
         #endregion
     }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿///<!--
+/// Класс, который нужен для записи истории (формирует данные)
+/// -->
 
 namespace ShiftCalculator.AppDataFolder.ClassFolder
 {

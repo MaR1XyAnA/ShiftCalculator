@@ -8,26 +8,129 @@
     Title="Продукция"
     Style="{StaticResource MainPageStyle}">
     <Grid>
-        <TextBlock
-            Text="ЕЩЁ НЕ ГОТОВО!!!"
-            FontSize="50"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Center"
-            Foreground="#f5f5f5"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="440"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel
+            Grid.Column="0"
+            Orientation="Vertical"
+            Margin="0 20 0 0">
+            <Border
+                Style="{DynamicResource OverlayBorderStyle}"
+                Margin="10 0 10 10">
+                <StackPanel 
+                    Orientation="Vertical" 
+                    Margin="20 10 20 10">
+                    <StackPanel Margin="0 0 0 10">
+                        <Grid>
+                            <TextBlock
+                                Style="{DynamicResource TopTitleTextBlockStyle}"
+                                Text="Наценка"/>
+                            <Button
+                                Click="HintExtraChargeButton_Click"
+                                Style="{DynamicResource HintButtonStyle}"/>
+                        </Grid>
+                        <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
+                            <TextBox
+                                x:Name="ExtraChargeTextBox"
+                                TextChanged="ExtraChargeTextBox_TextChanged"/>
+                            <TextBlock
+                                Style="{DynamicResource HintTextBlockStyle}"
+                                x:Name="HintExtraChargeTextBlock"
+                                Text="Введите наценку"/>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Margin="0 10 0 10">
+                        <Grid>
+                            <TextBlock
+                                Style="{DynamicResource TopTitleTextBlockStyle}"
+                                Text="Количество"/>
+                            <Button
+                                Click="HintQuantityButton_Click"
+                                Style="{DynamicResource HintButtonStyle}"/>
+                        </Grid>
+                        <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
+                            <TextBox
+                                x:Name="QuantityTextBox"
+                                TextChanged="QuantityTextBox_TextChanged"/>
+                            <TextBlock
+                                Style="{DynamicResource HintTextBlockStyle}"
+                                x:Name="HintQuantityTextBlock"
+                                Text="Введите количество товара"/>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Margin="0 10 0 10">
+                        <Grid>
+                            <TextBlock
+                                Style="{DynamicResource TopTitleTextBlockStyle}"
+                                Text="Стоимость"/>
+                            <Button
+                                Click="HintCostButton_Click"
+                                Style="{DynamicResource HintButtonStyle}"/>
+                        </Grid>
+                        <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
+                            <TextBox
+                                x:Name="CostTextBox"
+                                TextChanged="CostTextBox_TextChanged"/>
+                            <TextBlock
+                                Style="{DynamicResource HintTextBlockStyle}"
+                                x:Name="HintCostTextBlock"
+                                Text="Введите общую стоимость"/>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Margin="0 10 0 10">
+                        <Grid>
+                            <TextBlock
+                                Style="{DynamicResource TopTitleTextBlockStyle}"
+                                Text="Результат"/>
+                            <Button
+                                Click="HintResultButton_Click"
+                                Style="{DynamicResource HintButtonStyle}"/>
+                        </Grid>
+                        <Grid ToolTip="Результат">
+                            <TextBox
+                                x:Name="ResultTextBox"
+                                TextChanged="ResultTextBox_TextChanged"/>
+                            <TextBlock
+                                Style="{DynamicResource HintTextBlockStyle}"
+                                x:Name="HintResultTextBlock"/>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <Button
+                Style="{DynamicResource MyMainButtonStyle}"
+                Content="Посчитать"
+                x:Name="CalculateButton"
+                Click="CalculateButton_Click"
+                Margin="30 30 30 0"/>
+        </StackPanel>
         <Border
-            CornerRadius="50"
-            Width="200"
-            Height="100"
-            Margin="0 0 0 10"
-            BorderThickness="0"
-            BorderBrush="Transparent">
-            <Border.Background>
-                <RadialGradientBrush>
-                    <GradientStop Color="#33C8FE68"/>
-                    <GradientStop Color="#7FC8FE68" Offset="0.8"/>
-                    <GradientStop Color="#FFDDEE64" Offset="1"/>
-                </RadialGradientBrush>
-            </Border.Background>
+            Style="{DynamicResource OverlayBorderStyle}"
+            Grid.Column="1"
+            Margin="10 20">
+            <DataGrid x:Name="HistoryDataGrid">
+                <DataGrid.Columns>
+                    <DataGridTextColumn
+                        Header="Наценка"
+                        Width="160" 
+                        Binding="{Binding Path=TotalAmount_HC}"/>
+                    <DataGridTextColumn
+                        Header="Количество"
+                        Width="*" 
+                        Binding="{Binding Path=Bank_HC}"/>
+                    <DataGridTextColumn
+                        Header="Стоимость"
+                        Width="*" 
+                        Binding="{Binding Path=CashBalance_HC}"/>
+                    <DataGridTextColumn Width="120"/>
+                    <DataGridTextColumn
+                        Header="Результат"
+                        Width="*" 
+                        Binding="{Binding Path=Cashless_HC}"/>
+                </DataGrid.Columns>
+            </DataGrid>
         </Border>
     </Grid>
 </Page>

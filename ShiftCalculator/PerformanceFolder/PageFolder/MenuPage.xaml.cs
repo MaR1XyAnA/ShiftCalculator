@@ -1,5 +1,9 @@
-﻿using ShiftCalculator.AppDataFolder.ClassFolder;
-using System;
+﻿///<!--
+/// Страница с меню. Работает просто. При нажатии на кнопку, вызывается метод, который отключает все кнопки,
+///     а потом включается выбранная кнопка и выполняется переход на страницу.
+///-->
+
+using ShiftCalculator.AppDataFolder.ClassFolder;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -7,74 +11,34 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
     public partial class MenuPage : Page
     {
-        string mainNamePage = "MenuPage:\n\n";
-
         public MenuPage()
         {
-            try
-            {
-                InitializeComponent();
-                Event_StartToggleButton();
-            }
-            catch (Exception ex)
-            {
-                MessageBoxClass.ExceptionMessageBox_MBC(textMessage: $"Событие MenuPage в {mainNamePage}" + $"{ex.Message}");
-            }
+            InitializeComponent();
+            Event_StartToggleButton();
         }
 
         #region _Click
-        private void ProfitToggleButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Event_StartToggleButton();
-            }
-            catch (Exception ex)
-            {
-                MessageBoxClass.ExceptionMessageBox_MBC(textMessage: $"Событие ProfitToggleButton_Click в {mainNamePage}" + $"{ex.Message}");
-            }
-        }
+        private void ProfitToggleButton_Click(object sender, RoutedEventArgs e) { Event_StartToggleButton(); }
 
         private void ProductToggleButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Event_DeactivateToggleButton();
-                ProductToggleButton.IsChecked = true;
-                FrameNavigationClass.mainSpace_FNC.Navigate(new ProductPage());
-            }
-            catch (Exception ex)
-            {
-                MessageBoxClass.ExceptionMessageBox_MBC(textMessage: $"Событие ProductToggleButton_Click в {mainNamePage}" + $"{ex.Message}");
-            }
+            Event_DeactivateToggleButton();
+            ProductToggleButton.IsChecked = true;
+            FrameNavigationClass.mainSpace_FNC.Navigate(new ProductPage());
         }
         #endregion
         #region Event_
-        private void Event_DeactivateToggleButton()
+        private void Event_DeactivateToggleButton() /// Отключает всё кнопки
         {
-            try
-            {
-                ProductToggleButton.IsChecked = false;
-                ProfitToggleButton.IsChecked = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBoxClass.ExceptionMessageBox_MBC(textMessage: $"Событие Event_DeactivateToggleButton в {mainNamePage}" + $"{ex.Message}");
-            }
+            ProductToggleButton.IsChecked = false;
+            ProfitToggleButton.IsChecked = false;
         }
 
         private void Event_StartToggleButton()
         {
-            try
-            {
-                Event_DeactivateToggleButton();
-                ProfitToggleButton.IsChecked = true;
-                FrameNavigationClass.mainSpace_FNC.Navigate(new ProfitPage());
-            }
-            catch (Exception ex)
-            {
-                MessageBoxClass.ExceptionMessageBox_MBC(textMessage: $"Событие Event_StartToggleButton в {mainNamePage}" + $"{ex.Message}");
-            }
+            Event_DeactivateToggleButton();
+            ProfitToggleButton.IsChecked = true;
+            FrameNavigationClass.mainSpace_FNC.Navigate(new ProfitPage());
         }
         #endregion
     }
