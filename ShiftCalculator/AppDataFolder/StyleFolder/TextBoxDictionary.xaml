@@ -5,7 +5,7 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Foreground" Value="#aaaaaa"/>
         <Setter Property="Background" Value="#292929"/>
-        <Setter Property="CaretBrush" Value="#19be8a"/>
+        <Setter Property="CaretBrush" Value="#c8fe68"/>
         <Setter Property="BorderBrush" Value="#2f2f2f"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
@@ -39,11 +39,67 @@
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Foreground" Value="#f5f5f5"/>
                             <Setter Property="BorderBrush" Value="#f5f5f5"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+                                            To="#333333" 
+                                            Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+                                            To="#292929" 
+                                            Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
-                        <Trigger Property="IsFocused" Value="true">
+                        <Trigger Property="IsFocused" Value="True">
                             <Setter Property="Background" Value="#212121"/>
-                            <Setter Property="Foreground" Value="#19be8a"/>
-                            <Setter Property="BorderBrush" Value="#19be8a"/>
+                            <Setter Property="Foreground" Value="#c8fe68"/>
+                            <Setter Property="BorderBrush" Value="#c8fe68"/>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+                                            To="#1a1a1a" 
+                                            Duration="0:0:0.2"/>
+                                        <ColorAnimation 
+                                            Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" 
+                                            To="#c8fe68" 
+                                            Duration="0:0:0.2"/>
+                                        <ColorAnimation 
+                                            Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
+                                            To="#c8fe68" 
+                                            Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation 
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
+                                            To="#292929" 
+                                            Duration="0:0:0.2"/>
+                                        <ColorAnimation 
+                                            Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" 
+                                            To="#aaaaaa" 
+                                            Duration="0:0:0.2"/>
+                                        <ColorAnimation 
+                                            Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" 
+                                            To="#2f2f2f" 
+                                            Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
