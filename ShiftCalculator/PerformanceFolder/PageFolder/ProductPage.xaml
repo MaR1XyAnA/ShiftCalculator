@@ -28,13 +28,14 @@
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
                                 Text="Наценка"/>
                             <Button
-                                Click="HintExtraChargeButton_Click"
+                                x:Name="HintExtraChargeButton"
+                                Click="HintButton_Click"
                                 Style="{DynamicResource HintButtonStyle}"/>
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
                             <TextBox
                                 x:Name="ExtraChargeTextBox"
-                                TextChanged="ExtraChargeTextBox_TextChanged"/>
+                                TextChanged="TextHint_TextChanged"/>
                             <TextBlock
                                 Style="{DynamicResource HintTextBlockStyle}"
                                 x:Name="HintExtraChargeTextBlock"
@@ -47,13 +48,14 @@
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
                                 Text="Количество"/>
                             <Button
-                                Click="HintQuantityButton_Click"
+                                x:Name="HintQuantityButton"
+                                Click="HintButton_Click"
                                 Style="{DynamicResource HintButtonStyle}"/>
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
                             <TextBox
                                 x:Name="QuantityTextBox"
-                                TextChanged="QuantityTextBox_TextChanged"/>
+                                TextChanged="TextHint_TextChanged"/>
                             <TextBlock
                                 Style="{DynamicResource HintTextBlockStyle}"
                                 x:Name="HintQuantityTextBlock"
@@ -66,13 +68,14 @@
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
                                 Text="Стоимость"/>
                             <Button
-                                Click="HintCostButton_Click"
+                                x:Name="HintCostButton"
+                                Click="HintButton_Click"
                                 Style="{DynamicResource HintButtonStyle}"/>
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
                             <TextBox
                                 x:Name="CostTextBox"
-                                TextChanged="CostTextBox_TextChanged"/>
+                                TextChanged="TextHint_TextChanged"/>
                             <TextBlock
                                 Style="{DynamicResource HintTextBlockStyle}"
                                 x:Name="HintCostTextBlock"
@@ -85,7 +88,8 @@
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
                                 Text="Результат"/>
                             <Button
-                                Click="HintResultButton_Click"
+                                x:Name="HintResultButton"
+                                Click="HintButton_Click"
                                 Style="{DynamicResource HintButtonStyle}"/>
                         </Grid>
                         <Grid ToolTip="Результат">

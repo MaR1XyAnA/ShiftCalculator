@@ -30,34 +30,34 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         private void TextHint_TextChanged(object sender, TextChangedEventArgs e) ///Показать\Спрятать текстовую подсказку
         {
             TextBox textBox = (TextBox)sender;
-            TextBlock hintBlock = null;
+            TextBlock hintTextBlock = null;
 
             switch (textBox.Name)
             {
                 case "DateDatePickerTextBox":
-                    hintBlock = HintDateTextBlock;
+                    hintTextBlock = HintDateTextBlock;
                     break;
                 case "TotalAmountTextBox":
-                    hintBlock = HintTotalAmountTextBlock;
+                    hintTextBlock = HintTotalAmountTextBlock;
                     break;
                 case "CashlessPaymentTextBox":
-                    hintBlock = HintCashlessPaymentTextBlock;
+                    hintTextBlock = HintCashlessPaymentTextBlock;
                     break;
                 case "PreviousCashBalanceTextBox":
-                    hintBlock = HintPreviousCashBalanceTextBlock;
+                    hintTextBlock = HintPreviousCashBalanceTextBlock;
                     break;
                 case "BanckTextBox":
-                    hintBlock = HintBanckTextBlock;
+                    hintTextBlock = HintBanckTextBlock;
                     break;
             }
 
             if (textBox.Text.Length == 0)
             {
-                hintBlock.Visibility = Visibility.Visible;
+                hintTextBlock.Visibility = Visibility.Visible;
             }
             else
             {
-                hintBlock.Visibility = Visibility.Collapsed;
+                hintTextBlock.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -96,47 +96,44 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         private void HintButton_Click(object sender, RoutedEventArgs e) /// Подсказки по нажатию на кнопку
         {
-            string textMessage = "";
-            string topRow = "";
+            string textHint = "";
+            string nameHint = "";
 
             Button hintButton = (Button)sender;
 
             switch (hintButton.Name)
             {
                 case "HintDateButton":
-                    textMessage = 
+                    textHint = 
                         "Параметр, который нужен для ввода даты того числа, когда создаётся подсчёт\n" +
                         "Если приследуется цели просто посчитать данные, то без ввода даты запись не будет создана";
-                    topRow = "Информация про дату";
+                    nameHint = "Информация про дату";
                     break;
 
                 case "HintTotalAmountButton":
-                    textMessage = 
-                        "Общая сумма, которая вышла за смену (на чеке напиана общая сумма, которую нужно вбить в данное поле)";
-                    topRow = "Общая сумма";
+                    textHint = "Общая сумма, которая вышла за смену (на чеке напиана общая сумма, которую нужно вбить в данное поле)";
+                    nameHint = "Общая сумма";
                     break;
 
                 case "HintCashlessPaymentButton":
-                    textMessage = 
-                        "Сумма, которая вышла за смену по оплате картой (на чеке напиана сумма, которую нужно вбить в данное поле)";
-                    topRow = "Безналичный расчёт";
+                    textHint = "Сумма, которая вышла за смену по оплате картой (на чеке напиана сумма, которую нужно вбить в данное поле)";
+                    nameHint = "Безналичный расчёт";
                     break;
 
                 case "HintPreviousCashBalanceButton":
-                    textMessage = 
-                        "Сумма, которая осталась в кассе с прошлой смены";
-                    topRow = "Кассовый остаток";
+                    textHint = "Сумма, которая осталась в кассе с прошлой смены";
+                    nameHint = "Кассовый остаток";
                     break;
 
                 case "HintBanckButton":
-                    textMessage = 
+                    textHint = 
                         "Сумма, которая убирается в пакет (банк)\n" +
                         "0, 500, 1000, 1500, 2000, 2500 и т.д.";
-                    topRow = "Банк";
+                    nameHint = "Банк";
                     break;
             }
 
-            MessageBoxClass.HintMessageBox_MBC(textMessage, topRow);
+            MessageBoxClass.HintMessageBox_MBC(textMessage:textHint, topRow:nameHint);
         }
         #endregion
         #region Event_

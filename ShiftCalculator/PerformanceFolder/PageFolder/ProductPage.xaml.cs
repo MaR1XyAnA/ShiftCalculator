@@ -2,6 +2,7 @@
 /// Страница, для подсчёта накенки товара
 ///-->
 
+using ShiftCalculator.AppDataFolder.ClassFolder;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -35,29 +36,73 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         }
         #endregion
         #region _Click
-        private void HintExtraChargeButton_Click(object sender, RoutedEventArgs e)
+        private void HintButton_Click(object sender, RoutedEventArgs e) /// Подсказки по нажатию на кнопку
         {
+            string textHint = "";
+            string nameHint = "";
 
-        }
+            Button hintButton = (Button)sender;
 
-        private void HintQuantityButton_Click(object sender, RoutedEventArgs e)
-        {
+            switch (hintButton.Name)
+            {
+                case "HintExtraChargeButton":
+                    textHint = 
+                        "Этот параметр отвечает за то, какая наценка будет у товара (%).\n" +
+                        "К примеру, товар стоит 100 рублей, а наценка 10%, значит товар будет стоить 110 рублей";
+                    nameHint = "Подсказка про наценку";
+                    break;
 
-        }
+                case "HintQuantityButton":
+                    textHint = "Количесто товара, который привезли (специальная выделенная графа в накладной)";
+                    nameHint = "Подсказка по количеству";
+                    break;
 
-        private void HintCostButton_Click(object sender, RoutedEventArgs e)
-        {
+                case "HintCostButton":
+                    textHint = "Цена товара, который привези (специальная выделенная графа в накладной)";
+                    nameHint = "Подсказка про цену";
+                    break;
 
-        }
+                case "HintResultButton":
+                    textHint = "Конечная стоимость товара за шт с учётом наценки";
+                    nameHint = "Подсказка по результату";
+                    break;
+            }
 
-        private void HintResultButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            MessageBoxClass.HintMessageBox_MBC(textMessage: textHint, topRow: nameHint);
         }
 
         private void CalculateButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        #endregion
+        #region _TextChanged
+        private void TextHint_TextChanged(object sender, TextChangedEventArgs e) ///Показать\Спрятать текстовую подсказку
+        {
+            TextBox textBox = (TextBox)sender;
+            TextBlock hintTextBlock = null;
+
+            switch (textBox.Name)
+            {
+                case "ExtraChargeTextBox":
+                    hintTextBlock = HintExtraChargeTextBlock;
+                    break;
+                case "QuantityTextBox":
+                    hintTextBlock = HintQuantityTextBlock;
+                    break;
+                case "CostTextBox":
+                    hintTextBlock = HintCostTextBlock;
+                    break;
+            }
+
+            if (textBox.Text.Length == 0)
+            {
+                hintTextBlock.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                hintTextBlock.Visibility = Visibility.Collapsed;
+            }
         }
         #endregion
         #region Event_
