@@ -16,12 +16,11 @@
         <Setter Property="Effect">
             <Setter.Value>
                 <DropShadowEffect 
-                    Direction="315"
+                    Direction="-90"
                     Color="#000000"
-                    BlurRadius="5"
+                    BlurRadius="15"
                     ShadowDepth="2"
-                    Opacity="0.5"
-                    RenderingBias="Performance" />
+                    RenderingBias="Quality" />
             </Setter.Value>
         </Setter>
     </Style>

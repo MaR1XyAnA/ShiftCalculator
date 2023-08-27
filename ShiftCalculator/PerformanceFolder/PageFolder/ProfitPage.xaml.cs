@@ -60,16 +60,6 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                 hintTextBlock.Visibility = Visibility.Collapsed;
             }
         }
-
-        private void HintCashBalanceButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void HintSweepButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
         #endregion
         #region _Click
         private void SetToDayDate_Click(object sender, RoutedEventArgs e) /// В специальное поле выводит дату "ToDay"
@@ -81,7 +71,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         {
             CalculateClass calculateClass = new CalculateClass();
 
-            CalculateClass.BalanceResult result = calculateClass.CalculateBalances(
+            CalculateClass.BalanceResult_СС result = calculateClass.CalculateBalances(
                 Convert.ToDouble(TotalAmountTextBox.Text), 
                 Convert.ToDouble(PreviousCashBalanceTextBox.Text), 
                 Convert.ToDouble(CashlessPaymentTextBox.Text), 
