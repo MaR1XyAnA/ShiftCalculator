@@ -112,6 +112,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="ContentFolder\FontFolder\Material-Design-Iconic-Font.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -123,9 +124,7 @@
   <ItemGroup>
     <Resource Include="free.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ContentFolder\FontFolder\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="AppDataFolder\StyleFolder\BorderDictionary.xaml">
       <SubType>Designer</SubType>

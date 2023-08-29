@@ -3,6 +3,7 @@
 ///-->
 
 using ShiftCalculator.AppDataFolder.ClassFolder;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -73,7 +74,14 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         private void CalculateButton_Click(object sender, RoutedEventArgs e)
         {
+            CalculateClass calculateClass = new CalculateClass();
 
+            CalculateClass.CalculatingMargins result = calculateClass._CalculatingMargins(
+                Convert.ToDouble(ExtraChargeTextBox.Text),
+                Convert.ToDouble(QuantityTextBox.Text),
+                Convert.ToDouble(CostTextBox.Text));
+
+            ResultTextBox.Text = result.ResultCalculations_CM.ToString();
         }
         #endregion
         #region _TextChanged

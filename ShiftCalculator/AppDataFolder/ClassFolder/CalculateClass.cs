@@ -4,54 +4,42 @@
 ///-->
 
 using System;
+using System.Runtime.InteropServices;
 
 namespace ShiftCalculator.AppDataFolder.ClassFolder
 {
     internal class CalculateClass
     {
-        public class BalanceResult_СС
+        public class CashWithdrawal
         {
-            public double CashBalance { get; set; }
-            public double TotalForTheDay { get; set; }
+            public double CashBalance_CW { get; set; }
+            public double TotalForTheDay_CW { get; set; }
         }
 
-        public BalanceResult_СС CalculateBalances(
-            double totalAmount, 
-            double previousCashBalance, 
-            double cashlessPayment, 
-            double banck)
+        public CashWithdrawal _CashWithdrawal(double _totalAmount, double _previousCashBalance, double _cashlessPayment, double _banck)
         {
-            BalanceResult_СС result = new BalanceResult_СС();
+            CashWithdrawal cashWithdrawal = new CashWithdrawal();
 
-            double cashBalance = totalAmount + previousCashBalance - cashlessPayment - banck;
-            double totalForTheDay = banck + cashlessPayment;
+            cashWithdrawal.CashBalance_CW = _totalAmount + _previousCashBalance - _cashlessPayment - _banck;
+            cashWithdrawal.TotalForTheDay_CW = _banck + _cashlessPayment;
 
-            result.CashBalance = cashBalance;
-            result.TotalForTheDay = totalForTheDay;
-
-            return result;
+            return cashWithdrawal;
         }
 
-        public class ProductPrice_СС
+        public class CalculatingMargins
         {
-            public double ResultCalculations { get; set; }
+            public double ResultCalculations_CM { get; set; }
         }
 
-        public BalanceResult_СС CalculateBalances(
-           double totalAmount,
-           double previousCashBalance,
-           double cashlessPayment,
-           double banck)
+        public CalculatingMargins _CalculatingMargins(double _extraCharge, double _quantity, double _price)
         {
-            BalanceResult_СС result = new BalanceResult_СС();
+            CalculatingMargins calculatingMargins = new CalculatingMargins();
 
-            double cashBalance = totalAmount + previousCashBalance - cashlessPayment - banck;
-            double totalForTheDay = banck + cashlessPayment;
+            double pricePerPercentage = _extraCharge * (_price / 100);
 
-            result.CashBalance = cashBalance;
-            result.TotalForTheDay = totalForTheDay;
+            calculatingMargins.ResultCalculations_CM = (_price + pricePerPercentage) / _quantity;
 
-            return result;
+            return calculatingMargins;
         }
     }
 }

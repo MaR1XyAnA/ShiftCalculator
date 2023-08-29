@@ -71,14 +71,14 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         {
             CalculateClass calculateClass = new CalculateClass();
 
-            CalculateClass.BalanceResult_СС result = calculateClass.CalculateBalances(
+            CalculateClass.CashWithdrawal result = calculateClass._CashWithdrawal(
                 Convert.ToDouble(TotalAmountTextBox.Text), 
                 Convert.ToDouble(PreviousCashBalanceTextBox.Text), 
                 Convert.ToDouble(CashlessPaymentTextBox.Text), 
                 Convert.ToDouble(BanckTextBox.Text));
 
-            CashBalanceTextBox.Text = result.CashBalance.ToString();
-            TotalForTheDayTextBox.Text = result.TotalForTheDay.ToString();
+            CashBalanceTextBox.Text = result.CashBalance_CW.ToString();
+            TotalForTheDayTextBox.Text = result.TotalForTheDay_CW.ToString();
 
             Event_RecordingHistory();
             Event_OutputData();

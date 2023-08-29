@@ -4,6 +4,7 @@
 
 using ShiftCalculator.AppDataFolder.ClassFolder;
 using ShiftCalculator.PerformanceFolder.PageFolder;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 
@@ -38,6 +39,12 @@ namespace ShiftCalculator.PerformanceFolder.WindowFolder
         private void CloseWindowButton_Click(object sender, RoutedEventArgs e) /// Закрыть окно
         {
             Application.Current.Shutdown();
+        }
+        #endregion
+        #region _Click
+        private void OpenTheCalculatorButton_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("calc.exe");
         }
         #endregion
     }
