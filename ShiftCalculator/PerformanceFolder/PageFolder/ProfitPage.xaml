@@ -66,6 +66,7 @@
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
                             <TextBox
+                                MaxLength="6"
                                 PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
                                 x:Name="TotalAmountTextBox"
                                 TextChanged="TextHint_TextChanged"/>
@@ -87,6 +88,7 @@
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintCashlessPaymentTextBlock, Path=Text}">
                             <TextBox
+                                MaxLength="6"
                                 PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
                                 x:Name="CashlessPaymentTextBox"
                                 TextChanged="TextHint_TextChanged"/>
@@ -108,6 +110,7 @@
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintPreviousCashBalanceTextBlock, Path=Text}">
                             <TextBox
+                                MaxLength="6"
                                 PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
                                 x:Name="PreviousCashBalanceTextBox"
                                 TextChanged="TextHint_TextChanged"/>
@@ -129,6 +132,7 @@
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintBanckTextBlock, Path=Text}">
                             <TextBox
+                                MaxLength="6"
                                 PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
                                 x:Name="BanckTextBox"
                                 TextChanged="TextHint_TextChanged"/>
@@ -260,23 +264,23 @@
                         <DataGridTextColumn
                             Header="Общая сумма"
                             Width="160" 
-                            Binding="{Binding Path=TotalAmount_HC}"/>
+                            Binding="{Binding Path=TotalAmount_HC, StringFormat='{}{0:#,0.##}'}"/>
                         <DataGridTextColumn
                             Header="Безналичный расчёт"
                             Width="*" 
-                            Binding="{Binding Path=Bank_HC}"/>
+                            Binding="{Binding Path=Bank_HC, StringFormat='{}{0:#,0.##}'}"/>
                         <DataGridTextColumn
                             Header="Кассовый остаток"
                             Width="*" 
-                            Binding="{Binding Path=CashBalance_HC}"/>
+                            Binding="{Binding Path=CashBalance_HC, StringFormat='{}{0:#,0.##}'}"/>
                         <DataGridTextColumn
                             Header="Банк"
                             Width="120" 
-                            Binding="{Binding Path=Cashless_HC}"/>
+                            Binding="{Binding Path=Cashless_HC, StringFormat='{}{0:#,0.##}'}"/>
                         <DataGridTextColumn
                             Header="Общая за день"
                             Width="*" 
-                            Binding="{Binding Path=TotalForTheDay_HC}"/>
+                            Binding="{Binding Path=TotalForTheDay_HC, StringFormat='{}{0:#,0.##}'}"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

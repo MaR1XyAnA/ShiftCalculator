@@ -53,6 +53,7 @@
                 x:Name="MenuFrame"
                 Grid.Row="1"/>
             <Frame
+                Margin="0 20 0 20"
                 x:Name="BodyFrame"
                 Grid.Row="2"/>
         </Grid> 
