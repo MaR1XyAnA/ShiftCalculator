@@ -10,14 +10,17 @@ using ShiftCalculator.AppDataFolder.ClassFolder;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
     public partial class ProfitPage : Page
     {
         string filePath = "HistoryDocument.txt";
+        string isNullOrWhiteSpaceTextBox;
 
         public ProfitPage()
         {
@@ -67,21 +70,20 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             DateDatePickerTextBox.Text = DateTime.Today.ToString("dd/MM/yyyy");
         }
 
-        private void CalculateButton_Click(object sender, RoutedEventArgs e) /// Отправка в класс данных и их получение и вывод
+        private void CalculateButton_Click(object sender, RoutedEventArgs e) /// Работа кнопки
         {
-            CalculateClass calculateClass = new CalculateClass();
+            isNullOrWhiteSpaceTextBox = "";
 
-            CalculateClass.CashWithdrawal result = calculateClass._CashWithdrawal(
-                Convert.ToDouble(TotalAmountTextBox.Text), 
-                Convert.ToDouble(PreviousCashBalanceTextBox.Text), 
-                Convert.ToDouble(CashlessPaymentTextBox.Text), 
-                Convert.ToDouble(BanckTextBox.Text));
+            Event_IsNullOrWhiteSpaceTextBox();
 
-            CashBalanceTextBox.Text = result.CashBalance_CW.ToString();
-            TotalForTheDayTextBox.Text = result.TotalForTheDay_CW.ToString();
-
-            Event_RecordingHistory();
-            Event_OutputData();
+            if (isNullOrWhiteSpaceTextBox != "")
+            {
+                MessageBoxClass.ErrorMessageBox_MBC(textMessage: isNullOrWhiteSpaceTextBox, topRow: "Текстовое поле не должно быть пустым");
+            }
+            else
+            {
+                Event_PerformCountingOperation();
+            }
         }
 
         private void HintButton_Click(object sender, RoutedEventArgs e) /// Подсказки по нажатию на кнопку
@@ -101,21 +103,21 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                     break;
 
                 case "HintTotalAmountButton":
-                    textHint = 
+                    textHint =
                         "Это поле предназначено для ввода общей суммы, которая была получена за смену.\n" +
                         "На чеке указывается итоговая сумма, которую необходимо внести в данное поле.";
                     nameHint = "Информация о общей сумме";
                     break;
 
                 case "HintCashlessPaymentButton":
-                    textHint = 
+                    textHint =
                         "Это поле предназначено для ввода суммы, полученной за смену в результате оплаты картой.\n" +
                         "На чеке указана сумма, которую необходимо внести в данное поле.";
                     nameHint = "Информация о безналичном расчете";
                     break;
 
                 case "HintPreviousCashBalanceButton":
-                    textHint = 
+                    textHint =
                         "Это поле отражает сумму, которая осталась в кассе с предыдущей смены.\n" +
                         "Данную информацию можно посмотреть в журнале приложения, или в записывающем журнале";
                     nameHint = "Инфомация о кассовом остатке";
@@ -129,10 +131,33 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                     break;
             }
 
-            MessageBoxClass.HintMessageBox_MBC(textMessage:textHint, topRow:nameHint);
+            MessageBoxClass.HintMessageBox_MBC(textMessage: textHint, topRow: nameHint);
         }
         #endregion
         #region Event_
+        private void Event_IsNullOrWhiteSpaceTextBox() /// Проверка текстовых полей на пустоту
+        {
+            if (string.IsNullOrWhiteSpace(TotalAmountTextBox.Text))
+            {
+                isNullOrWhiteSpaceTextBox += "● Текстовое поле \"Общая сумма\" не должно быть пустым.\n\n";
+            }
+
+            if (string.IsNullOrWhiteSpace(CashlessPaymentTextBox.Text))
+            {
+                isNullOrWhiteSpaceTextBox += "● Текстовое поле \"Безналичный расчёт\" не должно быть пустым.\n\n";
+            }
+
+            if (string.IsNullOrWhiteSpace(PreviousCashBalanceTextBox.Text))
+            {
+                isNullOrWhiteSpaceTextBox += "● Текстовое поле \"Предыдуший кассовый остаток\" не должно быть пустым.\n\n";
+            }
+
+            if (string.IsNullOrWhiteSpace(BanckTextBox.Text))
+            {
+                isNullOrWhiteSpaceTextBox += "● Текстовое поле \"В банке\" не должно быть пустым.";
+            }
+        }
+
         private async void Event_RecordingHistory() /// Запись истории подсчёта
         {
             string matrixRecording =
@@ -202,6 +227,39 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                 }
 
                 HistoryDataGrid.ItemsSource = historyEntries;
+            }
+        }
+
+        private void Event_PerformCountingOperation()
+        {
+            CalculateClass calculateClass = new CalculateClass();
+
+            CalculateClass.CashWithdrawal calculationResult = calculateClass._CashWithdrawal(
+                Convert.ToDouble(TotalAmountTextBox.Text.Replace(".", ",")),
+                Convert.ToDouble(PreviousCashBalanceTextBox.Text.Replace(".", ",")),
+                Convert.ToDouble(CashlessPaymentTextBox.Text.Replace(".", ",")),
+                Convert.ToDouble(BanckTextBox.Text.Replace(".", ",")));
+
+            CashBalanceTextBox.Text = calculationResult.CashBalance_CW.ToString();
+            TotalForTheDayTextBox.Text = calculationResult.TotalForTheDay_CW.ToString();
+
+            Event_RecordingHistory();
+            Event_OutputData();
+        }
+
+        private void Event_EnteringOnlyNumbersTextBox(object sender, TextCompositionEventArgs e)
+        {
+
+            try
+            {
+                Regex DivisionCodeRegex = new Regex("[^0-9.,]");
+                e.Handled = DivisionCodeRegex.IsMatch(e.Text);
+            }
+            catch (Exception exDivisionCodeValidationTextBox)
+            {
+                MessageBoxClass.ExceptionMessageBox_MBC(
+                        textMessage: $"Событие DivisionCodeValidationTextBox в NewWorkerPage:\n\n " +
+                        $"{exDivisionCodeValidationTextBox.Message}");
             }
         }
         #endregion

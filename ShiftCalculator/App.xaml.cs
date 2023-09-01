@@ -1,6 +1,4 @@
 ﻿using ShiftCalculator.AppDataFolder.ClassFolder;
-using System.Diagnostics;
-using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -15,7 +13,7 @@ namespace ShiftCalculator
 
         private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs exception)
         {
-            MessageBoxClass.ExceptionMessageBox_MBC(textMessage: 
+            MessageBoxClass.ExceptionMessageBox_MBC(textMessage:
                 $"Возникло необработанное исключение: {exception.Exception.Message}\n");
             exception.Handled = true;
         }

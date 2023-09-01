@@ -21,6 +21,14 @@
                     Text="{Binding ElementName=BodyFrame, Path=Content.Title}"/>
                 <StackPanel Style="{DynamicResource TopShelfButtonStackPanelStyle}">
                     <Button
+                        Width="30"
+                        Content="&#xf1c6;"
+                        FontFamily="\ContentFolder\FontFolder\#Material-Design-Iconic-Font"
+                        Style="{DynamicResource RollupTopShelfButtonStyle}"
+                        x:Name="SettingsButton"
+                        ToolTip="Открыть настройки"/>
+                    <Button
+                        Width="30"
                         Content="&#xf322;"
                         FontFamily="\ContentFolder\FontFolder\#Material-Design-Iconic-Font"
                         Style="{DynamicResource RollupTopShelfButtonStyle}"

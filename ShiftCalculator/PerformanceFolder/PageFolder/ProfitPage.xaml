@@ -66,6 +66,7 @@
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
                             <TextBox
+                                PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
                                 x:Name="TotalAmountTextBox"
                                 TextChanged="TextHint_TextChanged"/>
                             <TextBlock
@@ -86,6 +87,7 @@
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintCashlessPaymentTextBlock, Path=Text}">
                             <TextBox
+                                PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
                                 x:Name="CashlessPaymentTextBox"
                                 TextChanged="TextHint_TextChanged"/>
                             <TextBlock
@@ -106,6 +108,7 @@
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintPreviousCashBalanceTextBlock, Path=Text}">
                             <TextBox
+                                PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
                                 x:Name="PreviousCashBalanceTextBox"
                                 TextChanged="TextHint_TextChanged"/>
                             <TextBlock
@@ -126,6 +129,7 @@
                         </Grid>
                         <Grid ToolTip="{Binding ElementName=HintBanckTextBlock, Path=Text}">
                             <TextBox
+                                PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
                                 x:Name="BanckTextBox"
                                 TextChanged="TextHint_TextChanged"/>
                             <TextBlock

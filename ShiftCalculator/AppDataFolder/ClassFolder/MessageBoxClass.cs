@@ -35,5 +35,19 @@ namespace ShiftCalculator.AppDataFolder.ClassFolder
                 textMessage, topRow,
                 MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        /// <summary>
+        /// MessageBox вывода ошибок
+        /// </summary>
+        /// <param name="textMessage"> это то, что будет выводиться (определённый текст)</param>
+        /// <param name="topRow">это само название</param>
+        public static void ErrorMessageBox_MBC(
+            string textMessage = "Разработчик (программист) не присвоил этому значению сообщение",
+            string topRow = "Разработчик (программист) не присвоил этому значению название")
+        {
+            MessageBox.Show(
+                textMessage, topRow,
+                MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }
