@@ -21,20 +21,24 @@
                     Text="{Binding ElementName=BodyFrame, Path=Content.Title}"/>
                 <StackPanel Style="{DynamicResource TopShelfButtonStackPanelStyle}">
                     <Button
-                        Width="30"
-                        Content="&#xf1c6;"
-                        FontFamily="\ContentFolder\FontFolder\#Material-Design-Iconic-Font"
+                        Width="60"
                         Style="{DynamicResource ManagementButtonStyle}"
                         x:Name="SettingsButton"
-                        ToolTip="Открыть настройки"/>
+                        ToolTip="Открыть настройки">
+                        <TextBlock
+                            Style="{DynamicResource IconTextBlockStyle}"
+                            Text="&#xf1c6;"/>
+                    </Button>
                     <Button
-                        Width="30"
-                        Content="&#xf322;"
-                        FontFamily="\ContentFolder\FontFolder\#Material-Design-Iconic-Font"
+                        Width="60"
                         Style="{DynamicResource ManagementButtonStyle}"
                         x:Name="OpenTheCalculatorButton"
                         Click="OpenTheCalculatorButton_Click"
-                        ToolTip="Запустить калькулятор"/>
+                        ToolTip="Открыть калькулятор">
+                        <TextBlock
+                            Style="{DynamicResource IconTextBlockStyle}"
+                            Text="&#xf155;"/>
+                    </Button>
                     <Button
                         Style="{DynamicResource RollupTopShelfButtonStyle}"
                         x:Name="RollupWindowButton"

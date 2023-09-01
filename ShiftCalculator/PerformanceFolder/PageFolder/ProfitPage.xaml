@@ -184,7 +184,68 @@
                     CornerRadius="10 10 0 0"
                     Background="#292929"
                     Height="40">
-                    
+                    <StackPanel
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Right"
+                        Margin="0 0 10 0">
+                        <Button
+                            Margin="0 0 10 0"
+                            ToolTip="Скачать"
+                            Style="{DynamicResource ManagementButtonStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock 
+                                    Style="{DynamicResource IconTextBlockStyle}"
+                                    Text="&#xf220;"
+                                    Margin="0 0 2.5 0"/>
+                                <TextBlock
+                                    Margin="2.5 0 0 0"
+                                    Text="Скачать"/>
+                            </StackPanel>
+                        </Button>
+                        <Button
+                            Margin="10 0 10 0"
+                            ToolTip="Скопировать"
+                            Style="{DynamicResource ManagementButtonStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock 
+                                    Style="{DynamicResource IconTextBlockStyle}"
+                                    Text="&#xf16d;"
+                                    Margin="0 0 2.5 0"/>
+                                <TextBlock
+                                    Margin="2.5 0 0 0"
+                                    Text="Скопировать"/>
+                            </StackPanel>
+                        </Button>
+                        <Button
+                            Margin="10 0 10 0"
+                            ToolTip="Сбросить выделение"
+                            Style="{DynamicResource ManagementButtonStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock 
+                                    Style="{DynamicResource IconTextBlockStyle}"
+                                    Text="&#xf167;"
+                                    Margin="0 0 2.5 0"/>
+                                <TextBlock
+                                    Margin="2.5 0 0 0"
+                                    Text="Сбросить"/>
+                            </StackPanel>
+                        </Button>
+                        <Button
+                            Margin="10 0 0 0"
+                            ToolTip="Удалить"
+                            Style="{DynamicResource RedManagementButtonStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock 
+                                    Style="{DynamicResource IconTextBlockStyle}"
+                                    Text="&#xf154;"
+                                    Margin="0 0 2.5 0"/>
+                                <TextBlock
+                                    Margin="2.5 0 0 0"
+                                    Text="Удалить"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
                 </Border>
                 <DataGrid x:Name="HistoryDataGrid">
                     <DataGrid.Columns>

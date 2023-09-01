@@ -106,6 +106,7 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
     <Style x:Key="HintButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
@@ -184,14 +185,14 @@
             </Setter.Value>
         </Setter>
     </Style>
+
     <Style x:Key="ManagementButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Foreground" Value="#aaaaaa"/>
-        <Setter Property="FontFamily" Value="\ContentFolder\FontFolder\#Material-Design-Iconic-Font"/>
+        <Setter Property="FontFamily" Value="Consolas"/>
         <Setter Property="FontSize" Value="18"/>
-        <Setter Property="Width" Value="30"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
@@ -210,13 +211,13 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="#aaaaaa"/>
+                            <Setter Property="Foreground" Value="#f5f5f5"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ColorAnimation 
                                             Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" 
-                                            To="#f5f5f5" 
+                                            To="#ffffff" 
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -239,7 +240,7 @@
                                     <Storyboard>
                                         <ColorAnimation 
                                             Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" 
-                                            To="#f5f5f5" 
+                                            To="#a3e44d" 
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -249,8 +250,8 @@
                                     <Storyboard>
                                         <ColorAnimation 
                                             Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" 
-                                            To="#f5f5f5" 
-                                            Duration="0:0:2"/>
+                                            To="#c8fe68" 
+                                            Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
@@ -259,6 +260,57 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="RedManagementButtonStyle" TargetType="Button" BasedOn="{StaticResource ManagementButtonStyle}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="#ffffff"/>
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                                Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" 
+                                To="#ffffff"
+                                Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                                Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" 
+                                To="#aaaaaa" 
+                                Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Foreground" Value="#d2001e"/>
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                                Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" 
+                                To="#d2001e"
+                                Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                                Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" 
+                                To="#ff073a"
+                                Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style x:Key="GeneralTopShelfButtonStyle" TargetType="Button">
