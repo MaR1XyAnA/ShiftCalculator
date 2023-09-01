@@ -9,7 +9,7 @@
         <Setter Property="GridLinesVisibility" Value="Horizontal"/>
         <Setter Property="HeadersVisibility" Value="Column"/>
         <Setter Property="AutoGenerateColumns" Value="False"/>
-        <Setter Property="HorizontalGridLinesBrush" Value="#AAAAAA"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="#aaaaaa"/>
     </Style>
 
     <Style TargetType="DataGridColumnHeader">
@@ -35,7 +35,7 @@
 
     <Style TargetType="DataGridRow">
         <Setter Property="Height" Value="40"/>
-        <Setter Property="IsEnabled" Value="False"/>
+        <Setter Property="IsEnabled" Value="True"/>
         <Setter Property="Background" Value="Transparent"/>
     </Style>
 
@@ -50,9 +50,15 @@
                         <ContentPresenter 
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Center"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Foreground" Value="#F5F5F5"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
