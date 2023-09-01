@@ -165,9 +165,9 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                         $"{"[Время]",-20}{DateTime.Now.ToString("HH:mm:ss")}\n" +
                         $"{"[Общая сумма]",-20}{TotalAmountTextBox.Text}\n" +
                         $"{"[Банк]",-20}{BanckTextBox.Text}\n" +
-                        $"{"[Кассовый остаток]",-20}{CashBalanceTextBox.Text}\n" +
+                        $"{"[Кассовый остаток]",-20}{CashBalanceTextBlock.Text}\n" +
                         $"{"[Безналичный]",-20}{CashlessPaymentTextBox.Text}\n" +
-                        $"{"[Общая за день]",-20}{TotalForTheDayTextBox.Text}\n";
+                        $"{"[Общая за день]",-20}{TotalForTheDayTextBlock.Text}\n";
 
             using (StreamWriter recordingHistory = new StreamWriter(filePath, true))
             {
@@ -240,8 +240,8 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                 Convert.ToDouble(CashlessPaymentTextBox.Text.Replace(".", ",")),
                 Convert.ToDouble(BanckTextBox.Text.Replace(".", ",")));
 
-            CashBalanceTextBox.Text = calculationResult.CashBalance_CW.ToString();
-            TotalForTheDayTextBox.Text = calculationResult.TotalForTheDay_CW.ToString();
+            CashBalanceTextBlock.Text = calculationResult.CashBalance_CW.ToString();
+            TotalForTheDayTextBlock.Text = calculationResult.TotalForTheDay_CW.ToString();
 
             Event_RecordingHistory();
             Event_OutputData();

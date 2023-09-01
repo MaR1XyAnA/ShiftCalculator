@@ -24,14 +24,14 @@
                         Width="30"
                         Content="&#xf1c6;"
                         FontFamily="\ContentFolder\FontFolder\#Material-Design-Iconic-Font"
-                        Style="{DynamicResource RollupTopShelfButtonStyle}"
+                        Style="{DynamicResource ManagementButtonStyle}"
                         x:Name="SettingsButton"
                         ToolTip="Открыть настройки"/>
                     <Button
                         Width="30"
                         Content="&#xf322;"
                         FontFamily="\ContentFolder\FontFolder\#Material-Design-Iconic-Font"
-                        Style="{DynamicResource RollupTopShelfButtonStyle}"
+                        Style="{DynamicResource ManagementButtonStyle}"
                         x:Name="OpenTheCalculatorButton"
                         Click="OpenTheCalculatorButton_Click"
                         ToolTip="Запустить калькулятор"/>

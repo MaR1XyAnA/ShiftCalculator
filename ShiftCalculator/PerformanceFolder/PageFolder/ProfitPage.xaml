@@ -15,7 +15,7 @@
         <StackPanel
             Grid.Column="0"
             Orientation="Vertical"
-            Margin="0 20 0 0">
+            Margin="0 0 0 0">
             <Border
                 Style="{DynamicResource OverlayBorderStyle}"
                 Margin="10 0 10 10">
@@ -146,35 +146,25 @@
                 <StackPanel 
                     Orientation="Vertical" 
                     Margin="20 10 20 10">
-                    <StackPanel Margin="0 0 0 10">
-                        <Grid>
-                            <TextBlock
-                                Style="{DynamicResource TopTitleTextBlockStyle}"
-                                Text="Кассовый остаток"/>
-                            <Button
-                                Click="HintButton_Click"
-                                Style="{DynamicResource HintButtonStyle}"/>
-                        </Grid>
-                        <Grid>
-                            <TextBox
-                                IsEnabled="False"
-                                x:Name="CashBalanceTextBox"/>
-                        </Grid>
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                        <TextBlock
+                            Style="{DynamicResource TopTitleTextBlockStyle}"
+                            Text="Кассовый остаток:"/>
+                        <TextBlock
+                            Style="{DynamicResource TopTitleTextBlockStyle}"
+                            Margin="10 0 0 0"
+                            Foreground="#c8fe68"
+                            x:Name="CashBalanceTextBlock"/>
                     </StackPanel>
-                    <StackPanel Margin="0 10 0 0">
-                        <Grid>
-                            <TextBlock
-                                Style="{DynamicResource TopTitleTextBlockStyle}"
-                                Text="Общая за день"/>
-                            <Button
-                                Click="HintButton_Click"
-                                Style="{DynamicResource HintButtonStyle}"/>
-                        </Grid>
-                        <Grid>
-                            <TextBox
-                                IsEnabled="False"
-                                x:Name="TotalForTheDayTextBox"/>
-                        </Grid>
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <TextBlock
+                            Style="{DynamicResource TopTitleTextBlockStyle}"
+                            Text="Общая за день:"/>
+                        <TextBlock
+                            Foreground="#c8fe68"
+                            Style="{DynamicResource TopTitleTextBlockStyle}"
+                            Margin="10 0 0 0"
+                            x:Name="TotalForTheDayTextBlock"/>
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -188,39 +178,47 @@
         <Border
             Style="{DynamicResource OverlayBorderStyle}"
             Grid.Column="1"
-            Margin="10 20">
-            <DataGrid x:Name="HistoryDataGrid">
-                <DataGrid.Columns>
-                    <DataGridTextColumn
-                        Header="Дата"
-                        Width="120" 
-                        Binding="{Binding Path=Date_HC, StringFormat='{}{0:dd/MM/yyyy}'}"/>
-                    <DataGridTextColumn 
-                        Header="Время"
-                        Width="120" 
-                        Binding="{Binding Path=Time_HC, StringFormat='{}{0:hh/mm/ss}'}"/>
-                    <DataGridTextColumn
-                        Header="Общая сумма"
-                        Width="160" 
-                        Binding="{Binding Path=TotalAmount_HC}"/>
-                    <DataGridTextColumn
-                        Header="Безналичный расчёт"
-                        Width="*" 
-                        Binding="{Binding Path=Bank_HC}"/>
-                    <DataGridTextColumn
-                        Header="Кассовый остаток"
-                        Width="*" 
-                        Binding="{Binding Path=CashBalance_HC}"/>
-                    <DataGridTextColumn
-                        Header="Банк"
-                        Width="120" 
-                        Binding="{Binding Path=Cashless_HC}"/>
-                    <DataGridTextColumn
-                        Header="Общая за день"
-                        Width="*" 
-                        Binding="{Binding Path=TotalForTheDay_HC}"/>
-                </DataGrid.Columns>
-            </DataGrid>
+            Margin="10 0">
+            <StackPanel Orientation="Vertical">
+                <Border
+                    CornerRadius="10 10 0 0"
+                    Background="#292929"
+                    Height="40">
+                    
+                </Border>
+                <DataGrid x:Name="HistoryDataGrid">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Header="Дата"
+                            Width="120" 
+                            Binding="{Binding Path=Date_HC, StringFormat='{}{0:dd/MM/yyyy}'}"/>
+                        <DataGridTextColumn 
+                            Header="Время"
+                            Width="120" 
+                            Binding="{Binding Path=Time_HC, StringFormat='{}{0:hh/mm/ss}'}"/>
+                        <DataGridTextColumn
+                            Header="Общая сумма"
+                            Width="160" 
+                            Binding="{Binding Path=TotalAmount_HC}"/>
+                        <DataGridTextColumn
+                            Header="Безналичный расчёт"
+                            Width="*" 
+                            Binding="{Binding Path=Bank_HC}"/>
+                        <DataGridTextColumn
+                            Header="Кассовый остаток"
+                            Width="*" 
+                            Binding="{Binding Path=CashBalance_HC}"/>
+                        <DataGridTextColumn
+                            Header="Банк"
+                            Width="120" 
+                            Binding="{Binding Path=Cashless_HC}"/>
+                        <DataGridTextColumn
+                            Header="Общая за день"
+                            Width="*" 
+                            Binding="{Binding Path=TotalForTheDay_HC}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
         </Border>
     </Grid>
 </Page>
