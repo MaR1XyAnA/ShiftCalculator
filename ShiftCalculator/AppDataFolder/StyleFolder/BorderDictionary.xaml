@@ -5,7 +5,7 @@
         <Setter Property="Background" Value="#0a0a0a"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="CornerRadius" Value="7"/>
     </Style>
     <Style x:Key="ShadowBorderStyle" TargetType="Border">
         <Setter Property="Opacity" Value="0.6"/>
@@ -26,7 +26,7 @@
     </Style>
     <Style x:Key="OverlayBorderStyle" TargetType="Border">
         <Setter Property="Background" Value="#19191a"/>
-        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="CornerRadius" Value="7"/>
         <Setter Property="BorderBrush" Value="#353536"/>
         <Setter Property="BorderThickness" Value="1.5"/>
         <Setter Property="Height" Value="Auto"/>
