@@ -15,6 +15,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
@@ -23,16 +24,26 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         string filePath = "HistoryDocument.txt";
         string isNullOrWhiteSpaceTextBox;
 
-        DateTime toDaytime = DateTime.Now;
+        DispatcherTimer dispatcherTimer;
 
         public ProfitPage()
         {
-            InitializeComponent();
-            Event_OutputData();
+            try
+            {
+                InitializeComponent();
+                Event_OutputData();
+                Event_SettingsDispatcherTimer();
 
-            //DateTextBox.Text = toDaytime.ToString("dd.MM.yyyy");
-            TimeTextBox.Text ="666" /*toDaytime.ToString("dd.MM.yyyy")*/;
-            HistoryDataGrid.Items.SortDescriptions.Add(new SortDescription("LineNumber_HC", ListSortDirection.Descending));
+                dispatcherTimer.Start();
+                SetToDayDateTime.IsChecked = true;
+                DateTextBox.IsEnabled = false;
+                TimeTextBox.IsEnabled = false;
+                HistoryDataGrid.Items.SortDescriptions.Add(new SortDescription("LineNumber_HC", ListSortDirection.Descending));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
         #region _TextChanged
@@ -44,6 +55,9 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             switch (textBox.Name)
             {
                 case "DateTextBox":
+                    hintTextBlock = HintTimeTextBlock;
+                    break;
+                case "TimeTextBox":
                     hintTextBlock = HintDateTextBlock;
                     break;
                 case "TotalAmountTextBox":
@@ -156,6 +170,21 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         }
         #endregion
         #region Event_
+        private void Event_SettingsDispatcherTimer()
+        {
+            dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(Event_DispatcherTimer);
+            dispatcherTimer.Interval = TimeSpan.FromMilliseconds(1);
+        }
+
+        private void Event_DispatcherTimer(object sender, EventArgs e) 
+        {
+            DateTime toDaytime = DateTime.Now;
+
+            DateTextBox.Text = toDaytime.ToString("dd.MM.yyyy");
+            TimeTextBox.Text = toDaytime.ToString("HH:mm:ss");
+        }
+
         private void Event_IsNullOrWhiteSpaceTextBox() /// Проверка текстовых полей на пустоту
         {
             if (string.IsNullOrWhiteSpace(TotalAmountTextBox.Text))
@@ -304,7 +333,18 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         private void SetToDayDateTime_Click(object sender, RoutedEventArgs e)
         {
-
+            if (SetToDayDateTime.IsChecked == true)
+            {
+                dispatcherTimer.Start();
+                DateTextBox.IsEnabled = false;
+                TimeTextBox.IsEnabled = false;
+            }
+            else
+            {
+                dispatcherTimer.Stop();
+                DateTextBox.IsEnabled = true;
+                TimeTextBox.IsEnabled = true;
+            }
         }
     }
 }

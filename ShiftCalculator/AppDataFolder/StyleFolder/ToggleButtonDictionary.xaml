@@ -75,9 +75,9 @@
                         <Border 
                             x:Name="WayBorder"
                             Width="40"
-                            Background="#292929"
-                            BorderBrush="#2f2f2f"
-                            BorderThickness="2"
+                            Background="#8b898c"
+                            BorderBrush="Transparent"
+                            BorderThickness="0"
                             CornerRadius="10">
                             <Border 
                                 BorderBrush="Transparent"
@@ -86,7 +86,7 @@
                                 HorizontalAlignment="Left"
                                 Width="20"
                                 Height="20"
-                                Background="#aaaaaa"
+                                Background="#f5f5f5"
                                 CornerRadius="10">
                                 <Border.RenderTransform>
                                     <TranslateTransform x:Name="LeverTransform" />
@@ -96,15 +96,14 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="Lever" Property="Background" Value="#c8fe68" />
-                            <Setter TargetName="WayBorder" Property="Background" Value="#FF98C150" />
+                            <Setter TargetName="WayBorder" Property="Background" Value="#8f63d4" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation 
                                             Storyboard.TargetName="LeverTransform"
                                             Storyboard.TargetProperty="X"
-                                            To="16"
+                                            To="20"
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -122,7 +121,6 @@
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
-                            <Setter TargetName="Lever" Property="Background" Value="#aaaaaa" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
@@ -140,7 +138,7 @@
                                         <DoubleAnimation 
                                             Storyboard.TargetName="LeverTransform"
                                             Storyboard.TargetProperty="X"
-                                            To="16"
+                                            To="20"
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
