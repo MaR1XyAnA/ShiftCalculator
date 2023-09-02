@@ -63,4 +63,92 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="LeverToggleButtonStyle" TargetType="ToggleButton">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid>
+                        <Border 
+                            CornerRadius="10"
+                            Style="{StaticResource ShadowBorderStyle}"/>
+                        <Border 
+                            x:Name="WayBorder"
+                            Width="40"
+                            Background="#292929"
+                            BorderBrush="#2f2f2f"
+                            BorderThickness="2"
+                            CornerRadius="10">
+                            <Border 
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                                x:Name="Lever"
+                                HorizontalAlignment="Left"
+                                Width="20"
+                                Height="20"
+                                Background="#aaaaaa"
+                                CornerRadius="10">
+                                <Border.RenderTransform>
+                                    <TranslateTransform x:Name="LeverTransform" />
+                                </Border.RenderTransform>
+                            </Border>
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Lever" Property="Background" Value="#c8fe68" />
+                            <Setter TargetName="WayBorder" Property="Background" Value="#FF98C150" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="LeverTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="16"
+                                            Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="LeverTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="0"
+                                            Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="Lever" Property="Background" Value="#aaaaaa" />
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="LeverTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="0"
+                                            Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation 
+                                            Storyboard.TargetName="LeverTransform"
+                                            Storyboard.TargetProperty="X"
+                                            To="16"
+                                            Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

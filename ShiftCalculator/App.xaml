@@ -14,7 +14,6 @@
                 <ResourceDictionary Source="\AppDataFolder\StyleFolder\FrameDictionary.xaml"/>
                 <ResourceDictionary Source="\AppDataFolder\StyleFolder\PageDictionary.xaml"/>
                 <ResourceDictionary Source="\AppDataFolder\StyleFolder\TextBoxDictionary.xaml"/>
-                <ResourceDictionary Source="\AppDataFolder\StyleFolder\DatePickerDictionary.xaml"/>
                 <ResourceDictionary Source="\AppDataFolder\StyleFolder\ToolTipDictionary.xaml"/>
                 <ResourceDictionary Source="\AppDataFolder\StyleFolder\DataGridDictionary.xaml"/>
                 <ResourceDictionary Source="\AppDataFolder\StyleFolder\ToggleButtonDictionary.xaml"/>

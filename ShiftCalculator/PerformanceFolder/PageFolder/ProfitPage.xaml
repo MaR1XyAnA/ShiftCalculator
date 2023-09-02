@@ -26,17 +26,18 @@
                         <Grid>
                             <TextBlock
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
-                                Text="Дата"/>
+                                Text="Дата и время"/>
                             <StackPanel 
                                 Orientation="Horizontal" 
                                 HorizontalAlignment="Right" 
                                 Margin="0 0 20 0">
-                                <Button
-                                    ToolTip="Выстовляет сегодняшную дату"
-                                    Content="ToDay"
-                                    Click="SetToDayDate_Click"
+                                <ToggleButton
+                                    x:Name="SetToDayDateTime"
+                                    Margin="0 0 10 10"
+                                    ToolTip="Выстовить дату и время на данный момент"
+                                    Click="SetToDayDateTime_Click"
                                     Width="Auto"
-                                    Style="{DynamicResource HintButtonStyle}"/>
+                                    Style="{DynamicResource LeverToggleButtonStyle}"/>
                                 <Button
                                     x:Name="HintDateButton"
                                     Click="HintButton_Click"
@@ -44,15 +45,38 @@
                                     Style="{DynamicResource HintButtonStyle}"/>
                             </StackPanel>
                         </Grid>
-                        <Grid ToolTip="{Binding ElementName=HintDateTextBlock, Path=Text}">
-                            <DatePickerTextBox
-                                TextChanged="TextHint_TextChanged"
-                                x:Name="DateDatePickerTextBox"/>
-                            <TextBlock
-                                Style="{DynamicResource HintTextBlockStyle}"
-                                x:Name="HintDateTextBlock"
-                                Text="Введите дату"/>
-                        </Grid>
+                        <StackPanel Orientation="Horizontal">
+                            <Grid 
+                                Margin="0 0 10 0"
+                                ToolTip="{Binding ElementName=HintDateTextBlock, Path=Text}">
+                                <TextBox
+                                    HorizontalContentAlignment="Center"
+                                    Width="170"
+                                    TextChanged="TextHint_TextChanged"
+                                    x:Name="DateTextBox"/>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Margin="0"
+                                    Style="{DynamicResource HintTextBlockStyle}"
+                                    x:Name="HintDateTextBlock"
+                                    Text="Введите дату"/>
+                            </Grid>
+                            <Grid 
+                                Margin="10 0 0 0"
+                                ToolTip="{Binding ElementName=HintDateTextBlock, Path=Text}">
+                                <TextBox
+                                    HorizontalContentAlignment="Center"
+                                    Width="170"
+                                    TextChanged="TextHint_TextChanged"
+                                    x:Name="TimeTextBox"/>
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    Margin="0"
+                                    Style="{DynamicResource HintTextBlockStyle}"
+                                    x:Name="HintTimeTextBlock"
+                                    Text="Введите время"/>
+                            </Grid>
+                        </StackPanel>
                     </StackPanel>
                     <StackPanel Margin="0 10 0 10">
                         <Grid>

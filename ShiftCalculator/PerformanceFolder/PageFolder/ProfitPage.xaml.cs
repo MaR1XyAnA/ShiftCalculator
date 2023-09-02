@@ -23,12 +23,15 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         string filePath = "HistoryDocument.txt";
         string isNullOrWhiteSpaceTextBox;
 
+        DateTime toDaytime = DateTime.Now;
+
         public ProfitPage()
         {
             InitializeComponent();
             Event_OutputData();
 
-            DateDatePickerTextBox.Text = DateTime.Today.ToString("dd/MM/yyyy");
+            //DateTextBox.Text = toDaytime.ToString("dd.MM.yyyy");
+            TimeTextBox.Text ="666" /*toDaytime.ToString("dd.MM.yyyy")*/;
             HistoryDataGrid.Items.SortDescriptions.Add(new SortDescription("LineNumber_HC", ListSortDirection.Descending));
         }
 
@@ -40,7 +43,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
             switch (textBox.Name)
             {
-                case "DateDatePickerTextBox":
+                case "DateTextBox":
                     hintTextBlock = HintDateTextBlock;
                     break;
                 case "TotalAmountTextBox":
@@ -68,11 +71,6 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         }
         #endregion
         #region _Click
-        private void SetToDayDate_Click(object sender, RoutedEventArgs e) /// В специальное поле выводит дату "ToDay"
-        {
-            DateDatePickerTextBox.Text = DateTime.Today.ToString("dd/MM/yyyy");
-        }
-
         private void CalculateButton_Click(object sender, RoutedEventArgs e) /// Работа кнопки
         {
             isNullOrWhiteSpaceTextBox = "";
@@ -302,6 +300,11 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                 CopyButton.IsEnabled = false;
                 DownloadButton.IsEnabled = false;
             }
+        }
+
+        private void SetToDayDateTime_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
