@@ -6,6 +6,7 @@ namespace ShiftCalculator.AppDataFolder.ClassFolder
 {
     internal class HistoryClass
     {
+        public int LineNumber_HC { get; set; }
         public string Date_HC { get; set; }
         public string Time_HC { get; set; }
         public double TotalAmount_HC { get; set; }

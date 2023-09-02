@@ -194,6 +194,9 @@
                         HorizontalAlignment="Right"
                         Margin="0 0 10 0">
                         <Button
+                            IsEnabled="False"
+                            x:Name="DownloadButton"
+                            Click="DownloadButton_Click"
                             Margin="0 0 10 0"
                             ToolTip="Скачать"
                             Style="{DynamicResource ManagementButtonStyle}">
@@ -208,6 +211,9 @@
                             </StackPanel>
                         </Button>
                         <Button
+                            IsEnabled="False"
+                            x:Name="CopyButton"
+                            Click="CopyButton_Click"
                             Margin="10 0 10 0"
                             ToolTip="Скопировать"
                             Style="{DynamicResource ManagementButtonStyle}">
@@ -222,6 +228,9 @@
                             </StackPanel>
                         </Button>
                         <Button
+                            IsEnabled="False"
+                            x:Name="ResetSelectionButton"
+                            Click="ResetSelectionButton_Click"
                             Margin="10 0 10 0"
                             ToolTip="Сбросить выделение"
                             Style="{DynamicResource ManagementButtonStyle}">
@@ -236,6 +245,9 @@
                             </StackPanel>
                         </Button>
                         <Button
+                            IsEnabled="False"
+                            x:Name="DeleteAnEntryButton"
+                            Click="DeleteAnEntryButton_Click"
                             Margin="10 0 0 0"
                             ToolTip="Удалить"
                             Style="{DynamicResource RedManagementButtonStyle}">
@@ -251,8 +263,15 @@
                         </Button>
                     </StackPanel>
                 </Border>
-                <DataGrid x:Name="HistoryDataGrid">
+                <DataGrid 
+                    SelectionChanged="HistoryDataGrid_SelectionChanged"
+                    x:Name="HistoryDataGrid">
                     <DataGrid.Columns>
+                        <DataGridTextColumn
+                            Width="Auto"
+                            MinWidth="50"
+                            MaxWidth="300"
+                            Binding="{Binding LineNumber_HC}"/>
                         <DataGridTextColumn
                             Header="Дата"
                             Width="120" 
@@ -262,23 +281,23 @@
                             Width="120" 
                             Binding="{Binding Path=Time_HC, StringFormat='{}{0:hh/mm/ss}'}"/>
                         <DataGridTextColumn
-                            Header="Общая сумма"
+                            Header="Общая"
                             Width="160" 
                             Binding="{Binding Path=TotalAmount_HC, StringFormat='{}{0:#,0.##}'}"/>
                         <DataGridTextColumn
-                            Header="Безналичный расчёт"
+                            Header="Электронными"
                             Width="*" 
                             Binding="{Binding Path=Bank_HC, StringFormat='{}{0:#,0.##}'}"/>
                         <DataGridTextColumn
-                            Header="Кассовый остаток"
+                            Header="В кассе"
                             Width="*" 
                             Binding="{Binding Path=CashBalance_HC, StringFormat='{}{0:#,0.##}'}"/>
                         <DataGridTextColumn
-                            Header="Банк"
+                            Header="В банке"
                             Width="120" 
                             Binding="{Binding Path=Cashless_HC, StringFormat='{}{0:#,0.##}'}"/>
                         <DataGridTextColumn
-                            Header="Общая за день"
+                            Header="За день"
                             Width="*" 
                             Binding="{Binding Path=TotalForTheDay_HC, StringFormat='{}{0:#,0.##}'}"/>
                     </DataGrid.Columns>

@@ -9,6 +9,7 @@
 using ShiftCalculator.AppDataFolder.ClassFolder;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -18,7 +19,7 @@ using System.Windows.Input;
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
     public partial class ProfitPage : Page
-    {
+    {   
         string filePath = "HistoryDocument.txt";
         string isNullOrWhiteSpaceTextBox;
 
@@ -26,7 +27,9 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         {
             InitializeComponent();
             Event_OutputData();
+
             DateDatePickerTextBox.Text = DateTime.Today.ToString("dd/MM/yyyy");
+            HistoryDataGrid.Items.SortDescriptions.Add(new SortDescription("LineNumber_HC", ListSortDirection.Descending));
         }
 
         #region _TextChanged
@@ -133,6 +136,26 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
             MessageBoxClass.HintMessageBox_MBC(textMessage: textHint, topRow: nameHint);
         }
+
+        private void DeleteAnEntryButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void ResetSelectionButton_Click(object sender, RoutedEventArgs e)
+        {
+            HistoryDataGrid.SelectedItem = null;
+        }
+
+        private void CopyButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DownloadButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         #endregion
         #region Event_
         private void Event_IsNullOrWhiteSpaceTextBox() /// Проверка текстовых полей на пустоту
@@ -161,6 +184,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         private async void Event_RecordingHistory() /// Запись истории подсчёта
         {
             string matrixRecording =
+                        $"{"[№]",-20}{"1"}\n" +
                         $"{"[Дата]",-20}{DateTime.Now.ToString("dd/MM/yyyy")}\n" +
                         $"{"[Время]",-20}{DateTime.Now.ToString("HH:mm:ss")}\n" +
                         $"{"[Общая сумма]",-20}{TotalAmountTextBox.Text}\n" +
@@ -172,57 +196,65 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             using (StreamWriter recordingHistory = new StreamWriter(filePath, true))
             {
                 await recordingHistory.WriteLineAsync(matrixRecording);
+                HistoryDataGrid.Items.SortDescriptions.Add(new SortDescription("LineNumber_HC", ListSortDirection.Descending));
             }
         }
 
-        private async void Event_OutputData() /// Выводит историю подсчёта
+        private async void Event_OutputData()
         {
             using (StreamReader outputData = new StreamReader(filePath))
             {
                 List<HistoryClass> historyEntries = new List<HistoryClass>();
 
                 string line;
-                HistoryClass currentEntry = new HistoryClass();
+                HistoryClass currentEntry = null; // Начнем с null, чтобы первую запись создать
+
+                int rowNumber = 1; // Начнем с 1 для нумерации строк
 
                 while ((line = await outputData.ReadLineAsync()) != null)
                 {
                     if (line.Contains("[Дата]"))
                     {
+                        currentEntry = new HistoryClass(); // Создаем новую запись для новой секции
+                        currentEntry.LineNumber_HC = rowNumber++; // Устанавливаем номер строки и затем увеличиваем его на 1
+
                         currentEntry.Date_HC = line.Split('[', ']')[2].Trim();
                     }
-                    else if (line.Contains("[Время]"))
+                    else if (currentEntry != null) // Проверяем, что запись была создана
                     {
-                        currentEntry.Time_HC = line.Split('[', ']')[2].Trim();
-                    }
-                    else if (line.Contains("[Общая сумма]"))
-                    {
-                        double.TryParse(line.Split('[', ']')[2].Trim(), out double totalAmountValue);
-                        currentEntry.TotalAmount_HC = totalAmountValue;
-                    }
-                    else if (line.Contains("[Банк]"))
-                    {
-                        double.TryParse(line.Split('[', ']')[2].Trim(), out double bankValue);
-                        currentEntry.Bank_HC = bankValue;
-                    }
-                    else if (line.Contains("[Кассовый остаток]"))
-                    {
-                        double.TryParse(line.Split('[', ']')[2].Trim(), out double cashBalanceValue);
-                        currentEntry.CashBalance_HC = cashBalanceValue;
-                    }
-                    else if (line.Contains("[Безналичный]"))
-                    {
-                        double.TryParse(line.Split('[', ']')[2].Trim(), out double cashlessValue);
-                        currentEntry.Cashless_HC = cashlessValue;
-                    }
-                    else if (line.Contains("[Общая за день]"))
-                    {
-                        double.TryParse(line.Split('[', ']')[2].Trim(), out double totalForTheDayValue);
-                        currentEntry.TotalForTheDay_HC = totalForTheDayValue;
-                    }
-                    else if (string.IsNullOrWhiteSpace(line))
-                    {
-                        historyEntries.Add(currentEntry);
-                        currentEntry = new HistoryClass();
+                        if (line.Contains("[Время]"))
+                        {
+                            currentEntry.Time_HC = line.Split('[', ']')[2].Trim();
+                        }
+                        else if (line.Contains("[Общая сумма]"))
+                        {
+                            double.TryParse(line.Split('[', ']')[2].Trim(), out double totalAmountValue);
+                            currentEntry.TotalAmount_HC = totalAmountValue;
+                        }
+                        else if (line.Contains("[Банк]"))
+                        {
+                            double.TryParse(line.Split('[', ']')[2].Trim(), out double bankValue);
+                            currentEntry.Bank_HC = bankValue;
+                        }
+                        else if (line.Contains("[Кассовый остаток]"))
+                        {
+                            double.TryParse(line.Split('[', ']')[2].Trim(), out double cashBalanceValue);
+                            currentEntry.CashBalance_HC = cashBalanceValue;
+                        }
+                        else if (line.Contains("[Безналичный]"))
+                        {
+                            double.TryParse(line.Split('[', ']')[2].Trim(), out double cashlessValue);
+                            currentEntry.Cashless_HC = cashlessValue;
+                        }
+                        else if (line.Contains("[Общая за день]"))
+                        {
+                            double.TryParse(line.Split('[', ']')[2].Trim(), out double totalForTheDayValue);
+                            currentEntry.TotalForTheDay_HC = totalForTheDayValue;
+                        }
+                        else if (string.IsNullOrWhiteSpace(line))
+                        {
+                            historyEntries.Add(currentEntry);
+                        }
                     }
                 }
 
@@ -249,19 +281,27 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         private void Event_EnteringOnlyNumbersTextBox(object sender, TextCompositionEventArgs e)
         {
-
-            try
-            {
-                Regex DivisionCodeRegex = new Regex("[^0-9.,]");
-                e.Handled = DivisionCodeRegex.IsMatch(e.Text);
-            }
-            catch (Exception exDivisionCodeValidationTextBox)
-            {
-                MessageBoxClass.ExceptionMessageBox_MBC(
-                        textMessage: $"Событие DivisionCodeValidationTextBox в NewWorkerPage:\n\n " +
-                        $"{exDivisionCodeValidationTextBox.Message}");
-            }
+            Regex DivisionCodeRegex = new Regex("[^0-9.,]");
+            e.Handled = DivisionCodeRegex.IsMatch(e.Text);
         }
         #endregion
+
+        private void HistoryDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (HistoryDataGrid.SelectedItem != null)
+            {
+                DeleteAnEntryButton.IsEnabled = true;
+                ResetSelectionButton.IsEnabled = true;
+                CopyButton.IsEnabled = true;
+                DownloadButton.IsEnabled = true;
+            }
+            else
+            {
+                DeleteAnEntryButton.IsEnabled = false;
+                ResetSelectionButton.IsEnabled = false;
+                CopyButton.IsEnabled = false;
+                DownloadButton.IsEnabled = false;
+            }
+        }
     }
 }
