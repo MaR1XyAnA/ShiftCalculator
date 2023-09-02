@@ -181,7 +181,7 @@
                         <TextBlock
                             Style="{DynamicResource TopTitleTextBlockStyle}"
                             Margin="10 0 0 0"
-                            Foreground="#c8fe68"
+                            Foreground="#8f63d4"
                             x:Name="CashBalanceTextBlock"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
@@ -189,7 +189,7 @@
                             Style="{DynamicResource TopTitleTextBlockStyle}"
                             Text="Общая за день:"/>
                         <TextBlock
-                            Foreground="#c8fe68"
+                            Foreground="#8f63d4"
                             Style="{DynamicResource TopTitleTextBlockStyle}"
                             Margin="10 0 0 0"
                             x:Name="TotalForTheDayTextBlock"/>

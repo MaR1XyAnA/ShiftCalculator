@@ -27,8 +27,8 @@
     <Style x:Key="OverlayBorderStyle" TargetType="Border">
         <Setter Property="Background" Value="#19191a"/>
         <Setter Property="CornerRadius" Value="10"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="#353536"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="Width" Value="Auto"/>
     </Style>

@@ -5,15 +5,8 @@
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="Background">
-            <Setter.Value>
-                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                    <GradientStop Color="#c8fe68" />
-                    <GradientStop Color="#ddee64" Offset="1" />
-                </LinearGradientBrush>
-            </Setter.Value>
-        </Setter>
-        <Setter Property="Foreground" Value="#0a0a0a" />
+        <Setter Property="Background" Value="#8f63d4"/>
+        <Setter Property="Foreground" Value="#19191a" />
         <Setter Property="FontFamily" Value="Consolas" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="Height" Value="60" />
@@ -190,7 +183,7 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Foreground" Value="#aaaaaa"/>
+        <Setter Property="Foreground" Value="#76787a"/>
         <Setter Property="FontFamily" Value="Consolas"/>
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="Height" Value="30"/>
@@ -234,7 +227,7 @@
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Foreground" Value="#c8fe68"/>
+                            <Setter Property="Foreground" Value="#8f63d4"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
@@ -250,7 +243,7 @@
                                     <Storyboard>
                                         <ColorAnimation 
                                             Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" 
-                                            To="#c8fe68" 
+                                            To="#8f63d4" 
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>

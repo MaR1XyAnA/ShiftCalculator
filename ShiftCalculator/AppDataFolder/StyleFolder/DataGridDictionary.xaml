@@ -9,7 +9,7 @@
         <Setter Property="GridLinesVisibility" Value="Horizontal"/>
         <Setter Property="HeadersVisibility" Value="Column"/>
         <Setter Property="AutoGenerateColumns" Value="False"/>
-        <Setter Property="HorizontalGridLinesBrush" Value="#aaaaaa"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="#353536"/>
     </Style>
 
     <Style TargetType="DataGridColumnHeader">
@@ -40,7 +40,7 @@
     </Style>
 
     <Style TargetType="DataGridCell">
-        <Setter Property="Foreground" Value="#AAAAAA"/>
+        <Setter Property="Foreground" Value="#76787a"/>
         <Setter Property="FontFamily" Value="Consolas"/>
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="Template">

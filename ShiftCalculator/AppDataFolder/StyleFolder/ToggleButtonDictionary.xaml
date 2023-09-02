@@ -55,8 +55,8 @@
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Foreground" Value="#c8fe68"/>
-                            <Setter Property="BorderBrush" Value="#c8fe68"/>
+                            <Setter Property="Foreground" Value="#8f63d4"/>
+                            <Setter Property="BorderBrush" Value="#8f63d4"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
