@@ -104,7 +104,7 @@
                         <Grid>
                             <TextBlock
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
-                                Text="Безналичный расчёт"/>
+                                Text="Электронными"/>
                             <Button
                                 x:Name="HintCashlessPaymentButton"
                                 Click="HintButton_Click"
@@ -177,7 +177,7 @@
                     <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                         <TextBlock
                             Style="{DynamicResource TopTitleTextBlockStyle}"
-                            Text="Кассовый остаток:"/>
+                            Text="В кассе:"/>
                         <TextBlock
                             Style="{DynamicResource TopTitleTextBlockStyle}"
                             Margin="10 0 0 0"
@@ -187,7 +187,7 @@
                     <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
                         <TextBlock
                             Style="{DynamicResource TopTitleTextBlockStyle}"
-                            Text="Общая за день:"/>
+                            Text="За день:"/>
                         <TextBlock
                             Foreground="#8f63d4"
                             Style="{DynamicResource TopTitleTextBlockStyle}"
