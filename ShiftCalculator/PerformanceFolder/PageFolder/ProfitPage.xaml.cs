@@ -10,6 +10,7 @@ using ShiftCalculator.AppDataFolder.ClassFolder;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -33,11 +34,8 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                 InitializeComponent();
                 Event_OutputData();
                 Event_SettingsDispatcherTimer();
+                Event_ToggleDateTimeControls(true);
 
-                dispatcherTimer.Start();
-                SetToDayDateTime.IsChecked = true;
-                DateTextBox.IsEnabled = false;
-                TimeTextBox.IsEnabled = false;
                 HistoryDataGrid.Items.SortDescriptions.Add(new SortDescription("LineNumber_HC", ListSortDirection.Descending));
             }
             catch (Exception ex)
@@ -170,14 +168,28 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         }
         #endregion
         #region Event_
-        private void Event_SettingsDispatcherTimer()
+        private void Event_ToggleDateTimeControls(bool enable)
+        {
+            DateTextBox.IsEnabled = !enable;
+            TimeTextBox.IsEnabled = !enable;
+
+            if (enable) 
+            { 
+                dispatcherTimer.Start(); 
+            }
+            else
+            { 
+                dispatcherTimer.Stop(); 
+            }
+        }
+        private void Event_SettingsDispatcherTimer() /// Настройки таймера
         {
             dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(Event_DispatcherTimer);
             dispatcherTimer.Interval = TimeSpan.FromMilliseconds(1);
         }
 
-        private void Event_DispatcherTimer(object sender, EventArgs e) 
+        private void Event_DispatcherTimer(object sender, EventArgs e) /// Событие для таймера
         {
             DateTime toDaytime = DateTime.Now;
 
@@ -208,12 +220,36 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             }
         }
 
+        private void Event_CheckingBeforeRecording()
+        {
+            if (SaveToggleButton.IsChecked == true)
+            {
+                string dateFormat = "dd.MM.yyyy";
+                DateTime dateResult;
+                TimeSpan timeResult;
+
+                if (SetToDayDateTime.IsChecked == false)
+                {
+                    if (DateTime.TryParseExact(DateTextBox.Text, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out dateResult) && TimeSpan.TryParse(TimeTextBox.Text, out timeResult))
+                    {
+                        Event_RecordingHistory();
+                        return;
+                    }
+                }
+                else
+                {
+                    Event_RecordingHistory();
+                    return;
+                }
+            }
+        }
+
         private async void Event_RecordingHistory() /// Запись истории подсчёта
         {
             string matrixRecording =
                         $"{"[№]",-20}{"1"}\n" +
-                        $"{"[Дата]",-20}{DateTime.Now.ToString("dd/MM/yyyy")}\n" +
-                        $"{"[Время]",-20}{DateTime.Now.ToString("HH:mm:ss")}\n" +
+                        $"{"[Дата]",-20}{DateTextBox.Text}\n" +
+                        $"{"[Время]",-20}{TimeTextBox.Text}\n" +
                         $"{"[Общая сумма]",-20}{TotalAmountTextBox.Text}\n" +
                         $"{"[Банк]",-20}{BanckTextBox.Text}\n" +
                         $"{"[Кассовый остаток]",-20}{CashBalanceTextBlock.Text}\n" +
@@ -302,7 +338,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             CashBalanceTextBlock.Text = calculationResult.CashBalance_CW.ToString();
             TotalForTheDayTextBlock.Text = calculationResult.TotalForTheDay_CW.ToString();
 
-            Event_RecordingHistory();
+            Event_CheckingBeforeRecording();
             Event_OutputData();
         }
 
@@ -335,15 +371,11 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         {
             if (SetToDayDateTime.IsChecked == true)
             {
-                dispatcherTimer.Start();
-                DateTextBox.IsEnabled = false;
-                TimeTextBox.IsEnabled = false;
+                Event_ToggleDateTimeControls(true);
             }
             else
             {
-                dispatcherTimer.Stop();
-                DateTextBox.IsEnabled = true;
-                TimeTextBox.IsEnabled = true;
+                Event_ToggleDateTimeControls(false);
             }
         }
     }

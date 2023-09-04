@@ -57,6 +57,7 @@
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Foreground" Value="#8f63d4"/>
                             <Setter Property="BorderBrush" Value="#8f63d4"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
