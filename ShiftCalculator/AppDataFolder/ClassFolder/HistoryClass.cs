@@ -6,7 +6,10 @@ namespace ShiftCalculator.AppDataFolder.ClassFolder
 {
     internal class HistoryClass
     {
-        public int LineNumber_HC { get; set; }
+        // Нужно просто для того, чтоб в DataGrid вывести номер записи (Это не ID),
+        // если удалить запись под номером 13, на её место встанет другая запись (предыдущая)
+        public int LineNumber_HC { get; set; } 
+
         public string Date_HC { get; set; }
         public string Time_HC { get; set; }
         public double TotalAmount_HC { get; set; }

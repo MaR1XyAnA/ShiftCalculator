@@ -244,7 +244,7 @@
             Margin="10 0">
             <StackPanel Orientation="Vertical">
                 <Border
-                    CornerRadius="10 10 0 0"
+                    CornerRadius="6 6 0 0"
                     Background="#292929"
                     Height="40">
                     <StackPanel
@@ -323,6 +323,8 @@
                     </StackPanel>
                 </Border>
                 <DataGrid 
+                    Height="720"
+                    AutoGenerateColumns="False"
                     SelectionChanged="HistoryDataGrid_SelectionChanged"
                     x:Name="HistoryDataGrid">
                     <DataGrid.Columns>
@@ -346,7 +348,7 @@
                         <DataGridTextColumn
                             Header="Электронными"
                             Width="*" 
-                            Binding="{Binding Path=Bank_HC, StringFormat='{}{0:#,0.##}'}"/>
+                            Binding="{Binding Path=Cashless_HC, StringFormat='{}{0:#,0.##}'}"/>
                         <DataGridTextColumn
                             Header="В кассе"
                             Width="*" 
@@ -354,7 +356,7 @@
                         <DataGridTextColumn
                             Header="В банке"
                             Width="120" 
-                            Binding="{Binding Path=Cashless_HC, StringFormat='{}{0:#,0.##}'}"/>
+                            Binding="{Binding Path=Bank_HC, StringFormat='{}{0:#,0.##}'}"/>
                         <DataGridTextColumn
                             Header="За день"
                             Width="*" 

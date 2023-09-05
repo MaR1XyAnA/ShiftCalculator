@@ -230,10 +230,13 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
                 if (SetToDayDateTime.IsChecked == false)
                 {
-                    if (DateTime.TryParseExact(DateTextBox.Text, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out dateResult) && TimeSpan.TryParse(TimeTextBox.Text, out timeResult))
+                    if (DateTime.TryParseExact(DateTextBox.Text, dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out dateResult))
                     {
-                        Event_RecordingHistory();
-                        return;
+                        if (TimeSpan.TryParse(TimeTextBox.Text, out timeResult))
+                        {
+                            Event_RecordingHistory();
+                            return;
+                        }
                     }
                 }
                 else
@@ -242,19 +245,22 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                     return;
                 }
             }
+            else
+            {
+                return;
+            }
         }
 
         private async void Event_RecordingHistory() /// Запись истории подсчёта
         {
             string matrixRecording =
-                        $"{"[№]",-20}{"1"}\n" +
-                        $"{"[Дата]",-20}{DateTextBox.Text}\n" +
-                        $"{"[Время]",-20}{TimeTextBox.Text}\n" +
-                        $"{"[Общая сумма]",-20}{TotalAmountTextBox.Text}\n" +
-                        $"{"[Банк]",-20}{BanckTextBox.Text}\n" +
-                        $"{"[Кассовый остаток]",-20}{CashBalanceTextBlock.Text}\n" +
-                        $"{"[Безналичный]",-20}{CashlessPaymentTextBox.Text}\n" +
-                        $"{"[Общая за день]",-20}{TotalForTheDayTextBlock.Text}\n";
+                $"{"[Дата]",-20}{DateTextBox.Text}\n" +
+                $"{"[Время]",-20}{TimeTextBox.Text}\n" +
+                $"{"[Общая сумма]",-20}{TotalAmountTextBox.Text}\n" +
+                $"{"[Банк]",-20}{BanckTextBox.Text}\n" +
+                $"{"[Кассовый остаток]",-20}{CashBalanceTextBlock.Text}\n" +
+                $"{"[Безналичный]",-20}{CashlessPaymentTextBox.Text}\n" +
+                $"{"[Общая за день]",-20}{TotalForTheDayTextBlock.Text}\n";
 
             using (StreamWriter recordingHistory = new StreamWriter(filePath, true))
             {
