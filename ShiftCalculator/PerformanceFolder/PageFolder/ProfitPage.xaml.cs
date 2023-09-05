@@ -7,9 +7,11 @@
 ///-->
 
 using ShiftCalculator.AppDataFolder.ClassFolder;
+using ShiftCalculator.PerformanceFolder.WindowFolder;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -21,7 +23,9 @@ using System.Windows.Threading;
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
     public partial class ProfitPage : Page
-    {   
+    {
+        public static List<HistoryClass> selectedItemList = new List<HistoryClass>();
+
         string filePath = "HistoryDocument.txt";
         string isNullOrWhiteSpaceTextBox;
 
@@ -83,6 +87,18 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         }
         #endregion
         #region _Click
+        private void SetToDayDateTime_Click(object sender, RoutedEventArgs e)
+        {
+            if (SetToDayDateTime.IsChecked == true)
+            {
+                Event_ToggleDateTimeControls(true);
+            }
+            else
+            {
+                Event_ToggleDateTimeControls(false);
+            }
+        }
+
         private void CalculateButton_Click(object sender, RoutedEventArgs e) /// Работа кнопки
         {
             isNullOrWhiteSpaceTextBox = "";
@@ -149,7 +165,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         private void DeleteAnEntryButton_Click(object sender, RoutedEventArgs e)
         {
-            
+           
         }
 
         private void ResetSelectionButton_Click(object sender, RoutedEventArgs e)
@@ -357,6 +373,14 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         private void HistoryDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            foreach (var selectedItem in HistoryDataGrid.SelectedItems)
+            {
+                if (selectedItem is HistoryClass historyItem)
+                {
+                    selectedItemList.Add(historyItem);
+                }
+            }
+
             if (HistoryDataGrid.SelectedItem != null)
             {
                 DeleteAnEntryButton.IsEnabled = true;
@@ -373,16 +397,5 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             }
         }
 
-        private void SetToDayDateTime_Click(object sender, RoutedEventArgs e)
-        {
-            if (SetToDayDateTime.IsChecked == true)
-            {
-                Event_ToggleDateTimeControls(true);
-            }
-            else
-            {
-                Event_ToggleDateTimeControls(false);
-            }
-        }
     }
 }

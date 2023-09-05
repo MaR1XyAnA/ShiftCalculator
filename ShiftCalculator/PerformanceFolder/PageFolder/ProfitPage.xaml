@@ -16,221 +16,230 @@
             Grid.Column="0"
             Orientation="Vertical"
             Margin="0 0 0 0">
-            <Border
-                Style="{DynamicResource OverlayBorderStyle}"
-                Margin="10 0 10 10">
-                <Grid Margin="20 10 20 10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="80"/>
-                    </Grid.ColumnDefinitions>
-                    <StackPanel 
-                        Grid.Column="0"
-                        Orientation="Vertical" >
-                        <TextBlock
-                            Margin="0 0 0 10"
-                            Style="{DynamicResource TopTitleTextBlockStyle}"
-                            Text="В реальном времяни"/>
-                        <TextBlock
-                            Margin="0 10 0 0"
-                            Style="{DynamicResource TopTitleTextBlockStyle}"
-                            Text="Сохранять"/>
-                    </StackPanel>
-                    <StackPanel 
-                        Grid.Column="1"
-                        Orientation="Vertical">
-                        <ToggleButton
-                            IsChecked="True"
-                            x:Name="SetToDayDateTime"
-                            HorizontalAlignment="Center"
-                            Margin="0 0 0 10"
-                            ToolTip="Выстовить дату и время на данный момент"
-                            Click="SetToDayDateTime_Click"
-                            Width="Auto"
-                            Style="{DynamicResource LeverToggleButtonStyle}"/>
-                        <ToggleButton
-                            IsChecked="True"
-                            x:Name="SaveToggleButton"
-                            HorizontalAlignment="Center"
-                            Margin="0 10 0 0"
-                            Width="Auto"
-                            Style="{DynamicResource LeverToggleButtonStyle}"/>
-                    </StackPanel>
-                </Grid>
-            </Border>
-            <Border
-                Style="{DynamicResource OverlayBorderStyle}"
-                Margin="10">
-                <StackPanel 
-                    Orientation="Vertical" 
-                    Margin="20 10 20 10">
-                    <StackPanel Margin="0 0 0 10">
-                        <Grid>
+            <Grid Margin="10 0 10 10">
+                <Border 
+                    CornerRadius="10"
+                    Style="{DynamicResource ShadowBorderStyle}"/>
+                <Border Style="{DynamicResource OverlayBorderStyle}">
+                    <Grid Margin="20 10 20 10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel 
+                            Grid.Column="0"
+                            Orientation="Vertical" >
                             <TextBlock
+                                Margin="0 0 0 10"
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
-                                Text="Дата и время"/>
-                            <StackPanel 
-                                Orientation="Horizontal" 
-                                HorizontalAlignment="Right" 
-                                Margin="0 0 20 0">
-                                <Button
-                                    x:Name="HintDateButton"
-                                    Click="HintButton_Click"
-                                    Margin="0"
-                                    Style="{DynamicResource HintButtonStyle}"/>
-                            </StackPanel>
-                        </Grid>
-                        <StackPanel Orientation="Horizontal">
-                            <Grid 
-                                Margin="0 0 10 0"
-                                ToolTip="{Binding ElementName=HintDateTextBlock, Path=Text}">
-                                <TextBox
-                                    HorizontalContentAlignment="Center"
-                                    Width="170"
-                                    TextChanged="TextHint_TextChanged"
-                                    x:Name="DateTextBox"/>
+                                Text="В реальном времяни"/>
+                            <TextBlock
+                                Margin="0 10 0 0"
+                                Style="{DynamicResource TopTitleTextBlockStyle}"
+                                Text="Сохранять"/>
+                        </StackPanel>
+                        <StackPanel 
+                            Grid.Column="1"
+                            Orientation="Vertical">
+                            <ToggleButton
+                                IsChecked="True"
+                                x:Name="SetToDayDateTime"
+                                HorizontalAlignment="Center"
+                                Margin="0 0 0 10"
+                                ToolTip="Выстовить дату и время на данный момент"
+                                Click="SetToDayDateTime_Click"
+                                Width="Auto"
+                                Style="{DynamicResource LeverToggleButtonStyle}"/>
+                            <ToggleButton
+                                IsChecked="True"
+                                x:Name="SaveToggleButton"
+                                HorizontalAlignment="Center"
+                                Margin="0 10 0 0"
+                                Width="Auto"
+                                Style="{DynamicResource LeverToggleButtonStyle}"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+            <Grid Margin="10">
+                <Border 
+                    CornerRadius="10"
+                    Style="{DynamicResource ShadowBorderStyle}"/>
+                <Border Style="{DynamicResource OverlayBorderStyle}">
+                    <StackPanel 
+                        Orientation="Vertical" 
+                        Margin="20 10 20 10">
+                        <StackPanel Margin="0 0 0 10">
+                            <Grid>
                                 <TextBlock
-                                    HorizontalAlignment="Center"
-                                    Margin="0"
-                                    Style="{DynamicResource HintTextBlockStyle}"
-                                    x:Name="HintDateTextBlock"
-                                    Text="Введите дату"/>
+                                    Style="{DynamicResource TopTitleTextBlockStyle}"
+                                    Text="Дата и время"/>
+                                <StackPanel 
+                                    Orientation="Horizontal" 
+                                    HorizontalAlignment="Right" 
+                                    Margin="0 0 20 0">
+                                    <Button
+                                        x:Name="HintDateButton"
+                                        Click="HintButton_Click"
+                                        Margin="0"
+                                        Style="{DynamicResource HintButtonStyle}"/>
+                                </StackPanel>
                             </Grid>
-                            <Grid 
-                                Margin="10 0 0 0"
-                                ToolTip="{Binding ElementName=HintDateTextBlock, Path=Text}">
-                                <TextBox
-                                    HorizontalContentAlignment="Center"
-                                    Width="170"
-                                    TextChanged="TextHint_TextChanged"
-                                    x:Name="TimeTextBox"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Grid 
+                                    Margin="0 0 10 0"
+                                    ToolTip="{Binding ElementName=HintDateTextBlock, Path=Text}">
+                                    <TextBox
+                                        HorizontalContentAlignment="Center"
+                                        Width="170"
+                                        TextChanged="TextHint_TextChanged"
+                                        x:Name="DateTextBox"/>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        Margin="0"
+                                        Style="{DynamicResource HintTextBlockStyle}"
+                                        x:Name="HintDateTextBlock"
+                                        Text="Введите дату"/>
+                                </Grid>
+                                <Grid 
+                                    Margin="10 0 0 0"
+                                    ToolTip="{Binding ElementName=HintDateTextBlock, Path=Text}">
+                                    <TextBox
+                                        HorizontalContentAlignment="Center"
+                                        Width="170"
+                                        TextChanged="TextHint_TextChanged"
+                                        x:Name="TimeTextBox"/>
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        Margin="0"
+                                        Style="{DynamicResource HintTextBlockStyle}"
+                                        x:Name="HintTimeTextBlock"
+                                        Text="Введите время"/>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Margin="0 10 0 10">
+                            <Grid>
                                 <TextBlock
-                                    HorizontalAlignment="Center"
-                                    Margin="0"
+                                    Style="{DynamicResource TopTitleTextBlockStyle}"
+                                    Text="Общая сумма"/>
+                                <Button
+                                    x:Name="HintTotalAmountButton"
+                                    Click="HintButton_Click"
+                                    Style="{DynamicResource HintButtonStyle}"/>
+                            </Grid>
+                            <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
+                                <TextBox
+                                    MaxLength="6"
+                                    PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
+                                    x:Name="TotalAmountTextBox"
+                                    TextChanged="TextHint_TextChanged"/>
+                                <TextBlock
                                     Style="{DynamicResource HintTextBlockStyle}"
-                                    x:Name="HintTimeTextBlock"
-                                    Text="Введите время"/>
+                                    x:Name="HintTotalAmountTextBlock"
+                                    Text="Введите общую сумму"/>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Margin="0 10 0 10">
+                            <Grid>
+                                <TextBlock
+                                    Style="{DynamicResource TopTitleTextBlockStyle}"
+                                    Text="Электронными"/>
+                                <Button
+                                    x:Name="HintCashlessPaymentButton"
+                                    Click="HintButton_Click"
+                                    Style="{DynamicResource HintButtonStyle}"/>
+                            </Grid>
+                            <Grid ToolTip="{Binding ElementName=HintCashlessPaymentTextBlock, Path=Text}">
+                                <TextBox
+                                    MaxLength="6"
+                                    PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
+                                    x:Name="CashlessPaymentTextBox"
+                                    TextChanged="TextHint_TextChanged"/>
+                                <TextBlock
+                                    Style="{DynamicResource HintTextBlockStyle}"
+                                    x:Name="HintCashlessPaymentTextBlock"
+                                    Text="Введите безналичный расчёт"/>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Margin="0 10 0 10">
+                            <Grid>
+                                <TextBlock
+                                    Style="{DynamicResource TopTitleTextBlockStyle}"
+                                    Text="Предыдущей кассовый остаток"/>
+                                <Button
+                                    x:Name="HintPreviousCashBalanceButton"
+                                    Click="HintButton_Click"
+                                    Style="{DynamicResource HintButtonStyle}"/>
+                            </Grid>
+                            <Grid ToolTip="{Binding ElementName=HintPreviousCashBalanceTextBlock, Path=Text}">
+                                <TextBox
+                                    MaxLength="6"
+                                    PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
+                                    x:Name="PreviousCashBalanceTextBox"
+                                    TextChanged="TextHint_TextChanged"/>
+                                <TextBlock
+                                    Style="{DynamicResource HintTextBlockStyle}"
+                                    x:Name="HintPreviousCashBalanceTextBlock"
+                                    Text="Введите предыдущей кассовый остаток"/>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Margin="0 10 0 0">
+                            <Grid>
+                                <TextBlock
+                                    Style="{DynamicResource TopTitleTextBlockStyle}"
+                                    Text="В банке"/>
+                                <Button
+                                    x:Name="HintBanckButton"
+                                    Click="HintButton_Click"
+                                    Style="{DynamicResource HintButtonStyle}"/>
+                            </Grid>
+                            <Grid ToolTip="{Binding ElementName=HintBanckTextBlock, Path=Text}">
+                                <TextBox
+                                    MaxLength="6"
+                                    PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
+                                    x:Name="BanckTextBox"
+                                    TextChanged="TextHint_TextChanged"/>
+                                <TextBlock
+                                    Style="{DynamicResource HintTextBlockStyle}"
+                                    x:Name="HintBanckTextBlock"
+                                    Text="Введите сумму, которая уходит в банк"/>
                             </Grid>
                         </StackPanel>
                     </StackPanel>
-                    <StackPanel Margin="0 10 0 10">
-                        <Grid>
+                </Border>
+            </Grid>
+            <Grid Margin="10 10 10 0">
+                <Border
+                    CornerRadius="10"
+                    Style="{DynamicResource ShadowBorderStyle}"/>
+                <Border Style="{DynamicResource OverlayBorderStyle}">
+                    <StackPanel 
+                        Orientation="Vertical" 
+                        Margin="20 10 20 10">
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                             <TextBlock
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
-                                Text="Общая сумма"/>
-                            <Button
-                                x:Name="HintTotalAmountButton"
-                                Click="HintButton_Click"
-                                Style="{DynamicResource HintButtonStyle}"/>
-                        </Grid>
-                        <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
-                            <TextBox
-                                MaxLength="6"
-                                PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
-                                x:Name="TotalAmountTextBox"
-                                TextChanged="TextHint_TextChanged"/>
-                            <TextBlock
-                                Style="{DynamicResource HintTextBlockStyle}"
-                                x:Name="HintTotalAmountTextBlock"
-                                Text="Введите общую сумму"/>
-                        </Grid>
-                    </StackPanel>
-                    <StackPanel Margin="0 10 0 10">
-                        <Grid>
+                                Text="В кассе:"/>
                             <TextBlock
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
-                                Text="Электронными"/>
-                            <Button
-                                x:Name="HintCashlessPaymentButton"
-                                Click="HintButton_Click"
-                                Style="{DynamicResource HintButtonStyle}"/>
-                        </Grid>
-                        <Grid ToolTip="{Binding ElementName=HintCashlessPaymentTextBlock, Path=Text}">
-                            <TextBox
-                                MaxLength="6"
-                                PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
-                                x:Name="CashlessPaymentTextBox"
-                                TextChanged="TextHint_TextChanged"/>
-                            <TextBlock
-                                Style="{DynamicResource HintTextBlockStyle}"
-                                x:Name="HintCashlessPaymentTextBlock"
-                                Text="Введите безналичный расчёт"/>
-                        </Grid>
-                    </StackPanel>
-                    <StackPanel Margin="0 10 0 10">
-                        <Grid>
+                                Margin="10 0 0 0"
+                                Foreground="#8f63d4"
+                                x:Name="CashBalanceTextBlock"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
                             <TextBlock
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
-                                Text="Предыдущей кассовый остаток"/>
-                            <Button
-                                x:Name="HintPreviousCashBalanceButton"
-                                Click="HintButton_Click"
-                                Style="{DynamicResource HintButtonStyle}"/>
-                        </Grid>
-                        <Grid ToolTip="{Binding ElementName=HintPreviousCashBalanceTextBlock, Path=Text}">
-                            <TextBox
-                                MaxLength="6"
-                                PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
-                                x:Name="PreviousCashBalanceTextBox"
-                                TextChanged="TextHint_TextChanged"/>
+                                Text="За день:"/>
                             <TextBlock
-                                Style="{DynamicResource HintTextBlockStyle}"
-                                x:Name="HintPreviousCashBalanceTextBlock"
-                                Text="Введите предыдущей кассовый остаток"/>
-                        </Grid>
-                    </StackPanel>
-                    <StackPanel Margin="0 10 0 0">
-                        <Grid>
-                            <TextBlock
+                                Foreground="#8f63d4"
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
-                                Text="В банке"/>
-                            <Button
-                                x:Name="HintBanckButton"
-                                Click="HintButton_Click"
-                                Style="{DynamicResource HintButtonStyle}"/>
-                        </Grid>
-                        <Grid ToolTip="{Binding ElementName=HintBanckTextBlock, Path=Text}">
-                            <TextBox
-                                MaxLength="6"
-                                PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
-                                x:Name="BanckTextBox"
-                                TextChanged="TextHint_TextChanged"/>
-                            <TextBlock
-                                Style="{DynamicResource HintTextBlockStyle}"
-                                x:Name="HintBanckTextBlock"
-                                Text="Введите сумму, которая уходит в банк"/>
-                        </Grid>
+                                Margin="10 0 0 0"
+                                x:Name="TotalForTheDayTextBlock"/>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            </Border>
-            <Border 
-                Style="{DynamicResource OverlayBorderStyle}"
-                Margin="10 10 10 0">
-                <StackPanel 
-                    Orientation="Vertical" 
-                    Margin="20 10 20 10">
-                    <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
-                        <TextBlock
-                            Style="{DynamicResource TopTitleTextBlockStyle}"
-                            Text="В кассе:"/>
-                        <TextBlock
-                            Style="{DynamicResource TopTitleTextBlockStyle}"
-                            Margin="10 0 0 0"
-                            Foreground="#8f63d4"
-                            x:Name="CashBalanceTextBlock"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
-                        <TextBlock
-                            Style="{DynamicResource TopTitleTextBlockStyle}"
-                            Text="За день:"/>
-                        <TextBlock
-                            Foreground="#8f63d4"
-                            Style="{DynamicResource TopTitleTextBlockStyle}"
-                            Margin="10 0 0 0"
-                            x:Name="TotalForTheDayTextBlock"/>
-                    </StackPanel>
-                </StackPanel>
-            </Border>
+                </Border>
+            </Grid>
             <Button
                 Style="{DynamicResource MyMainButtonStyle}"
                 Content="Посчитать"
@@ -238,132 +247,136 @@
                 Click="CalculateButton_Click"
                 Margin="30 30 30 0"/>
         </StackPanel>
-        <Border
-            Style="{DynamicResource OverlayBorderStyle}"
+        <Grid
             Grid.Column="1"
             Margin="10 0">
-            <StackPanel Orientation="Vertical">
-                <Border
-                    CornerRadius="6 6 0 0"
-                    Background="#292929"
-                    Height="40">
-                    <StackPanel
-                        Orientation="Horizontal"
-                        VerticalAlignment="Center" 
-                        HorizontalAlignment="Right"
-                        Margin="0 0 10 0">
-                        <Button
-                            IsEnabled="False"
-                            x:Name="DownloadButton"
-                            Click="DownloadButton_Click"
-                            Margin="0 0 10 0"
-                            ToolTip="Скачать"
-                            Style="{DynamicResource ManagementButtonStyle}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock 
-                                    Style="{DynamicResource IconTextBlockStyle}"
-                                    Text="&#xf220;"
-                                    Margin="0 0 2.5 0"/>
-                                <TextBlock
-                                    Margin="2.5 0 0 0"
-                                    Text="Скачать"/>
-                            </StackPanel>
-                        </Button>
-                        <Button
-                            IsEnabled="False"
-                            x:Name="CopyButton"
-                            Click="CopyButton_Click"
-                            Margin="10 0 10 0"
-                            ToolTip="Скопировать"
-                            Style="{DynamicResource ManagementButtonStyle}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock 
-                                    Style="{DynamicResource IconTextBlockStyle}"
-                                    Text="&#xf16d;"
-                                    Margin="0 0 2.5 0"/>
-                                <TextBlock
-                                    Margin="2.5 0 0 0"
-                                    Text="Скопировать"/>
-                            </StackPanel>
-                        </Button>
-                        <Button
-                            IsEnabled="False"
-                            x:Name="ResetSelectionButton"
-                            Click="ResetSelectionButton_Click"
-                            Margin="10 0 10 0"
-                            ToolTip="Сбросить выделение"
-                            Style="{DynamicResource ManagementButtonStyle}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock 
-                                    Style="{DynamicResource IconTextBlockStyle}"
-                                    Text="&#xf167;"
-                                    Margin="0 0 2.5 0"/>
-                                <TextBlock
-                                    Margin="2.5 0 0 0"
-                                    Text="Сбросить"/>
-                            </StackPanel>
-                        </Button>
-                        <Button
-                            IsEnabled="False"
-                            x:Name="DeleteAnEntryButton"
-                            Click="DeleteAnEntryButton_Click"
-                            Margin="10 0 0 0"
-                            ToolTip="Удалить"
-                            Style="{DynamicResource RedManagementButtonStyle}">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock 
-                                    Style="{DynamicResource IconTextBlockStyle}"
-                                    Text="&#xf154;"
-                                    Margin="0 0 2.5 0"/>
-                                <TextBlock
-                                    Margin="2.5 0 0 0"
-                                    Text="Удалить"/>
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
-                </Border>
-                <DataGrid 
-                    Height="720"
-                    AutoGenerateColumns="False"
-                    SelectionChanged="HistoryDataGrid_SelectionChanged"
-                    x:Name="HistoryDataGrid">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn
-                            Width="Auto"
-                            MinWidth="50"
-                            MaxWidth="300"
-                            Binding="{Binding LineNumber_HC}"/>
-                        <DataGridTextColumn
-                            Header="Дата"
-                            Width="120" 
-                            Binding="{Binding Path=Date_HC, StringFormat='{}{0:dd/MM/yyyy}'}"/>
-                        <DataGridTextColumn 
-                            Header="Время"
-                            Width="120" 
-                            Binding="{Binding Path=Time_HC, StringFormat='{}{0:hh/mm/ss}'}"/>
-                        <DataGridTextColumn
-                            Header="Общая"
-                            Width="160" 
-                            Binding="{Binding Path=TotalAmount_HC, StringFormat='{}{0:#,0.##}'}"/>
-                        <DataGridTextColumn
-                            Header="Электронными"
-                            Width="*" 
-                            Binding="{Binding Path=Cashless_HC, StringFormat='{}{0:#,0.##}'}"/>
-                        <DataGridTextColumn
-                            Header="В кассе"
-                            Width="*" 
-                            Binding="{Binding Path=CashBalance_HC, StringFormat='{}{0:#,0.##}'}"/>
-                        <DataGridTextColumn
-                            Header="В банке"
-                            Width="120" 
-                            Binding="{Binding Path=Bank_HC, StringFormat='{}{0:#,0.##}'}"/>
-                        <DataGridTextColumn
-                            Header="За день"
-                            Width="*" 
-                            Binding="{Binding Path=TotalForTheDay_HC, StringFormat='{}{0:#,0.##}'}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
-        </Border>
+            <Border
+                CornerRadius="10"
+                Style="{DynamicResource ShadowBorderStyle}"/>
+            <Border Style="{DynamicResource OverlayBorderStyle}">
+                <StackPanel Orientation="Vertical">
+                    <Border
+                        CornerRadius="6 6 0 0"
+                        Background="#292929"
+                        Height="40">
+                        <StackPanel
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Right"
+                            Margin="0 0 10 0">
+                            <Button
+                                IsEnabled="False"
+                                x:Name="DownloadButton"
+                                Click="DownloadButton_Click"
+                                Margin="0 0 10 0"
+                                ToolTip="Скачать"
+                                Style="{DynamicResource ManagementButtonStyle}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock 
+                                        Style="{DynamicResource IconTextBlockStyle}"
+                                        Text="&#xf220;"
+                                        Margin="0 0 2.5 0"/>
+                                    <TextBlock
+                                        Margin="2.5 0 0 0"
+                                        Text="Скачать"/>
+                                </StackPanel>
+                            </Button>
+                            <Button
+                                IsEnabled="False"
+                                x:Name="CopyButton"
+                                Click="CopyButton_Click"
+                                Margin="10 0 10 0"
+                                ToolTip="Скопировать"
+                                Style="{DynamicResource ManagementButtonStyle}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock 
+                                        Style="{DynamicResource IconTextBlockStyle}"
+                                        Text="&#xf16d;"
+                                        Margin="0 0 2.5 0"/>
+                                    <TextBlock
+                                        Margin="2.5 0 0 0"
+                                        Text="Скопировать"/>
+                                </StackPanel>
+                            </Button>
+                            <Button
+                                IsEnabled="False"
+                                x:Name="ResetSelectionButton"
+                                Click="ResetSelectionButton_Click"
+                                Margin="10 0 10 0"
+                                ToolTip="Сбросить выделение"
+                                Style="{DynamicResource ManagementButtonStyle}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock 
+                                        Style="{DynamicResource IconTextBlockStyle}"
+                                        Text="&#xf167;"
+                                        Margin="0 0 2.5 0"/>
+                                    <TextBlock
+                                        Margin="2.5 0 0 0"
+                                        Text="Сбросить"/>
+                                </StackPanel>
+                            </Button>
+                            <Button
+                                IsEnabled="False"
+                                x:Name="DeleteAnEntryButton"
+                                Click="DeleteAnEntryButton_Click"
+                                Margin="10 0 0 0"
+                                ToolTip="Удалить"
+                                Style="{DynamicResource RedManagementButtonStyle}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock 
+                                        Style="{DynamicResource IconTextBlockStyle}"
+                                        Text="&#xf154;"
+                                        Margin="0 0 2.5 0"/>
+                                    <TextBlock
+                                        Margin="2.5 0 0 0"
+                                        Text="Удалить"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <DataGrid 
+                        Height="720"
+                        AutoGenerateColumns="False"
+                        SelectionChanged="HistoryDataGrid_SelectionChanged"
+                        x:Name="HistoryDataGrid">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Width="Auto"
+                                MinWidth="50"
+                                MaxWidth="300"
+                                Binding="{Binding LineNumber_HC}"/>
+                            <DataGridTextColumn
+                                Header="Дата"
+                                Width="120" 
+                                Binding="{Binding Path=Date_HC, StringFormat='{}{0:dd/MM/yyyy}'}"/>
+                            <DataGridTextColumn 
+                                Header="Время"
+                                Width="120" 
+                                Binding="{Binding Path=Time_HC, StringFormat='{}{0:hh/mm/ss}'}"/>
+                            <DataGridTextColumn
+                                Header="Общая"
+                                Width="160" 
+                                Binding="{Binding Path=TotalAmount_HC, StringFormat='{}{0:#,0.##}'}"/>
+                            <DataGridTextColumn
+                                Header="Электронными"
+                                Width="*" 
+                                Binding="{Binding Path=Cashless_HC, StringFormat='{}{0:#,0.##}'}"/>
+                            <DataGridTextColumn
+                                Header="В кассе"
+                                Width="*" 
+                                Binding="{Binding Path=CashBalance_HC, StringFormat='{}{0:#,0.##}'}"/>
+                            <DataGridTextColumn
+                                Header="В банке"
+                                Width="120" 
+                                Binding="{Binding Path=Bank_HC, StringFormat='{}{0:#,0.##}'}"/>
+                            <DataGridTextColumn
+                                Header="За день"
+                                Width="*" 
+                                Binding="{Binding Path=TotalForTheDay_HC, StringFormat='{}{0:#,0.##}'}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+        </Grid>
     </Grid>
 </Page>

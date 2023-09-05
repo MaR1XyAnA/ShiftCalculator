@@ -4,7 +4,7 @@
 
 namespace ShiftCalculator.AppDataFolder.ClassFolder
 {
-    internal class HistoryClass
+    public class HistoryClass
     {
         // Нужно просто для того, чтоб в DataGrid вывести номер записи (Это не ID),
         // если удалить запись под номером 13, на её место встанет другая запись (предыдущая)
