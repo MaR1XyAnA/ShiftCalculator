@@ -14,8 +14,7 @@
                 Style="{DynamicResource HintTextBlockStyle}" 
                 Text="{Binding Hint}"/>
             <TextBox 
-                Text="{Binding Text, Mode=TwoWay}" 
-                PreviewTextInput="Event_EnteringOnlyNumbersTextBox"/>
+                Text="{Binding Text, Mode=TwoWay}"/>
         </Grid>
     </Grid>
 </UserControl>
