@@ -83,6 +83,9 @@
     <Compile Include="AppDataFolder\ClassFolder\HistoryClass.cs" />
     <Compile Include="AppDataFolder\ClassFolder\FrameNavigationClass.cs" />
     <Compile Include="AppDataFolder\ClassFolder\MessageBoxClass.cs" />
+    <Compile Include="AppDataFolder\UserControllFolder\CustomTextBoxUserControll.xaml.cs">
+      <DependentUpon>CustomTextBoxUserControll.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PerformanceFolder\PageFolder\ProfitPage.xaml.cs">
       <DependentUpon>ProfitPage.xaml</DependentUpon>
     </Compile>
@@ -174,6 +177,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AppDataFolder\StyleFolder\WindowDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AppDataFolder\UserControllFolder\CustomTextBoxUserControll.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -33,19 +33,12 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         public ProfitPage()
         {
-            try
-            {
-                InitializeComponent();
-                Event_OutputData();
-                Event_SettingsDispatcherTimer();
-                Event_ToggleDateTimeControls(true);
+            InitializeComponent();
+            Event_OutputData();
+            Event_SettingsDispatcherTimer();
+            Event_ToggleDateTimeControls(true);
 
-                HistoryDataGrid.Items.SortDescriptions.Add(new SortDescription("LineNumber_HC", ListSortDirection.Descending));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
+            HistoryDataGrid.Items.SortDescriptions.Add(new SortDescription("LineNumber_HC", ListSortDirection.Descending));
         }
 
         #region _TextChanged
@@ -165,7 +158,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         private void DeleteAnEntryButton_Click(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
         private void ResetSelectionButton_Click(object sender, RoutedEventArgs e)
@@ -189,13 +182,13 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             DateTextBox.IsEnabled = !enable;
             TimeTextBox.IsEnabled = !enable;
 
-            if (enable) 
-            { 
-                dispatcherTimer.Start(); 
+            if (enable)
+            {
+                dispatcherTimer.Start();
             }
             else
-            { 
-                dispatcherTimer.Stop(); 
+            {
+                dispatcherTimer.Stop();
             }
         }
         private void Event_SettingsDispatcherTimer() /// Настройки таймера
