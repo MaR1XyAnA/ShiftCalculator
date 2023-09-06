@@ -24,6 +24,7 @@
                         Width="60"
                         Style="{DynamicResource ManagementButtonStyle}"
                         x:Name="SettingsButton"
+                        Click="SettingsButton_Click"
                         ToolTip="Открыть настройки">
                         <TextBlock
                             Style="{DynamicResource IconTextBlockStyle}"

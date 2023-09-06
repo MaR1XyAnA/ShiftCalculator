@@ -46,6 +46,12 @@ namespace ShiftCalculator.PerformanceFolder.WindowFolder
         {
             Process.Start("calc.exe");
         }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            SettingsWindow settingsWindow = new SettingsWindow();
+            settingsWindow.ShowDialog();
+        }
         #endregion
     }
 }
