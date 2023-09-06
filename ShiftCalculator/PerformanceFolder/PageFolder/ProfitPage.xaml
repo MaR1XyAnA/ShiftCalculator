@@ -341,6 +341,7 @@
                         x:Name="HistoryDataGrid">
                         <DataGrid.Columns>
                             <DataGridTextColumn
+                                CellStyle="{DynamicResource LineNumberDataGridCell}"
                                 Width="Auto"
                                 MinWidth="50"
                                 MaxWidth="300"

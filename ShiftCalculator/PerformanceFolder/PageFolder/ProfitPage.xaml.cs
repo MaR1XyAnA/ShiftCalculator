@@ -6,12 +6,12 @@
 /// Журнал - это обычный txt файл, куда определённым образом просто записываются данные и всё.
 ///-->
 
+using Newtonsoft.Json;
 using ShiftCalculator.AppDataFolder.ClassFolder;
-using ShiftCalculator.PerformanceFolder.WindowFolder;
+using ShiftCalculator.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -19,14 +19,15 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
+using System.Xml;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
     public partial class ProfitPage : Page
     {
-        public static List<HistoryClass> selectedItemList = new List<HistoryClass>();
+        List<HistoryClass> selectedItemList = new List<HistoryClass>();
+        List<HistoryClass> saveNewList = new List<HistoryClass>();
 
-        string filePath = "HistoryDocument.txt";
         string isNullOrWhiteSpaceTextBox;
 
         DispatcherTimer dispatcherTimer;
@@ -260,27 +261,34 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             }
         }
 
-        private async void Event_RecordingHistory() /// Запись истории подсчёта
+        private void Event_RecordingHistory() /// Запись истории подсчёта
         {
-            string matrixRecording =
-                $"{"[Дата]",-20}{DateTextBox.Text}\n" +
-                $"{"[Время]",-20}{TimeTextBox.Text}\n" +
-                $"{"[Общая сумма]",-20}{TotalAmountTextBox.Text}\n" +
-                $"{"[Банк]",-20}{BanckTextBox.Text}\n" +
-                $"{"[Кассовый остаток]",-20}{CashBalanceTextBlock.Text}\n" +
-                $"{"[Безналичный]",-20}{CashlessPaymentTextBox.Text}\n" +
-                $"{"[Общая за день]",-20}{TotalForTheDayTextBlock.Text}\n";
-
-            using (StreamWriter recordingHistory = new StreamWriter(filePath, true))
+            if (File.Exists(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup))
             {
-                await recordingHistory.WriteLineAsync(matrixRecording);
-                HistoryDataGrid.Items.SortDescriptions.Add(new SortDescription("LineNumber_HC", ListSortDirection.Descending));
+                string gkjd = File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup);
+                saveNewList = JsonConvert.DeserializeObject<List<HistoryClass>>(gkjd);
             }
+
+            var matrixRecording = new HistoryClass()
+            {
+                Date_HC = DateTextBox.Text,
+                Time_HC = TimeTextBox.Text,
+                TotalAmount_HC = Convert.ToDouble(TotalAmountTextBox.Text),
+                Bank_HC = Convert.ToDouble(BanckTextBox.Text),
+                CashBalance_HC = Convert.ToDouble(CashBalanceTextBlock.Text),
+                Cashless_HC = Convert.ToDouble(CashlessPaymentTextBox.Text),
+                TotalForTheDay_HC = Convert.ToDouble(TotalForTheDayTextBlock.Text)
+            };
+
+            saveNewList.Add(matrixRecording);
+
+            string updatedJsonData = JsonConvert.SerializeObject(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup, Newtonsoft.Json.Formatting.Indented);
+            File.WriteAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup, updatedJsonData);
         }
 
         private async void Event_OutputData()
         {
-            using (StreamReader outputData = new StreamReader(filePath))
+            using (StreamReader outputData = new StreamReader(Settings.Default.ThePathToTheFileToSaveTheShiftCountingHistory))
             {
                 List<HistoryClass> historyEntries = new List<HistoryClass>();
 

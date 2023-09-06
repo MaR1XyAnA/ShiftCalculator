@@ -1,7 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ShiftCalculator.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ThePathToTheFileToSaveTheShiftCountingHistory" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\PROGRAMMING\VS22\REPOSITORY\MaR1XyAnA\ShiftCalculator\ShiftCalculator\HistoryOfTheMarkupCalculationDocument.json</Value>
+    </Setting>
+    <Setting Name="ThePathToTheFileForSavingTheHistoryOfTheMarkup" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D:\PROGRAMMING\VS22\REPOSITORY\MaR1XyAnA\ShiftCalculator\ShiftCalculator\ShiftCountingHistoryDocument.json</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
