@@ -40,15 +40,20 @@
                             <Button
                                 Style="{DynamicResource HintButtonStyle}"/>
                         </Grid>
-                        <Grid ToolTip="{Binding ElementName=HintPreviousCashBalanceTextBlock, Path=Text}">
+                        <Grid ToolTip="{Binding ElementName=ThePathToTheFileForSavingTheHistoryOfTheMarkupTextBlock, Path=Text}">
                             <TextBox
+                                TextChanged="HintText_TextChanged"
+                                x:Name="ThePathToTheFileForSavingTheHistoryOfTheMarkupTextBox"
                                 Padding="15 0 65 0"/>
                             <Button
+                                x:Name="ThePathToTheFileForSavingTheHistoryOfTheMarkupButton"
+                                Click="AssignTheCurrentPath_Click"
                                 Content="..."
                                 Style="{DynamicResource ButtonStyle}"
                                 HorizontalAlignment="Right"
                                 Width="50"/>
                             <TextBlock
+                                x:Name="ThePathToTheFileForSavingTheHistoryOfTheMarkupTextBlock"
                                 Style="{DynamicResource HintTextBlockStyle}"
                                 Text="Введите или выберите путь к файлу истории подсчёта"/>
                         </Grid>
@@ -61,15 +66,20 @@
                             <Button
                                 Style="{DynamicResource HintButtonStyle}"/>
                         </Grid>
-                        <Grid ToolTip="{Binding ElementName=HintPreviousCashBalanceTextBlock, Path=Text}">
+                        <Grid ToolTip="{Binding ElementName=ThePathToTheFileToSaveTheShiftCountingHistoryTextBlock, Path=Text}">
                             <TextBox
+                                TextChanged="HintText_TextChanged"
+                                x:Name="ThePathToTheFileToSaveTheShiftCountingHistoryTextBox"
                                 Padding="15 0 65 0"/>
                             <Button
                                 Content="..."
+                                x:Name="ThePathToTheFileToSaveTheShiftCountingHistoryButton"
+                                Click="AssignTheCurrentPath_Click"
                                 Style="{DynamicResource ButtonStyle}"
                                 HorizontalAlignment="Right"
                                 Width="50"/>
                             <TextBlock
+                                x:Name="ThePathToTheFileToSaveTheShiftCountingHistoryTextBlock"
                                 Style="{DynamicResource HintTextBlockStyle}"
                                 Text="Введите или выберите путь к файлу подсчёта наценки"/>
                         </Grid>
