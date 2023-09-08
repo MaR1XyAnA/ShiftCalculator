@@ -262,7 +262,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         private void Event_RecordingHistory() /// Запись истории подсчёта
         {
-            List<HistoryClass> historyClasses = JsonConvert.DeserializeObject<List<HistoryClass>>(File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup));
+            List<HistoryClass> historyClass;
 
             var matrixDataRecording = new HistoryClass()
             {
@@ -274,16 +274,36 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                 TotalForTheDay_HC = Convert.ToDouble(TotalForTheDayTextBlock.Text)
             };
 
-            historyClasses.Add(matrixDataRecording);
+            // Проверяем, существует ли файл
+            if (File.Exists(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup))
+            {
+                // Если файл существует, загружаем его содержимое
+                historyClass = JsonConvert.DeserializeObject<List<HistoryClass>>(
+                    File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup));
 
-            string jsonLine = JsonConvert.SerializeObject(historyClasses, Formatting.Indented);
-            File.WriteAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup, jsonLine);
+                if (historyClass == null)
+                {
+                    // Если файл существует, но содержит некорректный JSON, создаем новый список
+                    historyClass = new List<HistoryClass>();
+                }
+            }
+            else
+            {
+                // Если файл не существует или содержит некорректный JSON, создаем новый список
+                historyClass = new List<HistoryClass>();
+            }
+
+            historyClass.Add(matrixDataRecording);
+
+            // Сохраняем список в файл
+            File.WriteAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup,
+                JsonConvert.SerializeObject(historyClass, Formatting.Indented));
         }
 
         private void Event_OutputData()
         {
-            //string json = File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup);
-            //HistoryDataGrid.ItemsSource = JsonConvert.DeserializeObject<List<HistoryClass>>(json);
+            string json = File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup);
+            HistoryDataGrid.ItemsSource = JsonConvert.DeserializeObject<List<HistoryClass>>(json);
         }
 
         private void Event_PerformCountingOperation()
