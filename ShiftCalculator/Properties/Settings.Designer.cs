@@ -25,8 +25,7 @@ namespace ShiftCalculator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\PROGRAMMING\\VS22\\REPOSITORY\\MaR1XyAnA\\ShiftCalculator\\ShiftCalculator\\HistoryO" +
-            "fTheMarkupCalculationDocument.json")]
+        [global::System.Configuration.DefaultSettingValueAttribute("HistoryOfTheMarkupCalculationDocument.json")]
         public string ThePathToTheFileToSaveTheShiftCountingHistory {
             get {
                 return ((string)(this["ThePathToTheFileToSaveTheShiftCountingHistory"]));
@@ -38,8 +37,7 @@ namespace ShiftCalculator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D:\\PROGRAMMING\\VS22\\REPOSITORY\\MaR1XyAnA\\ShiftCalculator\\ShiftCalculator\\ShiftCou" +
-            "ntingHistoryDocument.json")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ShiftCountingHistoryDocument.json")]
         public string ThePathToTheFileForSavingTheHistoryOfTheMarkup {
             get {
                 return ((string)(this["ThePathToTheFileForSavingTheHistoryOfTheMarkup"]));

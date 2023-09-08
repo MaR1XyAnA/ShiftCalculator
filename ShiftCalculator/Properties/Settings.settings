@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="ThePathToTheFileToSaveTheShiftCountingHistory" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D:\PROGRAMMING\VS22\REPOSITORY\MaR1XyAnA\ShiftCalculator\ShiftCalculator\HistoryOfTheMarkupCalculationDocument.json</Value>
+      <Value Profile="(Default)">HistoryOfTheMarkupCalculationDocument.json</Value>
     </Setting>
     <Setting Name="ThePathToTheFileForSavingTheHistoryOfTheMarkup" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D:\PROGRAMMING\VS22\REPOSITORY\MaR1XyAnA\ShiftCalculator\ShiftCalculator\ShiftCountingHistoryDocument.json</Value>
+      <Value Profile="(Default)">ShiftCountingHistoryDocument.json</Value>
     </Setting>
   </Settings>
 </SettingsFile>

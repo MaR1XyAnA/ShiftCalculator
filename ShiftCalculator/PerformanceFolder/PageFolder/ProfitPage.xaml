@@ -349,11 +349,11 @@
                             <DataGridTextColumn
                                 Header="Дата"
                                 Width="120" 
-                                Binding="{Binding Path=Date_HC, StringFormat='{}{0:dd/MM/yyyy}'}"/>
+                                Binding="{Binding Path=DateTime_HC, StringFormat='{}{0:dd/MM/yyyy}'}"/>
                             <DataGridTextColumn 
                                 Header="Время"
                                 Width="120" 
-                                Binding="{Binding Path=Time_HC, StringFormat='{}{0:hh/mm/ss}'}"/>
+                                Binding="{Binding Path=DateTime_HC, StringFormat='{}{0:HH:mm:ss}'}"/>
                             <DataGridTextColumn
                                 Header="Общая"
                                 Width="160" 

@@ -24,7 +24,7 @@ namespace ShiftCalculator.PerformanceFolder.WindowFolder
         public TestWIn()
         {
             InitializeComponent();
-            HistoryDataGrid.ItemsSource = ProfitPage.selectedItemList;
+            //HistoryDataGrid.ItemsSource = ProfitPage.selectedItemList;
         }
     }
 }

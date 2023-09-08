@@ -19,7 +19,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
-using System.Xml;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
@@ -263,16 +262,11 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         private void Event_RecordingHistory() /// Запись истории подсчёта
         {
-            if (File.Exists(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup))
-            {
-                string gkjd = File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup);
-                saveNewList = JsonConvert.DeserializeObject<List<HistoryClass>>(gkjd);
-            }
+            List<HistoryClass> historyClasses = JsonConvert.DeserializeObject<List<HistoryClass>>(File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup));
 
-            var matrixRecording = new HistoryClass()
+            var matrixDataRecording = new HistoryClass()
             {
-                Date_HC = DateTextBox.Text,
-                Time_HC = TimeTextBox.Text,
+                DateTime_HC = Convert.ToDateTime(DateTextBox.Text + " " + TimeTextBox.Text),
                 TotalAmount_HC = Convert.ToDouble(TotalAmountTextBox.Text),
                 Bank_HC = Convert.ToDouble(BanckTextBox.Text),
                 CashBalance_HC = Convert.ToDouble(CashBalanceTextBlock.Text),
@@ -280,72 +274,16 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                 TotalForTheDay_HC = Convert.ToDouble(TotalForTheDayTextBlock.Text)
             };
 
-            saveNewList.Add(matrixRecording);
+            historyClasses.Add(matrixDataRecording);
 
-            string updatedJsonData = JsonConvert.SerializeObject(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup, Newtonsoft.Json.Formatting.Indented);
-            File.WriteAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup, updatedJsonData);
+            string jsonLine = JsonConvert.SerializeObject(historyClasses, Formatting.Indented);
+            File.WriteAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup, jsonLine);
         }
 
-        private async void Event_OutputData()
+        private void Event_OutputData()
         {
-            using (StreamReader outputData = new StreamReader(Settings.Default.ThePathToTheFileToSaveTheShiftCountingHistory))
-            {
-                List<HistoryClass> historyEntries = new List<HistoryClass>();
-
-                string line;
-                HistoryClass currentEntry = null; // Начнем с null, чтобы первую запись создать
-
-                int rowNumber = 1; // Начнем с 1 для нумерации строк
-
-                while ((line = await outputData.ReadLineAsync()) != null)
-                {
-                    if (line.Contains("[Дата]"))
-                    {
-                        currentEntry = new HistoryClass(); // Создаем новую запись для новой секции
-                        currentEntry.LineNumber_HC = rowNumber++; // Устанавливаем номер строки и затем увеличиваем его на 1
-
-                        currentEntry.Date_HC = line.Split('[', ']')[2].Trim();
-                    }
-                    else if (currentEntry != null) // Проверяем, что запись была создана
-                    {
-                        if (line.Contains("[Время]"))
-                        {
-                            currentEntry.Time_HC = line.Split('[', ']')[2].Trim();
-                        }
-                        else if (line.Contains("[Общая сумма]"))
-                        {
-                            double.TryParse(line.Split('[', ']')[2].Trim(), out double totalAmountValue);
-                            currentEntry.TotalAmount_HC = totalAmountValue;
-                        }
-                        else if (line.Contains("[Банк]"))
-                        {
-                            double.TryParse(line.Split('[', ']')[2].Trim(), out double bankValue);
-                            currentEntry.Bank_HC = bankValue;
-                        }
-                        else if (line.Contains("[Кассовый остаток]"))
-                        {
-                            double.TryParse(line.Split('[', ']')[2].Trim(), out double cashBalanceValue);
-                            currentEntry.CashBalance_HC = cashBalanceValue;
-                        }
-                        else if (line.Contains("[Безналичный]"))
-                        {
-                            double.TryParse(line.Split('[', ']')[2].Trim(), out double cashlessValue);
-                            currentEntry.Cashless_HC = cashlessValue;
-                        }
-                        else if (line.Contains("[Общая за день]"))
-                        {
-                            double.TryParse(line.Split('[', ']')[2].Trim(), out double totalForTheDayValue);
-                            currentEntry.TotalForTheDay_HC = totalForTheDayValue;
-                        }
-                        else if (string.IsNullOrWhiteSpace(line))
-                        {
-                            historyEntries.Add(currentEntry);
-                        }
-                    }
-                }
-
-                HistoryDataGrid.ItemsSource = historyEntries;
-            }
+            string json = File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup);
+            HistoryDataGrid.ItemsSource = JsonConvert.DeserializeObject<List<HistoryClass>>(json);
         }
 
         private void Event_PerformCountingOperation()
