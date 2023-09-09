@@ -1,8 +1,10 @@
 ﻿using Microsoft.Win32;
 using ShiftCalculator.Properties;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
@@ -78,6 +80,15 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                     Event_AssignTheCurrentPathTextBox();
                 }
             }
+        }
+        #endregion
+        #region _ValueChanged
+        private void RepaintBorderWithSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            Color color = Color.FromArgb((byte)TransparentSlider.Value, (byte)RedSlider.Value, (byte)GreenSlider.Value, (byte)BlueSlider.Value);
+            ResultBorder.Background = new SolidColorBrush(color);
+
+            HexColorTextBox.Text = $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}";
         }
         #endregion
     }

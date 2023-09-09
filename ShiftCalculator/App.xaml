@@ -18,6 +18,7 @@
                 <ResourceDictionary Source="\AppDataFolder\StyleFolder\DataGridDictionary.xaml"/>
                 <ResourceDictionary Source="\AppDataFolder\StyleFolder\ToggleButtonDictionary.xaml"/>
                 <ResourceDictionary Source="\AppDataFolder\StyleFolder\ScrollViewerDictionary.xaml"/>
+                <ResourceDictionary Source="\AppDataFolder\StyleFolder\SliderDictionary.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
