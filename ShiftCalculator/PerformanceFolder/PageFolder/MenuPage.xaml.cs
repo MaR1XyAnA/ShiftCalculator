@@ -28,7 +28,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         }
         #endregion
         #region Event_
-        private void Event_DeactivateToggleButton() /// Отключает всё кнопки
+        public void Event_DeactivateToggleButton() /// Отключает всё кнопки
         {
             ProductToggleButton.IsChecked = false;
             ProfitToggleButton.IsChecked = false;

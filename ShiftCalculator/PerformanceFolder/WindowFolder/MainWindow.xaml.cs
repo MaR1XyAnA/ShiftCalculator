@@ -49,8 +49,7 @@ namespace ShiftCalculator.PerformanceFolder.WindowFolder
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            SettingsWindow settingsWindow = new SettingsWindow();
-            settingsWindow.ShowDialog();
+            FrameNavigationClass.mainSpace_FNC.Navigate(new SettingsPage());
         }
         #endregion
     }

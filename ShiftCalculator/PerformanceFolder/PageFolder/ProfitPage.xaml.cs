@@ -302,8 +302,8 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         private void Event_OutputData()
         {
-            string json = File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup);
-            HistoryDataGrid.ItemsSource = JsonConvert.DeserializeObject<List<HistoryClass>>(json);
+            //string json = File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup);
+            //HistoryDataGrid.ItemsSource = JsonConvert.DeserializeObject<List<HistoryClass>>(json);
         }
 
         private void Event_PerformCountingOperation()
