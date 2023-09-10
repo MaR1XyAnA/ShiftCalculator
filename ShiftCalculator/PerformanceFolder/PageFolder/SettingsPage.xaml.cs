@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
@@ -91,5 +92,24 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             HexColorTextBox.Text = $"#{color.A:X2}{color.R:X2}{color.G:X2}{color.B:X2}";
         }
         #endregion
+
+        private void UseACustomColorToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            DoubleAnimation doubleAnimation = new DoubleAnimation();
+            doubleAnimation.EasingFunction = new QuadraticEase();
+
+            if (UseACustomColorToggleButton.IsChecked == true)
+            {
+                doubleAnimation.To = 0;
+                doubleAnimation.From = 283;
+            }
+            else
+            {
+                doubleAnimation.To = 283;
+                doubleAnimation.From = 0;
+            }
+
+            SettingsColorGrid.BeginAnimation(HeightProperty, doubleAnimation);
+        }
     }
 }

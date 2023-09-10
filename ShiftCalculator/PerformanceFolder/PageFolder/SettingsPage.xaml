@@ -91,7 +91,8 @@
                                     Style="{DynamicResource TopTitleTextBlockStyle}"
                                     Text="Использовать кастомный цвет"/>
                                 <ToggleButton
-                                    IsChecked="True"
+                                    x:Name="UseACustomColorToggleButton"
+                                    Click="UseACustomColorToggleButton_Click"
                                     Style="{DynamicResource LeverToggleButtonStyle}"
                                     HorizontalAlignment="Right"/>
                             </Grid>
@@ -99,7 +100,7 @@
                     </StackPanel>
                 </Border>
             </Grid>
-            <Grid Margin="20 10 20 0">
+            <Grid x:Name="SettingsColorGrid" Margin="20 10 20 0">
                 <Border  
                     CornerRadius="10"
                     Style="{DynamicResource ShadowBorderStyle}"/>

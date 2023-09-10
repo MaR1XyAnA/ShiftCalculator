@@ -37,7 +37,7 @@
                                         <ColorAnimation 
                                             Storyboard.TargetName="ButtonBorder"
                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                            To="#333333" 
+                                            To="#292929" 
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -48,7 +48,7 @@
                                         <ColorAnimation 
                                             Storyboard.TargetName="ButtonBorder"
                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                            To="#292929" 
+                                            To="#181818" 
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
