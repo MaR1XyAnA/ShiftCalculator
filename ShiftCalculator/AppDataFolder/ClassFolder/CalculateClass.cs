@@ -10,6 +10,12 @@ namespace ShiftCalculator.AppDataFolder.ClassFolder
 {
     internal class CalculateClass
     {
+        /// <summary>
+        /// Подсчёт кассы
+        /// </summary>
+        /// <param name="CashWithdrawal">Имя доступа для получения результата</param>
+        /// <param name="CashBalance_CW">Кассовый остаток</param>
+        /// <param name="TotalForTheDay_CW">Общая за день</param>
         public class CashWithdrawal
         {
             public double CashBalance_CW { get; set; }
@@ -25,6 +31,13 @@ namespace ShiftCalculator.AppDataFolder.ClassFolder
 
             return cashWithdrawal;
         }
+
+
+        /// <summary>
+        /// Подсчёт наценки на товар
+        /// </summary>
+        /// <param name="CalculatingMargins">Имя доступа для получения результата</param>
+        /// <param name="ResultCalculations_CM">Конечная стоимость</param>
 
         public class CalculatingMargins
         {

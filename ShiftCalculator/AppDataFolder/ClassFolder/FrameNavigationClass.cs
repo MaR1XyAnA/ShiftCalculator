@@ -6,6 +6,12 @@ using System.Windows.Controls;
 
 namespace ShiftCalculator.AppDataFolder.ClassFolder
 {
+    /// <summary>
+    /// Управление Frame
+    /// </summary>
+    /// <param name="menuSpace_FNC">Управление "меню"</param>
+    /// <param name="mainSpace_FNC">Управление главным пространством</param>
+
     internal class FrameNavigationClass
     {
         public static Frame menuSpace_FNC;
