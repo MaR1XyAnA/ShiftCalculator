@@ -132,9 +132,7 @@
   <ItemGroup>
     <Resource Include="free.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <XamlAppDef Include="ContentFolder\ImageFolder\LoadingPicture.png" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Page Include="AppDataFolder\StyleFolder\BorderDictionary.xaml">
       <SubType>Designer</SubType>

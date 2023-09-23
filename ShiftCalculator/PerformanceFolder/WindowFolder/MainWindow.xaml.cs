@@ -23,7 +23,7 @@ namespace ShiftCalculator.PerformanceFolder.WindowFolder
         {
             FrameNavigationClass.mainSpace_FNC = BodyFrame;
             FrameNavigationClass.menuSpace_FNC = MenuFrame;
-            FrameNavigationClass.menuSpace_FNC.Navigate(new MenuPage());
+            FrameNavigationClass.mainSpace_FNC.Navigate(new MenuPage());
         }
         #endregion
         #region Управление окном
