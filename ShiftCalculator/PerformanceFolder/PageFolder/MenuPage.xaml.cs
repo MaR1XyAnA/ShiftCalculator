@@ -4,8 +4,6 @@
 ///-->
 
 using ShiftCalculator.AppDataFolder.ClassFolder;
-using System.Windows;
-using System.Windows.Controls;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {

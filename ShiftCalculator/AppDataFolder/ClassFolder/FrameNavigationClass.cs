@@ -2,7 +2,6 @@
 /// Класс, который предостовляет возможность управления Frame из любой страницы или окна
 /// -->
 
-using System.Windows.Controls;
 
 namespace ShiftCalculator.AppDataFolder.ClassFolder
 {

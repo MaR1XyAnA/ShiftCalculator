@@ -1,9 +1,7 @@
-﻿
-///<!--
+﻿///<!--
 /// Класс, который нужен для записи истории (формирует данные)
 /// -->
 
-using System;
 
 namespace ShiftCalculator.AppDataFolder.ClassFolder
 {
@@ -16,7 +14,7 @@ namespace ShiftCalculator.AppDataFolder.ClassFolder
     /// <param name="CashBalance_HC">Денег в кассе</param>
     /// <param name="CashBalance_HC">Денег в кассе</param>
     /// <param name="CashBalance_HC">Денег в кассе</param>
-    
+
     public class HistoryClass
     {
         public DateTime DateTime_HC { get; set; }

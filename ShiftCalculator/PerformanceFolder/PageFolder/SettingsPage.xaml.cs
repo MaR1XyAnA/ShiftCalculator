@@ -1,11 +1,4 @@
-﻿using Microsoft.Win32;
-using ShiftCalculator.Properties;
-using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
+﻿using ShiftCalculator.Properties;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {

@@ -8,14 +8,14 @@ namespace ShiftCalculator
     {
         public App()
         {
-            //DispatcherUnhandledException += Application_DispatcherUnhandledException;
+            DispatcherUnhandledException += Application_DispatcherUnhandledException;
         }
 
-        //private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs exception)
-        //{
-        //    MessageBoxClass.ExceptionMessageBox_MBC(textMessage:
-        //        $"Возникло необработанное исключение: {exception.Exception.Message}\n");
-        //    exception.Handled = true;
-        //}
+        private void Application_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs exception)
+        {
+            MessageBoxClass.ExceptionMessageBox_MBC(textMessage:
+                $"Возникло необработанное исключение: {exception.Exception.Message}\n");
+            exception.Handled = true;
+        }
     }
 }
