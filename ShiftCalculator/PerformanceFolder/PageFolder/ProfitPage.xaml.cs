@@ -6,8 +6,19 @@
 /// Журнал - это обычный txt файл, куда определённым образом просто записываются данные и всё.
 ///-->
 
+using Newtonsoft.Json;
 using ShiftCalculator.AppDataFolder.ClassFolder;
 using ShiftCalculator.Properties;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {

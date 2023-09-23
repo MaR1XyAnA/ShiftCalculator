@@ -2,6 +2,7 @@
 /// Класс, который нужен для настройки определённых MessageBox
 /// -->
 
+using System.Windows;
 
 namespace ShiftCalculator.AppDataFolder.ClassFolder
 {

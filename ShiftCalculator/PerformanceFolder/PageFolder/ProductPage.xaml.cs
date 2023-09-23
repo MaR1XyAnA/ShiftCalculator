@@ -3,6 +3,9 @@
 ///-->
 
 using ShiftCalculator.AppDataFolder.ClassFolder;
+using System;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
@@ -44,7 +47,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             switch (hintButton.Name)
             {
                 case "HintExtraChargeButton":
-                    textHint =
+                    textHint = 
                         "Этот параметр отвечает за то, какая наценка будет у товара (%).\n" +
                         "К примеру, товар стоит 100 рублей, а наценка 10%, значит товар будет стоить 110 рублей";
                     nameHint = "Подсказка про наценку";

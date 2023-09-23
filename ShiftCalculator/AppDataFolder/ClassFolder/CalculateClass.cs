@@ -3,6 +3,8 @@
 /// В класс передаются значения, а потом класс выполняет определённые действия с вычислениями и возвращает их обратно.
 ///-->
 
+using System;
+using System.Runtime.InteropServices;
 
 namespace ShiftCalculator.AppDataFolder.ClassFolder
 {
