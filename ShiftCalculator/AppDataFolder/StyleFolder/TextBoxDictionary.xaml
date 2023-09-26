@@ -4,7 +4,7 @@
     <Style TargetType="TextBox">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="Foreground" Value="#aaaaaa"/>
-        <Setter Property="Background" Value="#292929"/>
+        <Setter Property="Background" Value="#17181e"/>
         <Setter Property="CaretBrush" Value="#8f63d4"/>
         <Setter Property="BorderBrush" Value="#2f2f2f"/>
         <Setter Property="BorderThickness" Value="2"/>
@@ -38,7 +38,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Foreground" Value="#f5f5f5"/>
-                            <Setter Property="BorderBrush" Value="#aaaaaa"/>
+                            <Setter Property="BorderBrush" Value="#3994ff"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>

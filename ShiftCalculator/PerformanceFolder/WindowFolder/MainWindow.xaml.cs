@@ -4,7 +4,6 @@
 
 using ShiftCalculator.AppDataFolder.ClassFolder;
 using ShiftCalculator.PerformanceFolder.PageFolder;
-using System.Data;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
@@ -21,9 +20,9 @@ namespace ShiftCalculator.PerformanceFolder.WindowFolder
         #region Event_
         private void Event_WorkWithFrame() /// Подключает Frame и управляет ими
         {
-            FrameNavigationClass.mainSpace_FNC = BodyFrame;
+            FrameNavigationClass.bodySpace_FNC = BodyFrame;
             FrameNavigationClass.menuSpace_FNC = MenuFrame;
-            FrameNavigationClass.mainSpace_FNC.Navigate(new MenuPage());
+            FrameNavigationClass.menuSpace_FNC.Navigate(new MenuPage());
         }
         #endregion
         #region Управление окном
@@ -50,7 +49,7 @@ namespace ShiftCalculator.PerformanceFolder.WindowFolder
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            FrameNavigationClass.mainSpace_FNC.Navigate(new SettingsPage());
+            FrameNavigationClass.bodySpace_FNC.Navigate(new SettingsPage());
         }
         #endregion
     }

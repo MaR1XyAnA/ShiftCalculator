@@ -77,13 +77,11 @@
                         <Border 
                             x:Name="WayBorder"
                             Width="40"
-                            Background="#8b898c"
-                            BorderBrush="Transparent"
                             BorderThickness="0"
                             CornerRadius="10">
                             <Border 
-                                BorderBrush="Transparent"
-                                BorderThickness="0"
+                                BorderBrush="#f5f5f5"
+                                BorderThickness="6"
                                 x:Name="Lever"
                                 HorizontalAlignment="Left"
                                 Width="20"
@@ -98,7 +96,8 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="WayBorder" Property="Background" Value="#8f63d4" />
+                            <Setter TargetName="WayBorder" Property="Background" Value="#3994ff" />
+                            <Setter TargetName="Lever" Property="Background" Value="#3994ff" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
@@ -123,6 +122,8 @@
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="WayBorder" Property="Background" Value="#656a83" />
+                            <Setter TargetName="Lever" Property="Background" Value="#f5f5f5" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
