@@ -94,18 +94,18 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         private void CalculateButton_Click(object sender, RoutedEventArgs e) /// Работа кнопки
         {
-            isNullOrWhiteSpaceTextBox = "";
+            //isNullOrWhiteSpaceTextBox = "";
 
-            Event_IsNullOrWhiteSpaceTextBox();
+            //Event_IsNullOrWhiteSpaceTextBox();
 
-            if (isNullOrWhiteSpaceTextBox != "")
-            {
-                MessageBoxClass.ErrorMessageBox_MBC(textMessage: isNullOrWhiteSpaceTextBox, topRow: "Текстовое поле не должно быть пустым");
-            }
-            else
-            {
-                Event_PerformCountingOperation();
-            }
+            //if (isNullOrWhiteSpaceTextBox != "")
+            //{
+            //    MessageBoxClass.ErrorMessageBox_MBC(textMessage: isNullOrWhiteSpaceTextBox, topRow: "Текстовое поле не должно быть пустым");
+            //}
+            //else
+            //{
+            //    Event_PerformCountingOperation();
+            //}
         }
 
         private void HintButton_Click(object sender, RoutedEventArgs e) /// Подсказки по нажатию на кнопку

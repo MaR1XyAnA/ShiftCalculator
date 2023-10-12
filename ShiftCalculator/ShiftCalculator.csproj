@@ -86,6 +86,7 @@
     <Compile Include="AppDataFolder\ClassFolder\HistoryClass.cs" />
     <Compile Include="AppDataFolder\ClassFolder\FrameNavigationClass.cs" />
     <Compile Include="AppDataFolder\ClassFolder\MessageBoxClass.cs" />
+    <Resource Include="ContentFolder\FontFolder\OpenSans-VariableFont_wdth,wght.ttf" />
     <None Include="HistoryOfTheMarkupCalculationDocument.json" />
     <Compile Include="PerformanceFolder\PageFolder\ProfitPage.xaml.cs">
       <DependentUpon>ProfitPage.xaml</DependentUpon>

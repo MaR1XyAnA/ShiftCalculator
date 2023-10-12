@@ -7,7 +7,7 @@
         <Setter Property="Foreground" Value="#FFFFFF"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="FontFamily" Value="Consolas" />
+        <Setter Property="FontFamily" Value="\ContentFolder\FontFolder\#Open Sans Light"/>
         <Setter Property="FontSize" Value="20" />
         <Setter Property="Height" Value="60" />
         <Setter Property="Cursor" Value="Hand"/>
@@ -24,54 +24,34 @@
                             HorizontalAlignment="Center" 
                             VerticalAlignment="Center" />
                     </Border>
-                        <ControlTemplate.Triggers>
+                    <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="ButtonBackground" Property="Background" Value="#1e8be0" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <ColorAnimation 
-                                            Storyboard.TargetName="ButtonBackground" 
-                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                            To="#7146c9" 
+                                        <ColorAnimation
+                                            Storyboard.TargetName="ButtonBackground"
+                                            Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                                            To="#598bff"
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation 
-                                            Storyboard.TargetName="ButtonBackground" 
-                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                            To="#8f63d4" 
-                                            Duration="0:0:0.2"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="ButtonBackground" Property="Background" Value="#1e8be0" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <ColorAnimation 
-                                            Storyboard.TargetName="ButtonBackground" 
-                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                            To="#a16cd9" 
+                                        <ColorAnimation
+                                            Storyboard.TargetName="ButtonBackground"
+                                            Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)"
+                                            To="#274bdb"
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
-                            <Trigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard>
-                                        <ColorAnimation 
-                                            Storyboard.TargetName="ButtonBackground" 
-                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                            To="#8f63d4" 
-                                            Duration="0:0:0.2"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -85,7 +65,7 @@
         <Setter Property="Background" Value="#222b45"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Foreground" Value="#1e8be0" />
-        <Setter Property="FontFamily" Value="Consolas" />
+        <Setter Property="FontFamily" Value="\ContentFolder\FontFolder\#Open Sans Light" />
         <Setter Property="FontSize" Value="18" />
         <Setter Property="Height" Value="35" />
         <Setter Property="Cursor" Value="Hand"/>
@@ -164,7 +144,7 @@
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Foreground" Value="#95a1b7"/>
-        <Setter Property="FontFamily" Value="Consolas"/>
+        <Setter Property="FontFamily" Value="\ContentFolder\FontFolder\#Open Sans Light"/>
         <Setter Property="FontSize" Value="15"/>
         <Setter Property="Content" Value="?"/>
         <Setter Property="Width" Value="20"/>
@@ -243,7 +223,7 @@
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Foreground" Value="#95a1b7"/>
-        <Setter Property="FontFamily" Value="Consolas"/>
+        <Setter Property="FontFamily" Value="\ContentFolder\FontFolder\#Open Sans Light"/>
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="Height" Value="30"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -372,7 +352,7 @@
         <Setter Property="Width" Value="60"/>
         <Setter Property="FontSize" Value="18"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="FontFamily" Value="Consolas"/>
+        <Setter Property="FontFamily" Value="\ContentFolder\FontFolder\#Open Sans Light"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 

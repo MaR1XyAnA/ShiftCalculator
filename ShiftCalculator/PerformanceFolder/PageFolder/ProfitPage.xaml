@@ -236,7 +236,7 @@
                 Content="Посчитать"
                 x:Name="CalculateButton"
                 Click="CalculateButton_Click"
-                Margin="30 30 30 0"/>
+                Margin="30 15 30 0"/>
         </StackPanel>
         <Grid
             Grid.Column="1"
