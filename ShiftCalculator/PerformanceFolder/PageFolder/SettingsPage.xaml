@@ -10,9 +10,6 @@
     <Grid>
         <StackPanel Orientation="Vertical">
             <Grid Margin="20 0 20 10">
-                <Border 
-                    CornerRadius="10"
-                    Style="{DynamicResource ShadowBorderStyle}"/>
                 <Border Style="{DynamicResource OverlayBorderStyle}">
                     <StackPanel Orientation="Vertical" Margin="20 10 20 10">
                         <StackPanel Margin="0 0 0 10">
@@ -71,9 +68,6 @@
                 </Border>
             </Grid>
             <Grid Margin="20 10 20 10">
-                <Border 
-                    CornerRadius="10"
-                    Style="{DynamicResource ShadowBorderStyle}"/>
                 <Border Style="{DynamicResource OverlayBorderStyle}">
                     <StackPanel Orientation="Vertical" Margin="20 10 20 10">
                         <StackPanel Margin="0 0 0 0">
@@ -101,9 +95,6 @@
                 </Border>
             </Grid>
             <Grid x:Name="SettingsColorGrid" Margin="20 10 20 0">
-                <Border  
-                    CornerRadius="10"
-                    Style="{DynamicResource ShadowBorderStyle}"/>
                 <Border Style="{DynamicResource OverlayBorderStyle}">
                     <Grid Margin="20 10 20 10">
                         <Grid.ColumnDefinitions>

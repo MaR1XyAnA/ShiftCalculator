@@ -70,30 +70,25 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Grid>
+                    <Border 
+                        x:Name="WayBorder"
+                        Width="40"
+                        BorderThickness="0"
+                        CornerRadius="10">
                         <Border 
-                            CornerRadius="10"
-                            Style="{StaticResource ShadowBorderStyle}"/>
-                        <Border 
-                            x:Name="WayBorder"
-                            Width="40"
-                            BorderThickness="0"
+                            BorderBrush="#f5f5f5"
+                            BorderThickness="6"
+                            x:Name="Lever"
+                            HorizontalAlignment="Left"
+                            Width="20"
+                            Height="20"
+                            Background="#f5f5f5"
                             CornerRadius="10">
-                            <Border 
-                                BorderBrush="#f5f5f5"
-                                BorderThickness="6"
-                                x:Name="Lever"
-                                HorizontalAlignment="Left"
-                                Width="20"
-                                Height="20"
-                                Background="#f5f5f5"
-                                CornerRadius="10">
-                                <Border.RenderTransform>
-                                    <TranslateTransform x:Name="LeverTransform" />
-                                </Border.RenderTransform>
-                            </Border>
+                            <Border.RenderTransform>
+                                <TranslateTransform x:Name="LeverTransform" />
+                            </Border.RenderTransform>
                         </Border>
-                    </Grid>
+                    </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="WayBorder" Property="Background" Value="#3994ff" />

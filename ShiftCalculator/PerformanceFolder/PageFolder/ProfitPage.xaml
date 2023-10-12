@@ -17,9 +17,6 @@
             Orientation="Vertical"
             Margin="0 0 0 0">
             <Grid Margin="10 0 10 10">
-                <Border 
-                    CornerRadius="10"
-                    Style="{DynamicResource ShadowBorderStyle}"/>
                 <Border Style="{DynamicResource OverlayBorderStyle}">
                     <Grid Margin="20 10 20 10">
                         <Grid.ColumnDefinitions>
@@ -62,9 +59,6 @@
                 </Border>
             </Grid>
             <Grid Margin="10">
-                <Border 
-                    CornerRadius="10"
-                    Style="{DynamicResource ShadowBorderStyle}"/>
                 <Border Style="{DynamicResource OverlayBorderStyle}">
                     <StackPanel 
                         Orientation="Vertical" 
@@ -210,9 +204,6 @@
                 </Border>
             </Grid>
             <Grid Margin="10 10 10 0">
-                <Border
-                    CornerRadius="10"
-                    Style="{DynamicResource ShadowBorderStyle}"/>
                 <Border Style="{DynamicResource OverlayBorderStyle}">
                     <StackPanel 
                         Orientation="Vertical" 
@@ -250,14 +241,11 @@
         <Grid
             Grid.Column="1"
             Margin="10 0">
-            <Border
-                CornerRadius="10"
-                Style="{DynamicResource ShadowBorderStyle}"/>
             <Border Style="{DynamicResource OverlayBorderStyle}">
                 <StackPanel Orientation="Vertical">
                     <Border
-                        CornerRadius="6 6 0 0"
-                        Background="#292929"
+                        CornerRadius="7 7 0 0"
+                        Background="#222b45"
                         Height="40">
                         <StackPanel
                             Orientation="Horizontal"
