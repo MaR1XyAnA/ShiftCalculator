@@ -3,14 +3,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style x:Key="MenuToggleButtonStyle" TargetType="ToggleButton">
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-        <Setter Property="Background" Value="#181818"/>
-        <Setter Property="BorderBrush" Value="#2f2f2f"/>
-        <Setter Property="Foreground" Value="#76787a"/>
+        <Setter Property="Background" Value="#151a30"/>
+        <Setter Property="BorderBrush" Value="#1e8be0"/>
+        <Setter Property="Foreground" Value="#1e8be0"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>
-        <Setter Property="Height" Value="40"/>
-        <Setter Property="Width" Value="200"/>
-        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Width" Value="160"/>
+        <Setter Property="BorderThickness" Value="1.5"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -18,7 +20,7 @@
                     <Grid>
                         <Border
                             x:Name="ButtonBorder"
-                            CornerRadius="20"
+                            CornerRadius="7"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             Background="{TemplateBinding Background}"
                             BorderThickness="{TemplateBinding BorderThickness}">
@@ -29,15 +31,13 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="#f5f5f5"/>
-                            <Setter Property="BorderBrush" Value="#76787a"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ColorAnimation 
                                             Storyboard.TargetName="ButtonBorder"
                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                            To="#292929" 
+                                            To="#1d3c63" 
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -48,16 +48,15 @@
                                         <ColorAnimation 
                                             Storyboard.TargetName="ButtonBorder"
                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                            To="#181818" 
+                                            To="#151a30" 
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Foreground" Value="#8f63d4"/>
-                            <Setter Property="BorderBrush" Value="#8f63d4"/>
-                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Foreground" Value="#FFFFFF"/>
+                            <Setter Property="Background" Value="#1f3454"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -76,13 +75,13 @@
                         BorderThickness="0"
                         CornerRadius="10">
                         <Border 
-                            BorderBrush="#f5f5f5"
+                            BorderBrush="#FFFFFF"
                             BorderThickness="6"
                             x:Name="Lever"
                             HorizontalAlignment="Left"
                             Width="20"
                             Height="20"
-                            Background="#f5f5f5"
+                            Background="#FFFFFF"
                             CornerRadius="10">
                             <Border.RenderTransform>
                                 <TranslateTransform x:Name="LeverTransform" />
@@ -91,8 +90,8 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="WayBorder" Property="Background" Value="#3994ff" />
-                            <Setter TargetName="Lever" Property="Background" Value="#3994ff" />
+                            <Setter TargetName="WayBorder" Property="Background" Value="#1e8be0" />
+                            <Setter TargetName="Lever" Property="Background" Value="#1e8be0" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
@@ -117,8 +116,8 @@
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
-                            <Setter TargetName="WayBorder" Property="Background" Value="#656a83" />
-                            <Setter TargetName="Lever" Property="Background" Value="#f5f5f5" />
+                            <Setter TargetName="WayBorder" Property="Background" Value="#192038" />
+                            <Setter TargetName="Lever" Property="Background" Value="#FFFFFF" />
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>

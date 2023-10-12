@@ -49,6 +49,10 @@ namespace ShiftCalculator.PerformanceFolder.WindowFolder
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
+            // Херня, прописанная в 2 строчки нужна для того, чтобы вызвать метод, который отключит кнопки
+            var currentPage = FrameNavigationClass.menuSpace_FNC.Content as MenuPage; 
+            currentPage.Event_DeactivateToggleButton();
+
             FrameNavigationClass.bodySpace_FNC.Navigate(new SettingsPage());
         }
         #endregion

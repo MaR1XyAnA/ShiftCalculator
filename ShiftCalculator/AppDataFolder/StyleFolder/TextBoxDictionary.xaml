@@ -20,7 +20,7 @@
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border 
                         x:Name="border"
-                        CornerRadius="25"
+                        CornerRadius="7"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         Background="{TemplateBinding Background}"
                         BorderThickness="{TemplateBinding BorderThickness}">
