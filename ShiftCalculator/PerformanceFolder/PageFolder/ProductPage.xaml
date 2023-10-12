@@ -23,15 +23,9 @@
                     Orientation="Vertical" 
                     Margin="20 10 20 10">
                     <StackPanel Margin="0 0 0 10">
-                        <Grid>
-                            <TextBlock
-                                Style="{DynamicResource TopTitleTextBlockStyle}"
-                                Text="Наценка"/>
-                            <Button
-                                x:Name="HintExtraChargeButton"
-                                Click="HintButton_Click"
-                                Style="{DynamicResource HintButtonStyle}"/>
-                        </Grid>
+                        <TextBlock
+                            Style="{DynamicResource TopTitleTextBlockStyle}"
+                            Text="Наценка"/>
                         <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
                             <TextBox
                                 x:Name="ExtraChargeTextBox"
@@ -43,15 +37,9 @@
                         </Grid>
                     </StackPanel>
                     <StackPanel Margin="0 10 0 10">
-                        <Grid>
-                            <TextBlock
-                                Style="{DynamicResource TopTitleTextBlockStyle}"
-                                Text="Количество"/>
-                            <Button
-                                x:Name="HintQuantityButton"
-                                Click="HintButton_Click"
-                                Style="{DynamicResource HintButtonStyle}"/>
-                        </Grid>
+                        <TextBlock
+                            Style="{DynamicResource TopTitleTextBlockStyle}"
+                            Text="Количество"/>
                         <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
                             <TextBox
                                 x:Name="QuantityTextBox"
@@ -63,15 +51,9 @@
                         </Grid>
                     </StackPanel>
                     <StackPanel Margin="0 10 0 10">
-                        <Grid>
-                            <TextBlock
-                                Style="{DynamicResource TopTitleTextBlockStyle}"
-                                Text="Стоимость"/>
-                            <Button
-                                x:Name="HintCostButton"
-                                Click="HintButton_Click"
-                                Style="{DynamicResource HintButtonStyle}"/>
-                        </Grid>
+                        <TextBlock
+                            Style="{DynamicResource TopTitleTextBlockStyle}"
+                            Text="Стоимость"/>
                         <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
                             <TextBox
                                 x:Name="CostTextBox"
@@ -83,15 +65,9 @@
                         </Grid>
                     </StackPanel>
                     <StackPanel Margin="0 10 0 10">
-                        <Grid>
-                            <TextBlock
-                                Style="{DynamicResource TopTitleTextBlockStyle}"
-                                Text="Результат"/>
-                            <Button
-                                x:Name="HintResultButton"
-                                Click="HintButton_Click"
-                                Style="{DynamicResource HintButtonStyle}"/>
-                        </Grid>
+                        <TextBlock
+                            Style="{DynamicResource TopTitleTextBlockStyle}"
+                            Text="Результат"/>
                         <Grid ToolTip="Результат">
                             <TextBox
                                 IsEnabled="False"
