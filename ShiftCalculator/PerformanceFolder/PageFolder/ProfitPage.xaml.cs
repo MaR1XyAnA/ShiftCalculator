@@ -18,6 +18,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
@@ -94,66 +95,18 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         private void CalculateButton_Click(object sender, RoutedEventArgs e) /// Работа кнопки
         {
-            //isNullOrWhiteSpaceTextBox = "";
+            isNullOrWhiteSpaceTextBox = "";
 
-            //Event_IsNullOrWhiteSpaceTextBox();
+            Event_IsNullOrWhiteSpaceTextBox();
 
-            //if (isNullOrWhiteSpaceTextBox != "")
-            //{
-            //    MessageBoxClass.ErrorMessageBox_MBC(textMessage: isNullOrWhiteSpaceTextBox, topRow: "Текстовое поле не должно быть пустым");
-            //}
-            //else
-            //{
-            //    Event_PerformCountingOperation();
-            //}
-        }
-
-        private void HintButton_Click(object sender, RoutedEventArgs e) /// Подсказки по нажатию на кнопку
-        {
-            string textHint = "";
-            string nameHint = "";
-
-            Button hintButton = (Button)sender;
-
-            switch (hintButton.Name)
+            if (isNullOrWhiteSpaceTextBox != "")
             {
-                case "HintDateButton":
-                    textHint =
-                        "Этот параметр предназначен для указания даты, когда была создана запись о подсчете данных.\n" +
-                        "Если ваша цель просто подсчитать информацию, то без внесения даты записи она не будет создана.";
-                    nameHint = "Информация о дате";
-                    break;
-
-                case "HintTotalAmountButton":
-                    textHint =
-                        "Это поле предназначено для ввода общей суммы, которая была получена за смену.\n" +
-                        "На чеке указывается итоговая сумма, которую необходимо внести в данное поле.";
-                    nameHint = "Информация о общей сумме";
-                    break;
-
-                case "HintCashlessPaymentButton":
-                    textHint =
-                        "Это поле предназначено для ввода суммы, полученной за смену в результате оплаты картой.\n" +
-                        "На чеке указана сумма, которую необходимо внести в данное поле.";
-                    nameHint = "Информация о безналичном расчете";
-                    break;
-
-                case "HintPreviousCashBalanceButton":
-                    textHint =
-                        "Это поле отражает сумму, которая осталась в кассе с предыдущей смены.\n" +
-                        "Данную информацию можно посмотреть в журнале приложения, или в записывающем журнале";
-                    nameHint = "Инфомация о кассовом остатке";
-                    break;
-
-                case "HintBanckButton":
-                    textHint =
-                        "Это поле предназначено для указания суммы, которая будет убрана в банк (пакет).\n" +
-                        "Обычно используются стандартные номинации, такие как 0, 500, 1000, 1500, 2000, 2500 и так далее.";
-                    nameHint = "Информация о банке";
-                    break;
+                MessageBoxClass.ErrorMessageBox_MBC(textMessage: isNullOrWhiteSpaceTextBox, topRow: "Текстовое поле не должно быть пустым");
             }
-
-            MessageBoxClass.HintMessageBox_MBC(textMessage: textHint, topRow: nameHint);
+            else
+            {
+                Event_PerformCountingOperation();
+            }
         }
 
         private void DeleteAnEntryButton_Click(object sender, RoutedEventArgs e)
@@ -319,6 +272,14 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             CashBalanceTextBlock.Text = calculationResult.CashBalance_CW.ToString();
             TotalForTheDayTextBlock.Text = calculationResult.TotalForTheDay_CW.ToString();
 
+            CashBalanceTextBlock.Foreground = calculationResult.CashBalance_CW < 0
+                ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF3D71"))
+                : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E8BE0"));
+
+            TotalForTheDayTextBlock.Foreground = calculationResult.TotalForTheDay_CW < 0
+                ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF3D71"))
+                : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E8BE0"));
+
             Event_CheckingBeforeRecording();
             Event_OutputData();
         }
@@ -355,6 +316,5 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                 DownloadButton.IsEnabled = false;
             }
         }
-
     }
 }
