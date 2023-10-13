@@ -25,7 +25,16 @@
                     Text="{Binding ElementName=BodyFrame, Path=Content.Title}"/>
                 <StackPanel Style="{DynamicResource TopShelfButtonStackPanelStyle}">
                     <Button
-                        Width="60"
+                        Margin="0 0 5 0"
+                        Width="30"
+                        Style="{DynamicResource ManagementButtonStyle}"
+                        x:Name="HelpButton"
+                        Click="OpenTheCalculatorButton_Click"
+                        ToolTip="Помощь"
+                        Content="?"/>
+                    <Button
+                        Margin="5 0 5 0"
+                        Width="30"
                         Style="{DynamicResource ManagementButtonStyle}"
                         x:Name="SettingsButton"
                         Click="SettingsButton_Click"
@@ -35,7 +44,8 @@
                             Text="&#xf1c6;"/>
                     </Button>
                     <Button
-                        Width="60"
+                        Margin="5 0 10 0"
+                        Width="30"
                         Style="{DynamicResource ManagementButtonStyle}"
                         x:Name="OpenTheCalculatorButton"
                         Click="OpenTheCalculatorButton_Click"

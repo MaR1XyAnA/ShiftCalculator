@@ -69,29 +69,40 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
-                    <Border 
+                    <Border
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
                         x:Name="WayBorder"
                         Width="40"
-                        BorderThickness="0"
-                        CornerRadius="10">
-                        <Border 
-                            BorderBrush="#FFFFFF"
-                            BorderThickness="6"
-                            x:Name="Lever"
-                            HorizontalAlignment="Left"
-                            Width="20"
-                            Height="20"
-                            Background="#FFFFFF"
-                            CornerRadius="10">
-                            <Border.RenderTransform>
-                                <TranslateTransform x:Name="LeverTransform" />
-                            </Border.RenderTransform>
-                        </Border>
+                        CornerRadius="10"> <!--Сам путь-->
+                        <Border.Background>
+                            <SolidColorBrush x:Name="WayBackground" Color="#1e8be0"/> <!-- Исходный фон -->
+                        </Border.Background>
+                        <Grid>
+                            <Border 
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                                x:Name="Lever"
+                                HorizontalAlignment="Left"
+                                Width="20"
+                                Height="20"
+                                Background="#FFFFFF"
+                                CornerRadius="10"> <!--Сам круг, который переключается-->
+                                <Border.RenderTransform>
+                                    <TranslateTransform x:Name="LeverTransform" />
+                                </Border.RenderTransform>
+                                <Border
+                                    Background="#1e8be0"
+                                    x:Name="InternalBorder"
+                                    CornerRadius="4.5"
+                                    Height="9"
+                                    Width="9"/> <!--Точка внутри круга-->
+                            </Border>
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="WayBorder" Property="Background" Value="#1e8be0" />
-                            <Setter TargetName="Lever" Property="Background" Value="#1e8be0" />
+                            <Setter TargetName="InternalBorder" Property="Visibility" Value="Visible"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
@@ -100,6 +111,11 @@
                                             Storyboard.TargetProperty="X"
                                             To="20"
                                             Duration="0:0:0.2"/>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="WayBackground"
+                                            Storyboard.TargetProperty="Color"
+                                            To="#1e8be0"
+                                            Duration="0:0:0.1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
@@ -111,13 +127,17 @@
                                             Storyboard.TargetProperty="X"
                                             To="0"
                                             Duration="0:0:0.2"/>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="WayBackground"
+                                            Storyboard.TargetProperty="Color"
+                                            To="#192038"
+                                            Duration="0:0:0.1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
-                            <Setter TargetName="WayBorder" Property="Background" Value="#192038" />
-                            <Setter TargetName="Lever" Property="Background" Value="#FFFFFF" />
+                            <Setter TargetName="InternalBorder" Property="Visibility" Value="Collapsed"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
@@ -126,6 +146,11 @@
                                             Storyboard.TargetProperty="X"
                                             To="0"
                                             Duration="0:0:0.2"/>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="WayBackground"
+                                            Storyboard.TargetProperty="Color"
+                                            To="#192038"
+                                            Duration="0:0:0.1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
@@ -137,6 +162,11 @@
                                             Storyboard.TargetProperty="X"
                                             To="20"
                                             Duration="0:0:0.2"/>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="WayBackground"
+                                            Storyboard.TargetProperty="Color"
+                                            To="#1e8be0"
+                                            Duration="0:0:0.1"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.ExitActions>

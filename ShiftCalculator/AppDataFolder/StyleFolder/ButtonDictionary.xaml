@@ -375,7 +375,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="ButtonBorder" Property="Background" Value="#393939"/>
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#222b45"/>
                             <Setter Property="Foreground" Value="#FFFFFF"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
@@ -383,14 +383,14 @@
                                         <ColorAnimation 
                                             Storyboard.TargetName="ButtonBorder" 
                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                            To="#555555" 
+                                            To="#151a30" 
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="ButtonBorder" Property="Background" Value="#393939"/>
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#151a30"/>
                             <Setter Property="Foreground" Value="#f5f5f5"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
@@ -398,7 +398,7 @@
                                         <ColorAnimation 
                                             Storyboard.TargetName="ButtonBorder" 
                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                            To="#333333" 
+                                            To="#1f3454" 
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -428,30 +428,30 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="ButtonBorder" Property="Background" Value="#d2001e"/>
-                            <Setter Property="Foreground" Value="#f5f5f5"/>
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#222b45"/>
+                            <Setter Property="Foreground" Value="#FFFFFF"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ColorAnimation 
                                             Storyboard.TargetName="ButtonBorder" 
                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                            To="#ff0000" 
+                                            To="#ff3d71" 
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter TargetName="ButtonBorder" Property="Background" Value="#c03939"/>
-                            <Setter Property="Foreground" Value="#f5f5f5"/>
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#ff3d71"/>
+                            <Setter Property="Foreground" Value="#FFFFFF"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ColorAnimation 
                                             Storyboard.TargetName="ButtonBorder"
                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                            To="#990000" 
+                                            To="#ff708d" 
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
