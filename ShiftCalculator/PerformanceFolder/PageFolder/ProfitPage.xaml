@@ -219,7 +219,6 @@
                             HorizontalAlignment="Right"
                             Margin="0 0 10 0">
                             <Button
-                                IsEnabled="False"
                                 x:Name="DownloadButton"
                                 Click="DownloadButton_Click"
                                 Margin="0 0 10 0"
