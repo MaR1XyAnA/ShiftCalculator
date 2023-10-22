@@ -24,6 +24,13 @@ namespace ShiftCalculator.PerformanceFolder.WindowFolder
             FrameNavigationClass.menuSpace_FNC = MenuFrame;
             FrameNavigationClass.menuSpace_FNC.Navigate(new MenuPage());
         }
+
+        private void Event_DisableButtons()
+        {
+            // Херня, прописанная в 2 строчки нужна для того, чтобы вызвать метод, который отключит кнопки
+            var currentPage = FrameNavigationClass.menuSpace_FNC.Content as MenuPage;
+            currentPage.Event_DeactivateToggleButton();
+        }
         #endregion
         #region Управление окном
         private void TopShelGrid_MouseDown(object sender, MouseButtonEventArgs e) /// Перемищать окно
@@ -49,11 +56,14 @@ namespace ShiftCalculator.PerformanceFolder.WindowFolder
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            // Херня, прописанная в 2 строчки нужна для того, чтобы вызвать метод, который отключит кнопки
-            var currentPage = FrameNavigationClass.menuSpace_FNC.Content as MenuPage; 
-            currentPage.Event_DeactivateToggleButton();
-
+            Event_DisableButtons();
             FrameNavigationClass.bodySpace_FNC.Navigate(new SettingsPage());
+        }
+
+        private void InformationButton_Click(object sender, RoutedEventArgs e)
+        {
+            Event_DisableButtons();
+            FrameNavigationClass.bodySpace_FNC.Navigate(new InformatioPage());
         }
         #endregion
     }

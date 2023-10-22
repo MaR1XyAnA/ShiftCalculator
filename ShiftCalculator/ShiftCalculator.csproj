@@ -88,6 +88,9 @@
     <Compile Include="AppDataFolder\ClassFolder\MessageBoxClass.cs" />
     <Resource Include="ContentFolder\FontFolder\OpenSans-VariableFont_wdth,wght.ttf" />
     <None Include="HistoryOfTheMarkupCalculationDocument.json" />
+    <Compile Include="PerformanceFolder\PageFolder\InformatioPage.xaml.cs">
+      <DependentUpon>InformatioPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PerformanceFolder\PageFolder\ProfitPage.xaml.cs">
       <DependentUpon>ProfitPage.xaml</DependentUpon>
     </Compile>
@@ -184,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AppDataFolder\StyleFolder\WindowDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PerformanceFolder\PageFolder\InformatioPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
