@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,7 +27,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
     public partial class ProfitPage : Page
     {
         // Выбранные элементы
-        List<HistoryClass> selectedItemList = new List<HistoryClass>();
+        List<HistoryClass.CashWithdrawalCalculationsClass> selectedItemList = new List<HistoryClass.CashWithdrawalCalculationsClass>();
 
         // Проверка полей на пустоту "нужно для метода"
         string isNullOrWhiteSpaceTextBox; 
@@ -132,7 +133,14 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         private void CopyButton_Click(object sender, RoutedEventArgs e) /// Скопировать
         {
+            if (selectedItemList.Count > 0)
+            {
+                string copiedText = string.Join(Environment.NewLine, selectedItemList.Select(item => item.ToString()));
+                Clipboard.SetText(copiedText);
 
+                HistoryDataGrid.SelectedItem = null;
+                selectedItemList = null;
+            }
         }
 
         private void DownloadButton_Click(object sender, RoutedEventArgs e) /// Скачать
@@ -228,9 +236,9 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         private void Event_RecordingHistory() /// Запись истории подсчёта
         {
-            List<HistoryClass> historyClass;
+            List<HistoryClass.CashWithdrawalCalculationsClass> cashWithdrawalCalculationsClass;
 
-            var matrixDataRecording = new HistoryClass()
+            var matrixDataRecording = new HistoryClass.CashWithdrawalCalculationsClass()
             {
                 DateTime_HC = Convert.ToDateTime(DateTextBox.Text + " " + TimeTextBox.Text),
                 TotalAmount_HC = Convert.ToDouble(TotalAmountTextBox.Text),
@@ -244,26 +252,26 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             if (File.Exists(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup))
             {
                 // Если файл существует, загружаем его содержимое
-                historyClass = JsonConvert.DeserializeObject<List<HistoryClass>>(
+                cashWithdrawalCalculationsClass = JsonConvert.DeserializeObject<List<HistoryClass.CashWithdrawalCalculationsClass>>(
                     File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup));
 
-                if (historyClass == null)
+                if (cashWithdrawalCalculationsClass == null)
                 {
                     // Если файл существует, но содержит некорректный JSON, создаем новый список
-                    historyClass = new List<HistoryClass>();
+                    cashWithdrawalCalculationsClass = new List<HistoryClass.CashWithdrawalCalculationsClass>();
                 }
             }
             else
             {
                 // Если файл не существует или содержит некорректный JSON, создаем новый список
-                historyClass = new List<HistoryClass>();
+                cashWithdrawalCalculationsClass = new List<HistoryClass.CashWithdrawalCalculationsClass>();
             }
 
-            historyClass.Add(matrixDataRecording);
+            cashWithdrawalCalculationsClass.Add(matrixDataRecording);
 
             // Сохраняем список в файл
             File.WriteAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup,
-                JsonConvert.SerializeObject(historyClass, Formatting.Indented));
+                JsonConvert.SerializeObject(cashWithdrawalCalculationsClass, Formatting.Indented));
         }
 
         private void Event_OutputData() // Вывод истории подсчётов
@@ -272,11 +280,11 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             if (File.Exists(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup))
             {
                 string json = File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup);
-                HistoryDataGrid.ItemsSource = JsonConvert.DeserializeObject<List<HistoryClass>>(json);
+                HistoryDataGrid.ItemsSource = JsonConvert.DeserializeObject<List<HistoryClass.CashWithdrawalCalculationsClass>>(json);
             }
             else
             {
-                List<HistoryClass> emptyHistory = new List<HistoryClass>();
+                List<HistoryClass.CashWithdrawalCalculationsClass> emptyHistory = new List<HistoryClass.CashWithdrawalCalculationsClass>();
                 string emptyJson = JsonConvert.SerializeObject(emptyHistory);
 
                 File.WriteAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup, emptyJson);
@@ -320,7 +328,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         {
             foreach (var selectedItem in HistoryDataGrid.SelectedItems)
             {
-                if (selectedItem is HistoryClass historyItem)
+                if (selectedItem is HistoryClass.CashWithdrawalCalculationsClass historyItem)
                 {
                     selectedItemList.Add(historyItem);
                 }
