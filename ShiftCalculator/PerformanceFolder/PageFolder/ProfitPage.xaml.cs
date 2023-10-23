@@ -148,7 +148,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         private void DownloadButton_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.FileName = $"HistoryData {DateTime.Now.ToString("dd.MM.yyyy")}.xlsx";
+            saveFileDialog.FileName = $"HistoryData {DateTime.Now.ToString("dd.MM.yyyy")}";
             saveFileDialog.Filter = "Excel Files|*.xlsx";
 
             if (saveFileDialog.ShowDialog() == true)
@@ -157,29 +157,27 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
                 using (ExcelPackage package = new ExcelPackage())
                 {
-                    // Добавьте новый лист
                     ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("History Data");
 
-                    // Заголовки столбцов
-                    worksheet.Cells[1, 1].Value = "Дата и время";
-                    worksheet.Cells[1, 2].Value = "Общая сумма";
-                    worksheet.Cells[1, 3].Value = "Банковский перевод";
-                    worksheet.Cells[1, 4].Value = "Наличные";
-                    worksheet.Cells[1, 5].Value = "Безналичный расчет";
-                    worksheet.Cells[1, 6].Value = "Итого за день";
+                    int rowHeading = 1;
+                    int rowData = 2;
 
-                    int row = 2;
-                    foreach (var item in selectedItemList)
-                    {
-                        worksheet.Cells[row, 1].Value = item.DateTime_HC;
-                        worksheet.Cells[row, 2].Value = item.TotalAmount_HC;
-                        worksheet.Cells[row, 3].Value = item.Bank_HC;
-                        worksheet.Cells[row, 4].Value = item.CashBalance_HC;
-                        worksheet.Cells[row, 5].Value = item.Cashless_HC;
-                        worksheet.Cells[row, 6].Value = item.TotalForTheDay_HC;
+                    worksheet.Cells[rowHeading, 1].Value = "Дата и время";
+                    worksheet.Cells[rowHeading, 2].Value = "Сумма";
+                    worksheet.Cells[rowHeading, 3].Value = "Электронными";
+                    worksheet.Cells[rowHeading, 4].Value = "В кассе";
+                    worksheet.Cells[rowHeading, 5].Value = "В банке";
+                    worksheet.Cells[rowHeading, 6].Value = "За день";
 
-                        row++;
-                    }
+                    //if (selectedItemList.Count > 0)
+                    //{
+                    //    ExcelExportHelperClass.ExportDataToWorksheet(selectedItemList, worksheet, rowData);
+                    //}
+                    //else
+                    //{
+                    //    selectedItemList = ExcelExportHelperClass.GetAllItems(HistoryDataGrid.ItemsSource);
+                    //    ExcelExportHelperClass.ExportDataToWorksheet(selectedItemList, worksheet, rowData);
+                    //}
 
                     package.SaveAs(new FileInfo(filePath));
                 }
