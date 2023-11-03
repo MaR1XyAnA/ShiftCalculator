@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace ShiftCalculator.AppDataFolder.ClassFolder
 {
-    internal class MessageBoxClass
+    public class MessageBoxClass
     {
         /// <summary>
         /// MessageBox для ошибок try{} catch (Exception ex){}
@@ -48,6 +48,20 @@ namespace ShiftCalculator.AppDataFolder.ClassFolder
             MessageBox.Show(
                 textMessage, topRow,
                 MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        /// <summary>
+        /// MessageBox для работы с активной кнопкой
+        /// </summary>
+        /// <param name="textMessage"> это то, что будет выводиться (определённый текст)</param>
+        /// <param name="topRow">это само название</param>
+        public static MessageBoxResult MessageBoxActiveButton_MBC(
+            string textMessage = "Разработчик (программист) не присвоил этому значению сообщение",
+            string topRow = "Разработчик (программист) не присвоил этому значению название")
+        {
+           return MessageBox.Show(
+                    textMessage, topRow,
+                    MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

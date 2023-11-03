@@ -1,4 +1,6 @@
 ﻿using ShiftCalculator.AppDataFolder.ClassFolder;
+using ShiftCalculator.PerformanceFolder.PageFolder;
+using ShiftCalculator.PerformanceFolder.WindowFolder;
 using ShiftCalculator.Properties;
 using System.IO;
 using System.Windows;
@@ -23,15 +25,23 @@ namespace ShiftCalculator
 
         private void Event_CheckingForAvailability() /// Проверка на существующие файлы перед началом работы приложения
         {
+            MainWindow mainWindow = new MainWindow();
+
             if (!File.Exists(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup))
             {
-                MessageBox.Show("0");
-                return;
+                if(MessageBoxClass.MessageBoxActiveButton_MBC(topRow: "Ошибка файла", textMessage: "Отсутствует путь к записи подсчёта прибыли") == MessageBoxResult.OK)
+                {
+                    mainWindow.Show();
+                    FrameNavigationClass.bodySpace_FNC.Navigate(new SettingsPage());
+                }
             }
             if (!File.Exists(Settings.Default.ThePathToTheFileToSaveTheShiftCountingHistory))
             {
-                MessageBox.Show("1");
-                return;
+                if (MessageBoxClass.MessageBoxActiveButton_MBC(topRow: "Ошибка файла", textMessage: "Отсутствует путь к записи подсчёта прибыли") == MessageBoxResult.OK)
+                {
+                    mainWindow.Show();
+                    FrameNavigationClass.bodySpace_FNC.Navigate(new SettingsPage());
+                }
             }
         }
     }
