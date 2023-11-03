@@ -46,7 +46,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                 Convert.ToDouble(QuantityTextBox.Text),
                 Convert.ToDouble(CostTextBox.Text));
 
-            ResultTextBox.Text = result.ResultCalculations_CM.ToString();
+            TotalForTheDayTextBlock.Text = result.ResultCalculations_CM.ToString();
         }
         #endregion
         #region _TextChanged
