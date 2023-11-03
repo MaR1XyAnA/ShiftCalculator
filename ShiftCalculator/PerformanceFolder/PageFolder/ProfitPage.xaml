@@ -18,44 +18,38 @@
             Margin="0 0 0 0">
             <Grid Margin="10 0 10 10">
                 <Border Style="{DynamicResource OverlayBorderStyle}">
-                    <Grid Margin="20 10 20 10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="80"/>
-                        </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Vertical" Margin="20 10 20 10">
                         <StackPanel 
-                            Grid.Column="0"
-                            Orientation="Vertical" >
+                            Margin="0 0 0 10" 
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center">
                             <TextBlock
-                                Margin="0 0 0 10"
+                                Margin="0 0 0 0"
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
-                                Text="В реальном времяни"/>
-                            <TextBlock
-                                Margin="0 10 0 0"
-                                Style="{DynamicResource TopTitleTextBlockStyle}"
-                                Text="Сохранять"/>
-                        </StackPanel>
-                        <StackPanel 
-                            Grid.Column="1"
-                            Orientation="Vertical">
-                            <ToggleButton
-                                IsChecked="True"
-                                x:Name="SetToDayDateTime"
-                                HorizontalAlignment="Center"
-                                Margin="0 0 0 10"
-                                ToolTip="Выстовить дату и время на данный момент"
-                                Click="SetToDayDateTime_Click"
-                                Width="Auto"
-                                Style="{DynamicResource LeverToggleButtonStyle}"/>
+                                Text="Сохранить"/>
                             <ToggleButton
                                 IsChecked="True"
                                 x:Name="SaveToggleButton"
-                                HorizontalAlignment="Center"
-                                Margin="0 10 0 0"
-                                Width="Auto"
+                                HorizontalAlignment="Right"
+                                Margin="0 0 0 0"
                                 Style="{DynamicResource LeverToggleButtonStyle}"/>
                         </StackPanel>
-                    </Grid>
+                        <StackPanel 
+                            Margin="0 10 0 0" 
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                            <TextBlock
+                                Margin="0 0 0 0"
+                                Style="{DynamicResource TopTitleTextBlockStyle}"
+                                Text="В реальном времяни"/>
+                            <ToggleButton
+                                IsChecked="True"
+                                x:Name="SetToDayDateTime"
+                                HorizontalAlignment="Right"
+                                Margin="0 0 0 0"
+                                Style="{DynamicResource LeverToggleButtonStyle}"/>
+                        </StackPanel>
+                    </StackPanel>
                 </Border>
             </Grid>
             <Grid Margin="10">
