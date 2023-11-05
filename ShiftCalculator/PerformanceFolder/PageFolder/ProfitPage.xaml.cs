@@ -283,11 +283,11 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             };
 
             // Проверяем, существует ли файл
-            if (File.Exists(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup))
+            if (File.Exists(Settings.Default.ThePathToTheFileToSaveTheShiftCountingHistory))
             {
                 // Если файл существует, загружаем его содержимое
                 recordingNewData = JsonConvert.DeserializeObject<List<HistoryClass.CashWithdrawalCalculations_HC>>(
-                    File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup));
+                    File.ReadAllText(Settings.Default.ThePathToTheFileToSaveTheShiftCountingHistory));
             }
             else
             {
@@ -298,16 +298,16 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             recordingNewData.Add(matrixDataRecording);
 
             // Сохраняем список в файл
-            File.WriteAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup,
+            File.WriteAllText(Settings.Default.ThePathToTheFileToSaveTheShiftCountingHistory,
                 JsonConvert.SerializeObject(recordingNewData, Formatting.Indented));
         }
 
         private void Event_OutputData() // Вывод истории подсчётов
         {
             // Проверяем существование файла
-            if (File.Exists(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup))
+            if (File.Exists(Settings.Default.ThePathToTheFileToSaveTheShiftCountingHistory))
             {
-                string jsonData = File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup);
+                string jsonData = File.ReadAllText(Settings.Default.ThePathToTheFileToSaveTheShiftCountingHistory);
                 HistoryDataGrid.ItemsSource = JsonConvert.DeserializeObject<List<HistoryClass.CashWithdrawalCalculations_HC>>(jsonData);
             }
             else
@@ -315,7 +315,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                 List<HistoryClass.CashWithdrawalCalculations_HC> emptyHistory = new List<HistoryClass.CashWithdrawalCalculations_HC>();
                 string emptyJson = JsonConvert.SerializeObject(emptyHistory);
 
-                File.WriteAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup, emptyJson);
+                File.WriteAllText(Settings.Default.ThePathToTheFileToSaveTheShiftCountingHistory, emptyJson);
                 HistoryDataGrid.ItemsSource = emptyHistory;
             }
         }
@@ -345,7 +345,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             Event_OutputData();
         }
 
-        private void Event_EnteringOnlyNumbersTextBox(object sender, TextCompositionEventArgs e)
+        private void Event_EnterNumbersAndCommasTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex DivisionCodeRegex = new Regex("[^0-9.,]");
             e.Handled = DivisionCodeRegex.IsMatch(e.Text);

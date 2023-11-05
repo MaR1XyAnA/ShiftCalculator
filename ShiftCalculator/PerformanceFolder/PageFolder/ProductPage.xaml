@@ -14,8 +14,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel
             Grid.Column="0"
-            Orientation="Vertical"
-            Margin="0 20 0 0">
+            Orientation="Vertical">
             <Grid Margin="10 0 10 10">
                 <Border Style="{DynamicResource OverlayBorderStyle}">
                     <Grid Margin="20 10 20 10">
@@ -25,7 +24,6 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock
                             Grid.Column="0"
-                            Margin="0 0 0 0"
                             Style="{DynamicResource TopTitleTextBlockStyle}"
                             Text="Сохранить"/>
                         <ToggleButton
@@ -33,7 +31,6 @@
                             IsChecked="True"
                             x:Name="SaveToggleButton"
                             HorizontalAlignment="Right"
-                            Margin="0 0 0 0"
                             Width="Auto"
                             Style="{DynamicResource LeverToggleButtonStyle}"/>
                     </Grid>
@@ -51,6 +48,8 @@
                             Text="Наценка"/>
                         <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
                             <TextBox
+                                MaxLength="4"
+                                PreviewTextInput="Event_EnterNumbersAndCommasTextBox"
                                 x:Name="ExtraChargeTextBox"
                                 TextChanged="TextHint_TextChanged"/>
                             <TextBlock
@@ -65,6 +64,8 @@
                             Text="Количество"/>
                         <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
                             <TextBox
+                                PreviewTextInput="Event_EnterNumbersTextBox"
+                                MaxLength="3"
                                 x:Name="QuantityTextBox"
                                 TextChanged="TextHint_TextChanged"/>
                             <TextBlock
@@ -79,6 +80,8 @@
                             Text="Стоимость"/>
                         <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
                             <TextBox
+                                MaxLength="7"
+                                PreviewTextInput="Event_EnterNumbersAndCommasTextBox"
                                 x:Name="CostTextBox"
                                 TextChanged="TextHint_TextChanged"/>
                             <TextBlock
@@ -95,7 +98,18 @@
                 <StackPanel 
                     Orientation="Vertical" 
                     Margin="20 10 20 10">
-                    <StackPanel Orientation="Horizontal" Margin="0 0 0 0">
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                        <TextBlock
+                            Style="{DynamicResource TopTitleTextBlockStyle}"
+                            Text="Результат расчётов:"/>
+                        <TextBlock
+                            Text="00000"
+                            Foreground="#1e8be0"
+                            Style="{DynamicResource TopTitleTextBlockStyle}"
+                            Margin="10 0 0 0"
+                            x:Name="CalculationResultTextBlock"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
                         <TextBlock
                             Style="{DynamicResource TopTitleTextBlockStyle}"
                             Text="ИТОГ:"/>
@@ -104,7 +118,7 @@
                             Foreground="#1e8be0"
                             Style="{DynamicResource TopTitleTextBlockStyle}"
                             Margin="10 0 0 0"
-                            x:Name="TotalForTheDayTextBlock"/>
+                            x:Name="RoundedPriceTextBlock"/>
                     </StackPanel>
                 </StackPanel>
             </Border>
@@ -115,31 +129,117 @@
                 Click="CalculateButton_Click"
                 Margin="30 15 30 0"/>
         </StackPanel>
-        <Border
-            Style="{DynamicResource OverlayBorderStyle}"
+        <Grid
+            MinHeight="0"
+            MaxHeight="780"
+            Height="Auto"
+            VerticalAlignment="Top"
             Grid.Column="1"
-            Margin="10 20">
-            <DataGrid x:Name="HistoryDataGrid">
-                <DataGrid.Columns>
-                    <DataGridTextColumn
-                        Header="Наценка"
-                        Width="160" 
-                        Binding="{Binding Path=TotalAmount_HC}"/>
-                    <DataGridTextColumn
-                        Header="Количество"
-                        Width="*" 
-                        Binding="{Binding Path=Bank_HC}"/>
-                    <DataGridTextColumn
-                        Header="Стоимость"
-                        Width="*" 
-                        Binding="{Binding Path=CashBalance_HC}"/>
-                    <DataGridTextColumn Width="120"/>
-                    <DataGridTextColumn
-                        Header="Результат"
-                        Width="*" 
-                        Binding="{Binding Path=Cashless_HC}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Border>
+            Margin="10 0 10 0">
+            <Border Style="{DynamicResource OverlayBorderStyle}">
+                <StackPanel Orientation="Vertical">
+                    <Border
+                        CornerRadius="7 7 0 0"
+                        Background="#222b45"
+                        Height="40">
+                        <StackPanel
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center" 
+                            HorizontalAlignment="Right"
+                            Margin="0 0 10 0">
+                            <Button
+                                x:Name="DownloadButton"
+                                Margin="0 0 10 0"
+                                ToolTip="Скачать"
+                                Style="{DynamicResource ManagementButtonStyle}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock 
+                                        Style="{DynamicResource IconTextBlockStyle}"
+                                        Text="&#xf220;"
+                                        Margin="0 0 2.5 0"/>
+                                    <TextBlock
+                                        Margin="2.5 0 0 0"
+                                        Text="Скачать"/>
+                                </StackPanel>
+                            </Button>
+                            <Button
+                                IsEnabled="False"
+                                x:Name="CopyButton"
+                                Margin="10 0 10 0"
+                                ToolTip="Скопировать"
+                                Style="{DynamicResource ManagementButtonStyle}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock 
+                                        Style="{DynamicResource IconTextBlockStyle}"
+                                        Text="&#xf16d;"
+                                        Margin="0 0 2.5 0"/>
+                                    <TextBlock
+                                        Margin="2.5 0 0 0"
+                                        Text="Скопировать"/>
+                                </StackPanel>
+                            </Button>
+                            <Button
+                                IsEnabled="False"
+                                x:Name="ResetSelectionButton"
+                                Margin="10 0 10 0"
+                                ToolTip="Сбросить выделение"
+                                Style="{DynamicResource ManagementButtonStyle}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock 
+                                        Style="{DynamicResource IconTextBlockStyle}"
+                                        Text="&#xf167;"
+                                        Margin="0 0 2.5 0"/>
+                                    <TextBlock
+                                        Margin="2.5 0 0 0"
+                                        Text="Сбросить"/>
+                                </StackPanel>
+                            </Button>
+                            <Button
+                                IsEnabled="False"
+                                x:Name="DeleteAnEntryButton"
+                                Margin="10 0 0 0"
+                                ToolTip="Удалить"
+                                Style="{DynamicResource RedManagementButtonStyle}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock 
+                                        Style="{DynamicResource IconTextBlockStyle}"
+                                        Text="&#xf154;"
+                                        Margin="0 0 2.5 0"/>
+                                    <TextBlock
+                                        Margin="2.5 0 0 0"
+                                        Text="Удалить"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <DataGrid 
+                        MinHeight="0"
+                        MaxHeight="720"
+                        Height="auto"
+                        Margin="0 0 0 10"
+                        x:Name="HistoryDataGrid">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                Header="Наценка"
+                                Width="160" 
+                                Binding="{Binding Path=TotalAmount_HC}"/>
+                            <DataGridTextColumn
+                                Header="Количество"
+                                Width="*" 
+                                Binding="{Binding Path=Bank_HC}"/>
+                            <DataGridTextColumn
+                                Header="Стоимость"
+                                Width="*" 
+                                Binding="{Binding Path=CashBalance_HC}"/>
+                            <DataGridTextColumn Width="120"/>
+                            <DataGridTextColumn
+                                Header="Результат"
+                                Width="*" 
+                                Binding="{Binding Path=Cashless_HC}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+        </Grid>
     </Grid>
 </Page>

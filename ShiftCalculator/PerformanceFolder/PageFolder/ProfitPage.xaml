@@ -14,8 +14,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel
             Grid.Column="0"
-            Orientation="Vertical"
-            Margin="0 0 0 0">
+            Orientation="Vertical">
             <Grid Margin="10 0 10 10">
                 <Border Style="{DynamicResource OverlayBorderStyle}">
                     <StackPanel Orientation="Vertical" Margin="20 10 20 10">
@@ -26,7 +25,6 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock
                                 Grid.Column="0"
-                                Margin="0 0 0 0"
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
                                 Text="Сохранить"/>
                             <ToggleButton
@@ -34,7 +32,6 @@
                                 IsChecked="True"
                                 x:Name="SaveToggleButton"
                                 HorizontalAlignment="Right"
-                                Margin="0 0 0 0"
                                 Style="{DynamicResource LeverToggleButtonStyle}"/>
                         </Grid>
                         <Grid Margin="0 10 0 0">
@@ -44,7 +41,6 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock
                                 Grid.Column="0"
-                                Margin="0 0 0 0"
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
                                 Text="В реальном времяни"/>
                             <ToggleButton
@@ -52,7 +48,6 @@
                                 IsChecked="True"
                                 x:Name="SetToDayDateTime"
                                 HorizontalAlignment="Right"
-                                Margin="0 0 0 0"
                                 Style="{DynamicResource LeverToggleButtonStyle}"/>
                         </Grid>
                     </StackPanel>
@@ -65,8 +60,6 @@
                         Margin="20 10 20 10">
                         <StackPanel Margin="0 0 0 10">
                             <TextBlock
-                                Margin="0"
-                                HorizontalAlignment="Center"
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
                                 Text="Дата и время"/>
                             <StackPanel Orientation="Horizontal">
@@ -109,7 +102,7 @@
                             <Grid ToolTip="{Binding ElementName=HintTotalAmountTextBlock, Path=Text}">
                                 <TextBox
                                     MaxLength="6"
-                                    PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
+                                    PreviewTextInput="Event_EnterNumbersAndCommasTextBox"
                                     x:Name="TotalAmountTextBox"
                                     TextChanged="TextHint_TextChanged"/>
                                 <TextBlock
@@ -125,7 +118,7 @@
                             <Grid ToolTip="{Binding ElementName=HintCashlessPaymentTextBlock, Path=Text}">
                                 <TextBox
                                     MaxLength="6"
-                                    PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
+                                    PreviewTextInput="Event_EnterNumbersAndCommasTextBox"
                                     x:Name="CashlessPaymentTextBox"
                                     TextChanged="TextHint_TextChanged"/>
                                 <TextBlock
@@ -141,7 +134,7 @@
                             <Grid ToolTip="{Binding ElementName=HintPreviousCashBalanceTextBlock, Path=Text}">
                                 <TextBox
                                     MaxLength="6"
-                                    PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
+                                    PreviewTextInput="Event_EnterNumbersAndCommasTextBox"
                                     x:Name="PreviousCashBalanceTextBox"
                                     TextChanged="TextHint_TextChanged"/>
                                 <TextBlock
@@ -157,7 +150,7 @@
                             <Grid ToolTip="{Binding ElementName=HintBanckTextBlock, Path=Text}">
                                 <TextBox
                                     MaxLength="6"
-                                    PreviewTextInput="Event_EnteringOnlyNumbersTextBox"
+                                    PreviewTextInput="Event_EnterNumbersAndCommasTextBox"
                                     x:Name="BanckTextBox"
                                     TextChanged="TextHint_TextChanged"/>
                                 <TextBlock
@@ -207,8 +200,12 @@
                 Margin="30 15 30 0"/>
         </StackPanel>
         <Grid
+            MinHeight="0"
+            MaxHeight="780"
+            Height="Auto"
+            VerticalAlignment="Top"
             Grid.Column="1"
-            Margin="10 0">
+            Margin="10 0 10 0">
             <Border Style="{DynamicResource OverlayBorderStyle}">
                 <StackPanel Orientation="Vertical">
                     <Border
@@ -290,7 +287,10 @@
                         </StackPanel>
                     </Border>
                     <DataGrid 
-                        Height="720"
+                        MinHeight="0"
+                        MaxHeight="720"
+                        Height="auto"
+                        Margin="0 0 0 10"
                         AutoGenerateColumns="False"
                         SelectionChanged="HistoryDataGrid_SelectionChanged"
                         x:Name="HistoryDataGrid">

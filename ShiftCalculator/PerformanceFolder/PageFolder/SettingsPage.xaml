@@ -20,21 +20,21 @@
                                 <Button
                                     Style="{DynamicResource HintButtonStyle}"/>
                             </Grid>
-                            <Grid ToolTip="{Binding ElementName=ThePathToTheFileForSavingTheHistoryOfTheMarkupTextBlock, Path=Text}">
+                            <Grid ToolTip="{Binding ElementName=ThePathToTheFileToSaveTheShiftCountingHistoryTextBlock, Path=Text}">
                                 <TextBox
                                     Margin="0 0 110 0"
                                     TextChanged="HintText_TextChanged"
-                                    x:Name="ThePathToTheFileForSavingTheHistoryOfTheMarkupTextBox"
+                                    x:Name="ThePathToTheFileToSaveTheShiftCountingHistoryTextBox"
                                     Padding="15 0 15 0"/>
                                 <Button
-                                    x:Name="ThePathToTheFileForSavingTheHistoryOfTheMarkupButton"
+                                    x:Name="ThePathToTheFileToSaveTheShiftCountingHistoryButton"
                                     Click="AssignTheCurrentPath_Click"
                                     Content="открыть"
                                     Style="{DynamicResource ButtonStyle}"
                                     HorizontalAlignment="Right"
                                     Width="100"/>
                                 <TextBlock
-                                    x:Name="ThePathToTheFileForSavingTheHistoryOfTheMarkupTextBlock"
+                                    x:Name="ThePathToTheFileToSaveTheShiftCountingHistoryTextBlock"
                                     Style="{DynamicResource HintTextBlockStyle}"
                                     Text="Введите или выберите путь к файлу истории подсчёта"/>
                             </Grid>
@@ -47,21 +47,21 @@
                                 <Button
                                     Style="{DynamicResource HintButtonStyle}"/>
                             </Grid>
-                            <Grid ToolTip="{Binding ElementName=ThePathToTheFileToSaveTheShiftCountingHistoryTextBlock, Path=Text}">
+                            <Grid ToolTip="{Binding ElementName=ThePathToTheFileForSavingTheHistoryOfTheMarkupTextBlock, Path=Text}">
                                 <TextBox
                                     Margin="0 0 110 0"
                                     TextChanged="HintText_TextChanged"
-                                    x:Name="ThePathToTheFileToSaveTheShiftCountingHistoryTextBox"
+                                    x:Name="ThePathToTheFileForSavingTheHistoryOfTheMarkupTextBox"
                                     Padding="15 0 15 0"/>
                                 <Button
                                     Content="открыть"
-                                    x:Name="ThePathToTheFileToSaveTheShiftCountingHistoryButton"
+                                    x:Name="ThePathToTheFileForSavingTheHistoryOfTheMarkupButton"
                                     Click="AssignTheCurrentPath_Click"
                                     Style="{DynamicResource ButtonStyle}"
                                     HorizontalAlignment="Right"
                                     Width="100"/>
                                 <TextBlock
-                                    x:Name="ThePathToTheFileToSaveTheShiftCountingHistoryTextBlock"
+                                    x:Name="ThePathToTheFileForSavingTheHistoryOfTheMarkupTextBlock"
                                     Style="{DynamicResource HintTextBlockStyle}"
                                     Text="Введите или выберите путь к файлу подсчёта наценки"/>
                             </Grid>

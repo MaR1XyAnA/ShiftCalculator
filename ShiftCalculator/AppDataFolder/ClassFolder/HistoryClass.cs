@@ -34,7 +34,18 @@ namespace ShiftCalculator.AppDataFolder.ClassFolder
             public double ExtraCharge_COTCOGC { get; set; }
             public double Quantity_COTCOGC { get; set; }
             public double Costs_COTCOGC { get; set; }
-            public double TotalCost_COTCOGC { get; set; }
+            public double CalculationResult_COTCOGC { get; set; }
+            public double Result_COTCOGC { get; set; }
+
+            public override string ToString() /// Для копирования
+            {
+                return
+                    $"Наценка: {ExtraCharge_COTCOGC}\n" +
+                    $"Количество: {Quantity_COTCOGC}\n" +
+                    $"Стоимость: {Costs_COTCOGC}\n" +
+                    $"Результат расчётов: {CalculationResult_COTCOGC}\n" +
+                    $"ИТОГ: {Result_COTCOGC}\n";
+            }
         }
     }
 }
