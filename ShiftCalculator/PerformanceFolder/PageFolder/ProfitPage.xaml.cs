@@ -29,7 +29,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
     public partial class ProfitPage : Page
     {
         // Выбранные элементы
-        List<HistoryClass.CashWithdrawalCalculationsClass> selectedItemList = new List<HistoryClass.CashWithdrawalCalculationsClass>();
+        List<HistoryClass.CashWithdrawalCalculations_HC> selectedItemList = new List<HistoryClass.CashWithdrawalCalculations_HC>();
 
         // Проверка полей на пустоту "нужно для метода"
         string isNullOrWhiteSpaceTextBox; 
@@ -270,35 +270,29 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 
         private void Event_RecordingHistory() /// Запись истории подсчёта
         {
-            List<HistoryClass.CashWithdrawalCalculationsClass> recordingNewData;
+            List<HistoryClass.CashWithdrawalCalculations_HC> recordingNewData;
 
-            var matrixDataRecording = new HistoryClass.CashWithdrawalCalculationsClass()
+            var matrixDataRecording = new HistoryClass.CashWithdrawalCalculations_HC()
             {
-                DateTime_HC = Convert.ToDateTime(DateTextBox.Text + " " + TimeTextBox.Text),
-                TotalAmount_HC = Convert.ToDouble(TotalAmountTextBox.Text),
-                Bank_HC = Convert.ToDouble(BanckTextBox.Text),
-                CashBalance_HC = Convert.ToDouble(CashBalanceTextBlock.Text),
-                Cashless_HC = Convert.ToDouble(CashlessPaymentTextBox.Text),
-                TotalForTheDay_HC = Convert.ToDouble(TotalForTheDayTextBlock.Text)
+                DateTime_CWCC = Convert.ToDateTime(DateTextBox.Text + " " + TimeTextBox.Text),
+                TotalAmount_CWCC = Convert.ToDouble(TotalAmountTextBox.Text),
+                Bank_CWCC = Convert.ToDouble(BanckTextBox.Text),
+                CashBalance_CWCC = Convert.ToDouble(CashBalanceTextBlock.Text),
+                Cashless_CWCC = Convert.ToDouble(CashlessPaymentTextBox.Text),
+                TotalForTheDay_CWCC = Convert.ToDouble(TotalForTheDayTextBlock.Text)
             };
 
             // Проверяем, существует ли файл
             if (File.Exists(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup))
             {
                 // Если файл существует, загружаем его содержимое
-                recordingNewData = JsonConvert.DeserializeObject<List<HistoryClass.CashWithdrawalCalculationsClass>>(
+                recordingNewData = JsonConvert.DeserializeObject<List<HistoryClass.CashWithdrawalCalculations_HC>>(
                     File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup));
-
-                if (recordingNewData == null)
-                {
-                    // Если файл существует, но содержит некорректный JSON, создаем новый список
-                    recordingNewData = new List<HistoryClass.CashWithdrawalCalculationsClass>();
-                }
             }
             else
             {
                 // Если файл не существует или содержит некорректный JSON, создаем новый список
-                recordingNewData = new List<HistoryClass.CashWithdrawalCalculationsClass>();
+                recordingNewData = new List<HistoryClass.CashWithdrawalCalculations_HC>();
             }
 
             recordingNewData.Add(matrixDataRecording);
@@ -314,11 +308,11 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             if (File.Exists(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup))
             {
                 string jsonData = File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup);
-                HistoryDataGrid.ItemsSource = JsonConvert.DeserializeObject<List<HistoryClass.CashWithdrawalCalculationsClass>>(jsonData);
+                HistoryDataGrid.ItemsSource = JsonConvert.DeserializeObject<List<HistoryClass.CashWithdrawalCalculations_HC>>(jsonData);
             }
             else
             {
-                List<HistoryClass.CashWithdrawalCalculationsClass> emptyHistory = new List<HistoryClass.CashWithdrawalCalculationsClass>();
+                List<HistoryClass.CashWithdrawalCalculations_HC> emptyHistory = new List<HistoryClass.CashWithdrawalCalculations_HC>();
                 string emptyJson = JsonConvert.SerializeObject(emptyHistory);
 
                 File.WriteAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup, emptyJson);
@@ -330,20 +324,20 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         {
             CalculateClass calculateClass = new CalculateClass();
 
-            CalculateClass.CashWithdrawal calculationResult = calculateClass._CashWithdrawal(
+            CalculateClass.WithdrawCashRegister_CC calculationResult = calculateClass._WithdrawCashRegister(
                 Convert.ToDouble(TotalAmountTextBox.Text.Replace(".", ",")),
                 Convert.ToDouble(PreviousCashBalanceTextBox.Text.Replace(".", ",")),
                 Convert.ToDouble(CashlessPaymentTextBox.Text.Replace(".", ",")),
                 Convert.ToDouble(BanckTextBox.Text.Replace(".", ",")));
 
-            CashBalanceTextBlock.Text = calculationResult.CashBalance_CW.ToString();
-            TotalForTheDayTextBlock.Text = calculationResult.TotalForTheDay_CW.ToString();
+            CashBalanceTextBlock.Text = calculationResult.CashBalance_WCR.ToString();
+            TotalForTheDayTextBlock.Text = calculationResult.TotalForTheDay_WCR.ToString();
 
-            CashBalanceTextBlock.Foreground = calculationResult.CashBalance_CW < 0
+            CashBalanceTextBlock.Foreground = calculationResult.CashBalance_WCR < 0
                 ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF3D71"))
                 : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E8BE0"));
 
-            TotalForTheDayTextBlock.Foreground = calculationResult.TotalForTheDay_CW < 0
+            TotalForTheDayTextBlock.Foreground = calculationResult.TotalForTheDay_WCR < 0
                 ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF3D71"))
                 : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E8BE0"));
 
@@ -362,7 +356,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         {
             foreach (var selectedItem in HistoryDataGrid.SelectedItems)
             {
-                if (selectedItem is HistoryClass.CashWithdrawalCalculationsClass historyItem)
+                if (selectedItem is HistoryClass.CashWithdrawalCalculations_HC historyItem)
                 {
                     selectedItemList.Add(historyItem);
                 }

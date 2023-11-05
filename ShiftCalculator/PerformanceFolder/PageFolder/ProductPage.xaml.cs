@@ -41,12 +41,12 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         {
             CalculateClass calculateClass = new CalculateClass();
 
-            CalculateClass.CalculatingMargins result = calculateClass._CalculatingMargins(
+            CalculateClass.CalculateTheCostOfTheDoods_CC result = calculateClass._CalculateTheCostOfTheDoods(
                 Convert.ToDouble(ExtraChargeTextBox.Text),
                 Convert.ToDouble(QuantityTextBox.Text),
                 Convert.ToDouble(CostTextBox.Text));
 
-            TotalForTheDayTextBlock.Text = result.ResultCalculations_CM.ToString();
+            TotalForTheDayTextBlock.Text = result.ResultCalculations_CTCOTD.ToString();
         }
         #endregion
         #region _TextChanged

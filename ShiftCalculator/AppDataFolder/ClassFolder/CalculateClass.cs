@@ -3,43 +3,40 @@
 /// В класс передаются значения, а потом класс выполняет определённые действия с вычислениями и возвращает их обратно.
 ///-->
 
-using System;
-using System.Runtime.InteropServices;
-
 namespace ShiftCalculator.AppDataFolder.ClassFolder
 {
     internal class CalculateClass
     {
-        public class CashWithdrawal
+        public class WithdrawCashRegister_CC
         {
-            public double CashBalance_CW { get; set; }
-            public double TotalForTheDay_CW { get; set; }
+            public double CashBalance_WCR { get; set; }
+            public double TotalForTheDay_WCR { get; set; }
         }
 
-        public CashWithdrawal _CashWithdrawal(double _totalAmount, double _previousCashBalance, double _cashlessPayment, double _banck)
+        public WithdrawCashRegister_CC _WithdrawCashRegister(double _totalAmount, double _previousCashBalance, double _cashlessPayment, double _banck)
         {
-            CashWithdrawal cashWithdrawal = new CashWithdrawal();
+            WithdrawCashRegister_CC cashWithdrawal_CC = new WithdrawCashRegister_CC();
 
-            cashWithdrawal.CashBalance_CW = _totalAmount + _previousCashBalance - _cashlessPayment - _banck;
-            cashWithdrawal.TotalForTheDay_CW = _banck + _cashlessPayment;
+            cashWithdrawal_CC.CashBalance_WCR = _totalAmount + _previousCashBalance - _cashlessPayment - _banck;
+            cashWithdrawal_CC.TotalForTheDay_WCR = _banck + _cashlessPayment;
 
-            return cashWithdrawal;
+            return cashWithdrawal_CC;
         }
 
-        public class CalculatingMargins
+        public class CalculateTheCostOfTheDoods_CC
         {
-            public double ResultCalculations_CM { get; set; }
+            public double ResultCalculations_CTCOTD { get; set; }
         }
 
-        public CalculatingMargins _CalculatingMargins(double _extraCharge, double _quantity, double _price)
+        public CalculateTheCostOfTheDoods_CC _CalculateTheCostOfTheDoods(double _extraCharge, double _quantity, double _price)
         {
-            CalculatingMargins calculatingMargins = new CalculatingMargins();
+            CalculateTheCostOfTheDoods_CC calculatingMargins_CC = new CalculateTheCostOfTheDoods_CC();
 
             double pricePerPercentage = _extraCharge * (_price / 100);
 
-            calculatingMargins.ResultCalculations_CM = (_price + pricePerPercentage) / _quantity;
+            calculatingMargins_CC.ResultCalculations_CTCOTD = (_price + pricePerPercentage) / _quantity;
 
-            return calculatingMargins;
+            return calculatingMargins_CC;
         }
     }
 }

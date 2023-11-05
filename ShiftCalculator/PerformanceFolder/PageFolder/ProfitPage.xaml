@@ -19,36 +19,42 @@
             <Grid Margin="10 0 10 10">
                 <Border Style="{DynamicResource OverlayBorderStyle}">
                     <StackPanel Orientation="Vertical" Margin="20 10 20 10">
-                        <StackPanel 
-                            Margin="0 0 0 10" 
-                            Orientation="Horizontal"
-                            VerticalAlignment="Center">
+                        <Grid Margin="0 0 0 10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                            </Grid.ColumnDefinitions>
                             <TextBlock
+                                Grid.Column="0"
                                 Margin="0 0 0 0"
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
                                 Text="Сохранить"/>
                             <ToggleButton
+                                Grid.Column="1"
                                 IsChecked="True"
                                 x:Name="SaveToggleButton"
                                 HorizontalAlignment="Right"
                                 Margin="0 0 0 0"
                                 Style="{DynamicResource LeverToggleButtonStyle}"/>
-                        </StackPanel>
-                        <StackPanel 
-                            Margin="0 10 0 0" 
-                            VerticalAlignment="Center"
-                            Orientation="Horizontal">
+                        </Grid>
+                        <Grid Margin="0 10 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="40"/>
+                            </Grid.ColumnDefinitions>
                             <TextBlock
+                                Grid.Column="0"
                                 Margin="0 0 0 0"
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
                                 Text="В реальном времяни"/>
                             <ToggleButton
+                                Grid.Column="1"
                                 IsChecked="True"
                                 x:Name="SetToDayDateTime"
                                 HorizontalAlignment="Right"
                                 Margin="0 0 0 0"
                                 Style="{DynamicResource LeverToggleButtonStyle}"/>
-                        </StackPanel>
+                        </Grid>
                     </StackPanel>
                 </Border>
             </Grid>
@@ -59,11 +65,13 @@
                         Margin="20 10 20 10">
                         <StackPanel Margin="0 0 0 10">
                             <TextBlock
+                                Margin="0"
+                                HorizontalAlignment="Center"
                                 Style="{DynamicResource TopTitleTextBlockStyle}"
                                 Text="Дата и время"/>
                             <StackPanel Orientation="Horizontal">
                                 <Grid 
-                                    Margin="0 0 10 0"
+                                    Margin="0 0 18.5 0"
                                     ToolTip="{Binding ElementName=HintDateTextBlock, Path=Text}">
                                     <TextBox
                                         HorizontalContentAlignment="Center"
@@ -78,7 +86,7 @@
                                         Text="Введите дату"/>
                                 </Grid>
                                 <Grid 
-                                    Margin="10 0 0 0"
+                                    Margin="18.5 0 0 0"
                                     ToolTip="{Binding ElementName=HintDateTextBlock, Path=Text}">
                                     <TextBox
                                         HorizontalContentAlignment="Center"
@@ -290,31 +298,31 @@
                             <DataGridTextColumn
                                 Header="Дата"
                                 Width="120" 
-                                Binding="{Binding Path=DateTime_HC, StringFormat='{}{0:dd/MM/yyyy}'}"/>
+                                Binding="{Binding Path=DateTime_CWCC, StringFormat='{}{0:dd/MM/yyyy}'}"/>
                             <DataGridTextColumn 
                                 Header="Время"
                                 Width="120" 
-                                Binding="{Binding Path=DateTime_HC, StringFormat='{}{0:HH:mm:ss}'}"/>
+                                Binding="{Binding Path=DateTime_CWCC, StringFormat='{}{0:HH:mm:ss}'}"/>
                             <DataGridTextColumn
                                 Header="Общая"
                                 Width="160" 
-                                Binding="{Binding Path=TotalAmount_HC, StringFormat='{}{0:#,0.##}'}"/>
+                                Binding="{Binding Path=TotalAmount_CWCC, StringFormat='{}{0:#,0.##}'}"/>
                             <DataGridTextColumn
                                 Header="Электронными"
                                 Width="*" 
-                                Binding="{Binding Path=Cashless_HC, StringFormat='{}{0:#,0.##}'}"/>
+                                Binding="{Binding Path=Cashless_CWCC, StringFormat='{}{0:#,0.##}'}"/>
                             <DataGridTextColumn
                                 Header="В кассе"
                                 Width="*" 
-                                Binding="{Binding Path=CashBalance_HC, StringFormat='{}{0:#,0.##}'}"/>
+                                Binding="{Binding Path=CashBalance_CWCC, StringFormat='{}{0:#,0.##}'}"/>
                             <DataGridTextColumn
                                 Header="В банке"
                                 Width="120" 
-                                Binding="{Binding Path=Bank_HC, StringFormat='{}{0:#,0.##}'}"/>
+                                Binding="{Binding Path=Bank_CWCC, StringFormat='{}{0:#,0.##}'}"/>
                             <DataGridTextColumn
                                 Header="За день"
                                 Width="*" 
-                                Binding="{Binding Path=TotalForTheDay_HC, StringFormat='{}{0:#,0.##}'}"/>
+                                Binding="{Binding Path=TotalForTheDay_CWCC, StringFormat='{}{0:#,0.##}'}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>

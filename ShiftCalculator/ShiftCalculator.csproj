@@ -245,7 +245,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ShiftCalculator_TemporaryKey.pfx" />
     <None Include="ShiftCountingHistoryDocument.json" />
   </ItemGroup>
   <ItemGroup>
