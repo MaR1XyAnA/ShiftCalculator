@@ -1,11 +1,12 @@
-﻿using Microsoft.Win32;
+﻿///<!--
+/// Страница представляет из себя страницу настроек
+///-->
+
+using Microsoft.Win32;
 using ShiftCalculator.Properties;
-using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
@@ -17,14 +18,14 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             Event_AssignTheCurrentPathTextBox();
         }
         #region Event_
-        private void Event_AssignTheCurrentPathTextBox()
+        private void Event_AssignTheCurrentPathTextBox() /// Вывод места, где происходит сохранение
         {
             ThePathToTheFileForSavingTheHistoryOfTheMarkupTextBox.Text = Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup;
             ThePathToTheFileToSaveTheShiftCountingHistoryTextBox.Text = Settings.Default.ThePathToTheFileToSaveTheShiftCountingHistory;
         }
         #endregion
         #region _TextChanged
-        private void HintText_TextChanged(object sender, TextChangedEventArgs e) ///Текстовые подсказки
+        private void HintText_TextChanged(object sender, TextChangedEventArgs e) /// Текстовые подсказки
         {
             TextBox textBox = (TextBox)sender;
             TextBlock hintTextBlock = null;
@@ -50,12 +51,10 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         }
         #endregion
         #region _Click
-        private void AssignTheCurrentPath_Click(object sender, RoutedEventArgs e)
+        private void AssignTheCurrentPath_Click(object sender, RoutedEventArgs e) /// Открывается диалоговое окно для сохранения
         {
-            // Создаем диалоговое окно для выбора файла
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Multiselect = false;
-            openFileDialog.Filter = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
 
             Button button = (Button)sender;
 
@@ -66,10 +65,9 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                 { ThePathToTheFileToSaveTheShiftCountingHistoryButton, "ThePathToTheFileToSaveTheShiftCountingHistory" }
             };
 
-            if (openFileDialog.ShowDialog() == true)
+            if (saveFileDialog.ShowDialog() == true)
             {
-                // Получаем выбранный путь и сохраняем его в настройках
-                string selectedFilePath = openFileDialog.FileName;
+                string selectedFilePath = saveFileDialog.FileName;
 
                 if (buttonSettingsMap.ContainsKey(button))
                 {
