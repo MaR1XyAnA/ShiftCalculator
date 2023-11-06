@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Diagnostics;
+using System.Windows.Controls;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
@@ -8,5 +9,12 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         {
             InitializeComponent();
         }
+
+        #region _Click
+        private void SwitchToGitHubButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            Process.Start("https://github.com/MaR1XyAnA");
+        }
+        #endregion
     }
 }

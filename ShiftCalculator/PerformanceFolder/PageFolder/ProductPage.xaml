@@ -221,21 +221,24 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 Header="Наценка"
-                                Width="160" 
-                                Binding="{Binding Path=TotalAmount_HC}"/>
+                                Width="120"
+                                Binding="{Binding Path=ExtraCharge_COTCOGC, StringFormat='{}{0:#,0.######}'}"/>
                             <DataGridTextColumn
                                 Header="Количество"
                                 Width="*" 
-                                Binding="{Binding Path=Bank_HC}"/>
+                                Binding="{Binding Path=Quantity_COTCOGC, StringFormat='{}{0:#}'}"/>
                             <DataGridTextColumn
                                 Header="Стоимость"
                                 Width="*" 
-                                Binding="{Binding Path=CashBalance_HC}"/>
-                            <DataGridTextColumn Width="120"/>
+                                Binding="{Binding Path=Costs_COTCOGC, StringFormat='{}{0:#,0.######}'}"/>
                             <DataGridTextColumn
                                 Header="Результат"
                                 Width="*" 
-                                Binding="{Binding Path=Cashless_HC}"/>
+                                Binding="{Binding Path=CalculationResult_COTCOGC, StringFormat='{}{0:#,0.######}'}"/>
+                            <DataGridTextColumn
+                                Header="ИТОГ"
+                                Width="*" 
+                                Binding="{Binding Path=Result_COTCOGC, StringFormat='{}{0:#}'}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>

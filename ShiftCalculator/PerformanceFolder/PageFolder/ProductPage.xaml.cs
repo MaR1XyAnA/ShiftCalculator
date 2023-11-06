@@ -21,6 +21,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         public ProductPage()
         {
             InitializeComponent();
+            Event_OutputData();
         }
         #region Текстовые подсказки
         private void ExtraChargeTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -65,6 +66,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
                 : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E8BE0"));
 
             Event_RecordingHistory();
+            Event_OutputData();
         }
         #endregion
         #region _TextChanged
@@ -97,6 +99,24 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         }
         #endregion
         #region Event_
+        private void Event_OutputData() // Вывод истории подсчётов
+        {
+            // Проверяем существование файла
+            if (File.Exists(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup))
+            {
+                string jsonData = File.ReadAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup);
+                HistoryDataGrid.ItemsSource = JsonConvert.DeserializeObject<List<HistoryClass.CalculationsOnTheCostOfGoods_HC>>(jsonData);
+            }
+            else
+            {
+                List<HistoryClass.CalculationsOnTheCostOfGoods_HC> emptyHistory = new List<HistoryClass.CalculationsOnTheCostOfGoods_HC>();
+                string emptyJson = JsonConvert.SerializeObject(emptyHistory);
+
+                File.WriteAllText(Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup, emptyJson);
+                HistoryDataGrid.ItemsSource = emptyHistory;
+            }
+        }
+
         private void Event_RecordingHistory() /// Запись истории подсчёта
         {
             List<HistoryClass.CalculationsOnTheCostOfGoods_HC> recordingNewData;

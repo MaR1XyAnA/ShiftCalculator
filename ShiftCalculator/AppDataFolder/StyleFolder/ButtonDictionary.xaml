@@ -116,7 +116,7 @@
                                         <ColorAnimation 
                                             Storyboard.TargetName="ButtonBackground" 
                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                            To="#a16cd9" 
+                                            To="#1e8be0" 
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -127,7 +127,7 @@
                                         <ColorAnimation 
                                             Storyboard.TargetName="ButtonBackground" 
                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" 
-                                            To="#8f63d4" 
+                                            To="#222b45" 
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -139,7 +139,14 @@
         </Setter>
     </Style>
 
-    <Style x:Key="HintButtonStyle" TargetType="Button">
+    <Style x:Key="OpenTheFilePathButtonStyle" TargetType="Button" BasedOn="{StaticResource ButtonStyle}">
+        <Setter Property="Content" Value="открыть"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="50"/>
+    </Style>
+
+        <Style x:Key="HintButtonStyle" TargetType="Button">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
@@ -190,13 +197,13 @@
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Foreground" Value="#8f63d4"/>
+                            <Setter Property="Foreground" Value="#1e8be0"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ColorAnimation 
                                             Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" 
-                                            To="#8f63d4" 
+                                            To="#1e8be0" 
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -266,13 +273,13 @@
                             </Trigger.ExitActions>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Foreground" Value="#8f63d4"/>
+                            <Setter Property="Foreground" Value="#1e8be0"/>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <ColorAnimation 
                                             Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" 
-                                            To="#8f63d4"
+                                            To="#1e8be0"
                                             Duration="0:0:0.2"/>
                                     </Storyboard>
                                 </BeginStoryboard>
