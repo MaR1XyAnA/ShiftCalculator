@@ -55,6 +55,29 @@
                     </StackPanel>
                 </Border>
             </Grid>
+            <Button
+                Style="{DynamicResource ButtonStyle}"
+                Margin="0 20 0 0"
+                x:Name="TestAnimation"
+                Click="TestAnimation_Click"
+                Width="220"
+                Content="START"/>
         </StackPanel>
+        <Border
+            x:Name="NotificationBorder"
+            CornerRadius="10"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Bottom"
+            Margin="0 0 20 40"
+            BorderThickness="1"
+            BorderBrush="#00d68f"
+            Background="#00d68f">
+            <TextBlock
+                x:Name="NotificationTextBlock"
+                Style="{StaticResource TopTitleTextBlockStyle}"
+                Margin="0 0 0 0"
+                Text="Сохранено успешно"
+                Padding="10"/>
+        </Border>
     </Grid>
 </Page>

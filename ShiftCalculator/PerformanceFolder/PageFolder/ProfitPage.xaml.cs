@@ -28,10 +28,8 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
     public partial class ProfitPage : Page
     {
-        // Выбранные элементы
         List<HistoryClass.CashWithdrawalCalculations_HC> selectedItemList = new List<HistoryClass.CashWithdrawalCalculations_HC>();
 
-        // Проверка полей на пустоту "нужно для метода"
         string isNullOrWhiteSpaceTextBox; 
 
         DispatcherTimer dispatcherTimer;
@@ -41,7 +39,7 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             /// Пометка для тех, кто будет читать мой код и не поймёт прикола, ...
             /// ... а так же для новичков и для меня, если я там например уйду в армию
             
-            // Так как при запуске страницы срабатывает код написанный в данном методе, то я разделил код на ...
+            // Так как при запуске страницы, срабатывает код написанный в данном методе, то я разделил код на ...
             // ... события и запускаю события, которые запускают код (иначе код просто будет длинным)
             // InitializeComponent() - стоковое событие, я его не прописывал.
 
@@ -50,7 +48,6 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             Event_SettingsDispatcherTimer();
             Event_ToggleDateTimeControls(true);
 
-            // А это просто сортировка по дате и времени (От самого нового к старому)
             HistoryDataGrid.Items.SortDescriptions.Add(new SortDescription("DateTime_HC", ListSortDirection.Descending));
         }
 

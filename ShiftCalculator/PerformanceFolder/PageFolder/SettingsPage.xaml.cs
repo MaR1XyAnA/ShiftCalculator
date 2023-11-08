@@ -7,6 +7,7 @@ using ShiftCalculator.Properties;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
@@ -81,5 +82,10 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             }
         }
         #endregion
+
+        private void TestAnimation_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
