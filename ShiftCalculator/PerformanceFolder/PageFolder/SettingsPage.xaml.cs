@@ -4,10 +4,13 @@
 
 using Microsoft.Win32;
 using ShiftCalculator.Properties;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Threading;
 
 namespace ShiftCalculator.PerformanceFolder.PageFolder
 {
@@ -23,6 +26,28 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
         {
             ThePathToTheFileForSavingTheHistoryOfTheMarkupTextBox.Text = Settings.Default.ThePathToTheFileForSavingTheHistoryOfTheMarkup;
             ThePathToTheFileToSaveTheShiftCountingHistoryTextBox.Text = Settings.Default.ThePathToTheFileToSaveTheShiftCountingHistory;
+        }
+
+        private void Event_AnimationStart()
+        {
+            NotificationBorder.Visibility = Visibility.Visible;
+
+            TranslateTransform translateTransform = new TranslateTransform();
+            DoubleAnimation animation = new DoubleAnimation();
+            DoubleAnimation doubleAnimation = new DoubleAnimation();
+
+            NotificationBorder.RenderTransform = translateTransform;
+            translateTransform.X = 0;
+
+            animation.To = -20;
+            animation.Duration = new Duration(TimeSpan.FromSeconds(0.15));
+            translateTransform.BeginAnimation(TranslateTransform.XProperty, animation);
+
+            doubleAnimation.From = 1;
+            doubleAnimation.To = 0;
+            doubleAnimation.Duration = TimeSpan.FromSeconds(4);
+            doubleAnimation.EasingFunction = new QuadraticEase();
+            NotificationBorder.BeginAnimation(UIElement.OpacityProperty, doubleAnimation);
         }
         #endregion
         #region _TextChanged
@@ -82,10 +107,5 @@ namespace ShiftCalculator.PerformanceFolder.PageFolder
             }
         }
         #endregion
-
-        private void TestAnimation_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
     }
 }
